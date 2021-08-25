@@ -1,0 +1,12 @@
+com\btl\pojos\Category.class
+com\btl\pojos\Manufacturer.class
+com\btl\pojos\User.class
+com\btl\configs\WebApplicationContextConfig.class
+com\btl\service\impl\CategoryServiceImpl.class
+com\btl\repository\CategoryRepository.class
+com\btl\repository\impl\CategoryRepositoryImpl.class
+com\btl\configs\HibernateConfig.class
+com\btl\pojos\Product.class
+com\btl\controllers\HomeController.class
+com\btl\service\CategoryService.class
+com\btl\configs\DispatcherServletInitializer.class

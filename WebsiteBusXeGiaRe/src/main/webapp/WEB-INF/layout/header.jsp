@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <header>
-      <img class="logo" src="http://127.0.0.1:5500/img/logo.png" alt="logo">
+        <img class="logo" src="<c:url value="/img/logo_busgiare.png"/>" alt="logo">
       <nav>
         <ul class="nav-links">
           <li class="nav-item active"><a href="#trangchu">TRANG CHỦ</a></li>

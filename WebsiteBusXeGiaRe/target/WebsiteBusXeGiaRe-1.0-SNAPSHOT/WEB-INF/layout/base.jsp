@@ -18,7 +18,10 @@
         </title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet"/>
+        <!-- import CSS -->
         <link href="css/header_footer.css" rel="stylesheet">
+        <link href="css/homebase.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     </head>
     
@@ -30,8 +33,12 @@
             <!-- CONTENT -->
             <tiles:insertAttribute name="content"/>
 
+            
             <!-- FOOTER -->
+            
             <tiles:insertAttribute name="footer"/>
+            
         </div>
+            
     </body>
 </html>

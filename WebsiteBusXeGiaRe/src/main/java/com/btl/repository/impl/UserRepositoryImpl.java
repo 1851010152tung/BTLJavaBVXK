@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
 package com.btl.repository.impl;
 
 import com.btl.pojos.User;
@@ -13,21 +15,31 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import org.hibernate.HibernateException;
 
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author Truc Lam
- */
+
 @Repository
+@Transactional
 public class UserRepositoryImpl implements UserRepository {
+    @Autowired
     private LocalSessionFactoryBean sessionFactory;
     
     @Override
     public boolean addUser(User user) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try{
+            session.save(user);
+            return true;
+        }catch (HibernateException ex){
+            System.err.println(ex.getMessage());
+        
+        } 
         return false;
 
     }

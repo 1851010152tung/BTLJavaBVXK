@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.btl.repository;
+package com.btl.service;
 
-import com.btl.pojos.Category;
+import com.btl.pojos.Bus;
 import java.util.List;
 
 /**
  *
- * @author ASUS
+ * @author Truc Lam
  */
-public interface CategoryRepository {
-    List<Category> getCategories();
+public interface BusService {
+    List<Bus> getBuses();
 }

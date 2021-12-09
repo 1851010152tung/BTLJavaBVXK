@@ -5,8 +5,8 @@
  */
 package com.btl.repository.impl;
 
-import com.btl.pojos.Category;
-import com.btl.repository.CategoryRepository;
+import com.btl.pojos.Bus;
+import com.btl.repository.BusRepository;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -17,20 +17,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author ASUS
+ * @author Truc Lam
  */
+
 @Repository
-public class CategoryRepositoryImpl implements CategoryRepository{
+//@Transactional
+public class BusRepositoryImpl implements BusRepository {
+
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
     
     @Override
     @Transactional
-    public List<Category> getCategories() {
-        Session s = sessionFactory.getObject().getCurrentSession();
-        Query q = s.createQuery("From Category");
-        
+    public List<Bus> getBuses() {
+    Session s = sessionFactory.getObject().getCurrentSession();
+        Query q = s.createQuery("From Bus");
         return q.getResultList();
-    }
     
+    }
 }

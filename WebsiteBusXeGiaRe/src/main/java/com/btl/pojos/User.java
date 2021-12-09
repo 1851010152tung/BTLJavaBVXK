@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
 package com.btl.pojos;
 
 import java.io.Serializable;
@@ -12,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -29,9 +32,9 @@ public class User implements Serializable{
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
    @Column(name = "first_name")
-   private String firstNameString;
-    @Column(name = "last_name")
-   private String lastNameString;
+   private String firstName;
+   @Column(name = "last_name")
+   private String lastName;
    private String email;
    private String phone;
    private String username;
@@ -39,130 +42,116 @@ public class User implements Serializable{
    private boolean active;
     @Column(name = "user_role")
    private String userRole;
+   
+   //Các thuộc tính phải liên kết với một trường trong csdl
+   //Tuy nhiên, khi khai báo biến confirmPassword mục tiêu để xác nhận password
+   // Phải gắn @Transient để biết đây là trường bình thường, không liên kết với trường nào dưới csdl
+   @Transient
+   private String confirmPassword;
 
-    /**
-     * @return the id
-     */
+ 
     public int getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
+   
     public void setId(int id) {
         this.id = id;
     }
 
-    /**
-     * @return the firstNameString
-     */
+  
     public String getFirstNameString() {
-        return firstNameString;
+        return firstName;
     }
 
-    /**
-     * @param firstNameString the firstNameString to set
-     */
+   
     public void setFirstNameString(String firstNameString) {
-        this.firstNameString = firstNameString;
+        this.firstName = firstNameString;
     }
 
-    /**
-     * @return the lastNameString
-     */
+    
     public String getLastNameString() {
-        return lastNameString;
+        return lastName;
     }
 
-    /**
-     * @param lastNameString the lastNameString to set
-     */
+   
     public void setLastNameString(String lastNameString) {
-        this.lastNameString = lastNameString;
+        this.lastName = lastNameString;
     }
 
-    /**
-     * @return the email
-     */
+   
     public String getEmail() {
         return email;
     }
 
-    /**
-     * @param email the email to set
-     */
+  
     public void setEmail(String email) {
         this.email = email;
     }
 
-    /**
-     * @return the phone
-     */
+   
     public String getPhone() {
         return phone;
     }
 
-    /**
-     * @param phone the phone to set
-     */
+    
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    /**
-     * @return the username
-     */
+    
     public String getUsername() {
         return username;
     }
 
-    /**
-     * @param username the username to set
-     */
+    
+     
     public void setUsername(String username) {
         this.username = username;
     }
 
-    /**
-     * @return the password
-     */
+    
     public String getPassword() {
         return password;
     }
 
-    /**
-     * @param password the password to set
-     */
+   
     public void setPassword(String password) {
         this.password = password;
     }
 
-    /**
-     * @return the active
-     */
+    
     public boolean isActive() {
         return active;
     }
 
-    /**
-     * @param active the active to set
-     */
+   
     public void setActive(boolean active) {
         this.active = active;
     }
 
-    /**
-     * @return the userRole
-     */
+    
     public String getUserRole() {
         return userRole;
     }
 
-    /**
-     * @param userRole the userRole to set
-     */
+  
     public void setUserRole(String userRole) {
         this.userRole = userRole;
     }
+
+    /**
+     * @return the confirmPassword
+     */
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    /**
+     * @param confirmPassword the confirmPassword to set
+     */
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
 }
+

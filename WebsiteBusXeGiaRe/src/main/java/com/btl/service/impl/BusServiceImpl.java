@@ -5,25 +5,28 @@
  */
 package com.btl.service.impl;
 
-import com.btl.pojos.Category;
-import com.btl.repository.CategoryRepository;
-import com.btl.service.CategoryService;
+import com.btl.pojos.Bus;
+import com.btl.repository.BusRepository;
+import com.btl.repository.impl.BusRepositoryImpl;
+import com.btl.service.BusService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
  *
- * @author ASUS
+ * @author Truc Lam
  */
+
 @Service
-public class CategoryServiceImpl implements CategoryService{
+public class BusServiceImpl implements BusService{
+
     @Autowired
-    private CategoryRepository categoryRepository;
-    
+    private BusRepository busRepository;
     @Override
-    public List<Category> getCategories() {
-        return this.categoryRepository.getCategories();
+    public List<Bus> getBuses() {
+        return this.busRepository.getBuses();
     }
+    
     
 }

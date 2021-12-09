@@ -86,6 +86,8 @@ body {
   transition: 0.15s;
   cursor: pointer;
 }
+
+
 .form__input {
   width: 350px;
   height: 40px;
@@ -101,6 +103,20 @@ body {
   border-radius: 8px;
   box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
 }
+
+.form__input_name{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    margin-left: 10px;
+    
+}
+
+.form__input_name .form__input{
+    width: 155px;
+    margin-right: 10px;
+}
+
 .form__input:focus {
   box-shadow: inset 4px 4px 4px #d1d9e6, inset -4px -4px 4px #f9f9f9;
 }

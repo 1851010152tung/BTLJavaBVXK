@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
 package com.btl.service.impl;
 
 import com.btl.pojos.User;
@@ -16,20 +18,30 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Truc Lam
  */
+ 
 
 @Service("userDetailsService")
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
-
+    
+    @Autowired
+    //Trước khi gửi vào Repository cần băm mật khẩu
+    private BCryptPasswordEncoder passwordEncoder;
+    
+    
     @Override
     public boolean addUser(User user) {
+        String pass = user.getPassword();
+        user.setPassword(this.passwordEncoder.encode(pass));
+        user.setUserRole(User.USER);
         return this.userRepository.addUser(user);
 
     }

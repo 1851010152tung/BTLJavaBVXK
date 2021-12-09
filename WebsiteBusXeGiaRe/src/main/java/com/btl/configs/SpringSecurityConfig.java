@@ -41,7 +41,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
+                .passwordEncoder(passwordEncoder()); //Thuật toán băm mật khẩu
 
     }
  
@@ -51,8 +51,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
         http.formLogin().loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password");
+        
+        //http.formLogin().loginPage("/register")
+        http.formLogin().defaultSuccessUrl("/") //Trường hợp thành công
+                .failureUrl("/login?error"); //Trường hợp thất bại - có lỗi xảy ra
+        
+        //http.logout().logoutSuccessUrl("/login");
+        http.csrf().disable();
+
 
     }
+    
+    
+    
     
   
     

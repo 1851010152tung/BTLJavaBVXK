@@ -6,7 +6,7 @@
 package com.btl.controllers;
 
 import com.btl.pojos.User;
-import com.btl.service.CategoryService;
+import com.btl.service.BusService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +17,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,17 +28,38 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @author ASUS
  */
+
+
 @Controller
 public class HomeController {
-    //Xây dựng tầng Repository và Service của Front Controller Pattern
-    @Autowired
-    private CategoryService categoryService;
     
+    
+    //Xây dựng tầng Repository và Service của Front Controller Pattern
+    //@Autowired
+    //private CategoryService categoryService;
+    /*
     @RequestMapping("/")
-    public String index(Model model){
-        model.addAttribute("categories", this.categoryService.getCategories());
+    public String index(){
+        //model.addAttribute("categories", this.categoryService.getCategories());
         return "index";
     }
-}
+    */
     
+    @Autowired
+    private BusService busService;
+            
+    @RequestMapping("/")
+    @Transactional
+    public String index(Model model){
+        model.addAttribute("buses", this.busService.getBuses());
+        //s.close();
+        return "index";
+    }
+    
+    
+   
+}
+
+
+  
  

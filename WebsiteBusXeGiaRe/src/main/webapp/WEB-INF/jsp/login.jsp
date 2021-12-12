@@ -39,7 +39,11 @@
                   <p>Đã có lỗi xảy ra, vui lòng quay lại sau!</p>
               </div>
           </c:if>
-          
+          <c:if test="${param.accessDenied !=null} ">
+              <div class="alert alert-danger">
+                  Bạn không có quyền truy cập!!!
+              </div>
+          </c:if>
           
           <input class="form__input" type="text" placeholder="Username" name="username">
           <input class="form__input" type="password" placeholder="Password" name="password"><a class="form__link">Quên mật khẩu?</a>

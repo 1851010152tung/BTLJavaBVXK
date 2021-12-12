@@ -57,6 +57,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
                 .failureUrl("/login?error"); //Trường hợp thất bại - có lỗi xảy ra
         
         //http.logout().logoutSuccessUrl("/login");
+        
+        //Từ chối truy cập
+        http.exceptionHandling().accessDeniedPage("/login?accessDenied");
+        
+        //Phân quyền
+            //Trang chủ tất cả quyền truy cập vào được
+        http.authorizeRequests().antMatchers("/").permitAll()
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
+        
         http.csrf().disable();
 
 

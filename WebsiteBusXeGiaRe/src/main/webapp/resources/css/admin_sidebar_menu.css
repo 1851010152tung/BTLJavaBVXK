@@ -1,0 +1,135 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 10, 2021, 11:08:29 PM
+    Author     : Truc Lam
+*/
+
+
+@charset "UTF-8";
+/*** Import Fonts ***/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.left_col{
+    background-color: #3E74FF;
+}
+
+body #left-sidebar .navbar{
+    background-color: #3E74FF;
+
+}
+
+.nav.side-menu>li.active>a {
+    background-color: #1e57e6;
+}
+
+.main_menu_side{
+    margin-top: 15%;
+}
+
+.navbar{
+    margin-top: 5%;
+    margin-left: 5px;
+}
+
+.sidebar-show{
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    left: -250px;
+    background: #1b1b1b;
+    transition: left 0.4s ease;
+}
+
+body{
+    color:#eeee;
+    font-family:"Montserrat", Roboto, Arial, "Droid Sans", sans-serif;
+    font-size:13px;
+    font-weight:400;
+    line-height:1.471
+}
+
+footer .pull-right{
+    margin-top:16px;
+    color: black
+}
+
+
+.right_col{
+    padding: 10px 20px 0;
+    margin-left: 250px;
+}
+
+.nav-md .container.body .col-md-3.left_col {
+    min-height: 100%;
+    width: 250px;
+    padding: 0;
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    z-index: 1;
+}
+
+div#left-sidebar {
+    position: absolute;
+}
+
+
+
+/**************************************************** FORM ĐĂNG KÝ THÔNG TIN **********************************************************/
+
+/**************************************************** FORM ĐĂNG KÝ THÔNG TIN **********************************************************/
+
+/**************************************************** FORM ĐĂNG KÝ THÔNG TIN **********************************************************/
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#demo-form2 .col-form-label {
+    padding-right: 15px;
+    color: black;
+}
+
+.page-title .title_left h3 {
+    margin: 9px 0;
+    color: #8f979f;
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 22px;
+    margin-top: 20px;
+
+}
+
+div#contain-form {
+    padding: 0px 20px;
+}
+
+.x_title h2{
+    color: #8f979f;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.x_title h2 small {
+    color: #3e74ff;
+    font-weight: 600;
+
+}

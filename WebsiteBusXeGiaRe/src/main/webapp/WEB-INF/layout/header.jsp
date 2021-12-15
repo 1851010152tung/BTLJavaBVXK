@@ -24,10 +24,10 @@
           <a class="sign-in" href="<c:url value="/login" />"> <button>ĐĂNG NHẬP</button></a>
           </div>
       </c:if>
-      <!<!-- Nếu khác null thì gọi hiện tên đăng nhập -->
+      <!-- Nếu khác null thì gọi hiện tên đăng nhập -->
       <c:if test="${pageContext.request.userPrincipal.name != null}">
           <div class="button">
-          <a class="user-name-sign-in" href="<c:url value="/" />"><button>${pageContext.request.userPrincipal.name != null}</button></a>
+          <a class="user-name-sign-in" href="<c:url value="/" />"><button>${pageContext.request.userPrincipal.name}</button></a>
           </div>
       </c:if>
       

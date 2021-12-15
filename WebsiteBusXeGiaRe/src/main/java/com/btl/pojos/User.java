@@ -40,7 +40,7 @@ public class User implements Serializable{
    private String username;
    private String password;
    private boolean active;
-    @Column(name = "user_role")
+   @Column(name = "user_role")
    private String userRole;
    
    //Các thuộc tính phải liên kết với một trường trong csdl

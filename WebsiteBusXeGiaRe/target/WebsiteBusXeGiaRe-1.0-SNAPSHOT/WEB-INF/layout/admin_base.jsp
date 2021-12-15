@@ -22,9 +22,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet"/>
         <!-- import CSS -->
         <!--<!-- css sidebar -->
-        <link href="css/admin_sidebar_menu.css" rel="stylesheet">
-        <link href="css/bootstrap/custom.min.css" rel="stylesheet">
-        <link href="css/admin_header.css" rel="stylesheet">
+        <link href="<c:url value="/css/admin_sidebar_menu.css"></c:url>" rel="stylesheet">
+        <link href="<c:url value="/css/bootstrap/custom.min.css"></c:url>" rel="stylesheet">
+        <link href="<c:url value="/css/admin_header.css"></c:url>" rel="stylesheet">
 
 
         
@@ -62,7 +62,7 @@
         
             
             <!-- script -->
-        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+            <script src="<c:url value="http://code.jquery.com/jquery-1.11.3.min.js"></c:url>"></script>
         <script src="https://colorlib.com/polygon/vendors/jquery/dist/jquery.min.js"></script>
         <script src="https://colorlib.com/polygon/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://colorlib.com/polygon/build/js/custom.min.js"></script>

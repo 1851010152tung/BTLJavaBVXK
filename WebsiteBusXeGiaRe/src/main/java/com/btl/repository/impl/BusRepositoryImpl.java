@@ -21,18 +21,35 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 @Repository
-//@Transactional
+@Transactional
 public class BusRepositoryImpl implements BusRepository {
 
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
     
     @Override
-    @Transactional
+    //@Transactional
     public List<Bus> getBuses() {
     Session s = sessionFactory.getObject().getCurrentSession();
         Query q = s.createQuery("From Bus");
         return q.getResultList();
     
+    }
+
+    @Override
+    public boolean addOrUpdate(Bus bus) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try{
+            session.save(bus);
+            //Thêm thành công
+            return true;
+        }catch (Exception ex){
+            System.err.println("Add bus error" + ex.getMessage());
+            ex.printStackTrace();
+        }
+        
+        //Thêm thất bại
+        return false;
+        
     }
 }

@@ -45,9 +45,9 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Đăng ký thông tin <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">Nhân viên</a></li>
+                      <li><a href="<c:url value ="/employee"></c:url>">Nhân viên</a></li>
                       <li><a href="form.html">Khách hàng</a></li>
-                      <li><a href="form.html">Chuyến xe</a></li>
+                      <li><a href="<c:url value="/admin/buses"/>"> Chuyến xe</a></li>
                       <li><a href="form.html">Tuyến xe</a></li>
                       <li><a href="form.html">Lịch chạy</a></li>
                       <li><a href="form.html">Thông tin đặt vé</a></li>

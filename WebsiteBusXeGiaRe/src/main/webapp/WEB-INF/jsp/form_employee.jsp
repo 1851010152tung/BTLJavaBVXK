@@ -31,7 +31,9 @@
                             <div class="col-md-12 col-sm-12 " id="contain-form">
                                         <div class="x_panel">
                                                 <div class="x_title">
-                                                        <h2>FORM ĐĂNG KÝ <small>NHÂN VIÊN BÁN VÉ</small></h2>
+                                                        <h2>FORM ĐĂNG KÝ <small>NHÂN VIÊN BÁN VÉ</small>
+                                                            <small> | </small>
+                                                            <small>TÀI XẾ</small></h2>
                                                         <ul class="nav navbar-right panel_toolbox">
                                                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                                                 </li>
@@ -51,20 +53,20 @@
                                                 </div>
                                                 <div class="x_content">
                                                         <br />
-                                                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                                        <form:form id="demo-form2"  class="form-horizontal form-label-left" >
 
                                                                 <div class="item form-group">
                                                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Họ nhân viên <span class="required">*</span>
                                                                         </label>
                                                                         <div class="col-md-6 col-sm-6 ">
-                                                                                <input type="text" id="first-name" required="required" class="form-control ">
+                                                                            <input type="text" id="first-name" required="required" class="form-control" path="file"/>
                                                                         </div>
                                                                 </div>
                                                                 <div class="item form-group">
                                                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tên nhân viên <span class="required">*</span>
                                                                         </label>
                                                                         <div class="col-md-6 col-sm-6 ">
-                                                                                <input type="text" id="last-name" name="last-name" required="required" class="form-control">
+                                                                                <input type="text" id="last-name" name="last-name" required="required" class="form-control" />
                                                                         </div>
                                                                 </div>
                                                                 <div class="item form-group">
@@ -73,6 +75,17 @@
                                                                                 <input id="middle-name" class="form-control" type="text" name="username">
                                                                         </div>
                                                                 </div>
+                                                                <div class="item form-group">
+                                                                        <label for="username" class="col-form-label col-md-3 col-sm-3 label-align">Chức vụ <span class="required">*</span> </label>
+                                                                        <div class="col-md-6 col-sm-6 ">
+                                                                                <select id="heard" class="form-control" required>
+                                                                                    <option value="">Chọn chức vụ...</option>
+                                                                                    <option value="bookingclerk">Nhân viên bán vé</option>
+                                                                                    <option value="driver">Tài xế</option>
+													
+										</select>                                                                        </div>
+                                                                </div>
+                                                            
                                                                 <div class="item form-group">
                                                                         <label for="phone" class="col-form-label col-md-3 col-sm-3 label-align">Số điện thoại <span class="required">*</span> </label>
                                                                         <div class="col-md-6 col-sm-6 ">
@@ -122,7 +135,7 @@
                                                                         </div>
                                                                 </div>
 
-                                                        </form>
+                                                        </form:form>
                                                 </div>
                                         </div>
                                 </div>

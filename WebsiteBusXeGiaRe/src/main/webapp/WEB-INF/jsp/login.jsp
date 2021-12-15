@@ -47,7 +47,7 @@
           
           <input class="form__input" type="text" placeholder="Username" name="username">
           <input class="form__input" type="password" placeholder="Password" name="password"><a class="form__link">Quên mật khẩu?</a>
-          <button class="form__button button submit">ĐĂNG NHẬP</button>
+          <button class="form__button button submit" href="<c:url value="/bus" />" >ĐĂNG NHẬP</button>
         </form>
       </div>
     

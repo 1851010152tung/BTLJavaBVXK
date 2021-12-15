@@ -5,14 +5,14 @@
  */
 package com.btl.service;
 
-import com.btl.pojos.Bus;
+import com.btl.pojos.CategoryBus;
 import java.util.List;
 
 /**
  *
  * @author Truc Lam
  */
-public interface BusService {
-    List<Bus> getBuses();
-    boolean addOrUpdate(Bus bus);
+public interface CategoryBusService {
+    List<CategoryBus> getCategoryBuses();
+    
 }

@@ -7,6 +7,7 @@ package com.btl.controllers;
 
 import com.btl.pojos.User;
 import com.btl.service.BusService;
+import com.btl.service.CategoryBusService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,27 +33,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
+@ControllerAdvice
 public class HomeController {
     
-    
-    //Xây dựng tầng Repository và Service của Front Controller Pattern
-    //@Autowired
-    //private CategoryService categoryService;
-    /*
-    @RequestMapping("/")
-    public String index(){
-        //model.addAttribute("categories", this.categoryService.getCategories());
-        return "index";
-    }
-    */
+    @Autowired
+    private CategoryBusService categoryBusService;
     
     @Autowired
     private BusService busService;
             
-    @RequestMapping("/")
+    
+    @ModelAttribute
+    public void commAttr(Model model){
+        model.addAttribute("categoryBuses", this.categoryBusService.getCategoryBuses());
+    }
+    
+    @RequestMapping("/") //HTTP GET
     @Transactional
     public String index(Model model){
-        model.addAttribute("buses", this.busService.getBuses());
+        model.addAttribute("bus", this.busService.getBuses());
         //s.close();
         return "index";
     }

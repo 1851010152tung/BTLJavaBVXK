@@ -5,6 +5,8 @@
  */
 package com.btl.configs;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import java.util.Properties;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +65,18 @@ public class HibernateConfig {
         h.setSessionFactory(getSessionFactory().getObject());
         
         return h;
+    }
+    
+    
+    @Bean
+    public Cloudinary cloudinary(){
+        Cloudinary c = new Cloudinary(ObjectUtils.asMap(
+                "cloud_name","dwj7pu4xy",
+                "api_key","556928591132469",
+                "api_secret","XBil9dJNfydijLxJ9yIIs94jf0s",
+                "secure",true
+                
+        ));
+        return c;
     }
 }

@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface BusRepository {
     List<Bus> getBuses();
-    
+    boolean addOrUpdate(Bus bus);
     
 }

@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.btl.service;
+package com.btl.repository;
 
-import com.btl.pojos.Bus;
+import com.btl.pojos.CategoryBus;
 import java.util.List;
 
 /**
  *
  * @author Truc Lam
  */
-public interface BusService {
-    List<Bus> getBuses();
-    boolean addOrUpdate(Bus bus);
+public interface CategoryBusRepository {
+    
+    List<CategoryBus> getCategoryBuses();
+    
 }

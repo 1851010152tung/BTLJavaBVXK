@@ -7,6 +7,7 @@ package com.btl.pojos;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
@@ -29,6 +31,20 @@ import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name = "bus")
 public class Bus implements Serializable{
+
+    /**
+     * @return the routes
+     */
+    public List<Route> getRoutes() {
+        return routes;
+    }
+
+    /**
+     * @param routes the routes to set
+     */
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
+    }
 
     public static final String SEAT = "SEAT_BUS";
     public static final String SLEEPER = "SLEEPER_BUS";
@@ -64,6 +80,9 @@ public class Bus implements Serializable{
     private String image;
     private boolean active;
 
+    //Không ứng với một cột của bảng csdl nào thì gắn @Transient
+    @Transient
+    private MultipartFile file;
     
     //Cau hinh khoa ngoai
     @ManyToOne(fetch = FetchType.EAGER) //nếu để trống thì mặc định của manytoone là EAGER: lấy batng product và cate
@@ -72,11 +91,10 @@ public class Bus implements Serializable{
     private CategoryBus categoryBus;
     
 
+    @OneToMany(mappedBy = "bus")
+    private List<Route> routes;
     
-
-    //Không ứng với một cột của bảng csdl nào thì gắn @Transient
-    @Transient
-    private MultipartFile file;
+    
 
     /**
      * @return the idBus

@@ -88,7 +88,6 @@
                                 <label for="cate" class="col-form-label col-md-3 col-sm-3 label-align">Loại xe <span class="required">*</span> </label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <form:select  id="heard" class="form-control"  path="categoryBus">
-                                        
                                         <option value="">Chọn loại xe...</option>
                                         <option value="2">Giường nằm</option>
                                         <option value="1">Ghế ngồi</option>
@@ -96,8 +95,6 @@
                                         <option value="5">Phòng đơn VIP Limousine</option>
                                         <option value="6">Phòng đôi VIP Limousine</option>
                                         <option value="4">Ghế VIP Limousine</option> 
-                                        
-                                        
                                         
                                         
 
@@ -122,12 +119,13 @@
                                 <div class="col-md-6 col-sm-6 ">
                                     <form:textarea id="message" required="required" class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Bạn cần nhập ít nhất 20 ký tự..." data-parsley-validation-threshold="10" path="description"  />
                                 </div>
-                            </div
+                            </div>
                             <div class="item form-group">
                                 <label for="file" class="col-form-label col-md-3 col-sm-3 label-align">Hình ảnh </label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <form:input id="file" Class="form-control" type="file" path="file"/>
                                 </div>
+                            </div>
 
 
 

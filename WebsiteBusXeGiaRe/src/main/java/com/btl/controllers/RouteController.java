@@ -5,12 +5,11 @@
  */
 package com.btl.controllers;
 
-import com.btl.pojos.Bus;
-import com.btl.service.BusService;
+import com.btl.pojos.Route;
+import com.btl.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,36 +18,35 @@ import org.springframework.web.bind.annotation.PostMapping;
  *
  * @author Truc Lam
  */
+
 @Controller
-@ControllerAdvice
-public class BusController {
-    
+public class RouteController {
+     
     @Autowired
-    private BusService busService;
+    private RouteService routeService;
     
-    @GetMapping("/admin/buses")
+    @GetMapping("/admin/routes")
     public String list(Model model)
     {
-        model.addAttribute("bus", new Bus());
-        return "bus";
+        model.addAttribute("route", new Route());
+        return "route";
     }
     
     //Tính năng upload
-    //Khai báo upload controller và thêm chuyến xe
-    @PostMapping("/admin/buses")
-    public String addBus(Model model, @ModelAttribute(value = "bus") Bus bus)
+    //Khai báo upload controller và thêm chuyến đi
+    @PostMapping("/admin/routes")
+    public String addRoute(Model model, @ModelAttribute(value = "route") Route route)
     { 
         
         //Trường hợp dữ liệu ổn
-        if(this.busService.addOrUpdate(bus) == true)
+        if(this.routeService.addOrUpdate(route) == true)
         {
             return "redirect:/";
         }
         else 
         {
             model.addAttribute("errMsg", "Có lỗi xảy ra");
-        //Khi upload thất bại vẫn ở lại trang bus.
-            return "bus";
+            return "route";
         }
     }
 }

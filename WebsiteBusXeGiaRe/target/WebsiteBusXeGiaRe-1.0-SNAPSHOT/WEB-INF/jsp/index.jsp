@@ -165,7 +165,14 @@
                 </c:forEach>
             </ul>
         </div>        
-          
+        
+        <div class=" test">
+            <ul>
+                <c:forEach var="employee" items="${employees}">
+                <li> ${employee.lastName}</li>
+                </c:forEach>
+            </ul>
+        </div>   
           
           
     </body>

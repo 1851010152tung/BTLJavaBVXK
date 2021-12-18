@@ -5,8 +5,10 @@
  */
 package com.btl.controllers;
 
-import com.btl.pojos.Bus;
-import com.btl.service.BusService;
+import com.btl.pojos.Employee;
+import com.btl.service.EmployeeService;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,34 +23,43 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 @Controller
 @ControllerAdvice
-public class BusController {
+public class EmployeeController {
     
     @Autowired
-    private BusService busService;
+    private EmployeeService employeeService;
     
-    @GetMapping("/admin/buses")
+    @GetMapping("/admin/employees")
     public String list(Model model)
-    {
-        model.addAttribute("bus", new Bus());
-        return "bus";
+    {   
+        model.addAttribute("employee", new Employee());
+        
+        List<String> positionList = Arrays.asList("Nhân viên bán vé","Tài xế");
+        model.addAttribute("positionList", positionList);
+        
+        return "employee";
     }
     
     //Tính năng upload
-    //Khai báo upload controller và thêm chuyến xe
-    @PostMapping("/admin/buses")
-    public String addBus(Model model, @ModelAttribute(value = "bus") Bus bus)
+    //Khai báo upload controller và thêm nhân viên
+    @PostMapping("/admin/employees")
+    public String addEmployee(Model model, @ModelAttribute(value = "employee") Employee employee)
     { 
         
         //Trường hợp dữ liệu ổn
-        if(this.busService.addOrUpdate(bus) == true)
+        if(this.employeeService.addOrUpdate(employee) == true)
         {
             return "redirect:/";
         }
         else 
         {
             model.addAttribute("errMsg", "Có lỗi xảy ra");
-        //Khi upload thất bại vẫn ở lại trang bus.
-            return "bus";
+        //Khi upload thất bại vẫn ở lại trang employee
+            return "employee";
         }
+        
+        //return "redirect:/";
+        
     }
+    
+    
 }

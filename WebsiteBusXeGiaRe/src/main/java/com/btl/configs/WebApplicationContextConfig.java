@@ -5,6 +5,7 @@
  */
 package com.btl.configs;
 
+import com.btl.formatter.BusFormatter;
 import com.btl.formatter.CategoryBusFormatter;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -57,6 +58,7 @@ public class WebApplicationContextConfig implements WebMvcConfigurer{
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addFormatter(new CategoryBusFormatter());
+        registry.addFormatter(new BusFormatter());
     }
     
     

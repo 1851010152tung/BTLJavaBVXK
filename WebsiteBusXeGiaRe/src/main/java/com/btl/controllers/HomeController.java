@@ -8,6 +8,7 @@ package com.btl.controllers;
 import com.btl.pojos.User;
 import com.btl.service.BusService;
 import com.btl.service.CategoryBusService;
+import com.btl.service.EmployeeService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -41,20 +42,33 @@ public class HomeController {
     
     @Autowired
     private BusService busService;
+    
+    @Autowired
+    private EmployeeService employeeService;
             
     
     @ModelAttribute
     public void commAttr(Model model){
         model.addAttribute("categoryBuses", this.categoryBusService.getCategoryBuses());
+                model.addAttribute("buses", this.busService.getBuses());
+
     }
+    
+    /*@ModelAttribute
+    public void commAttr2(Model model){
+        model.addAttribute("buses", this.busService.getBuses());
+    }
+    */
     
     @RequestMapping("/") //HTTP GET
     @Transactional
     public String index(Model model){
         model.addAttribute("bus", this.busService.getBuses());
+        model.addAttribute("employee", this.employeeService.getEmployees() );
         //s.close();
         return "index";
     }
+    
     
     
    

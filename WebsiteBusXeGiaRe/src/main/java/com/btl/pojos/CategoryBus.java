@@ -38,6 +38,9 @@ public class CategoryBus implements Serializable{
     @OneToMany(mappedBy = "categoryBus") //nếu để trống thì mặc định của OneToMany là LAZY
     //Mappedby đến "private CategoryBus categoryBus;" của lớp Bus.java
     private List<Bus> buses;
+    
+   
+    
 
     
     
@@ -96,6 +99,8 @@ public class CategoryBus implements Serializable{
     public void setBuses(List<Bus> buses) {
         this.buses = buses;
     }
+
+   
     
    
     

@@ -5,14 +5,21 @@
  */
 package com.btl.pojos;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -21,6 +28,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "route")
+//@JsonRootName(value = "routes ")
 public class Route implements Serializable{
     
     @Id
@@ -28,8 +36,7 @@ public class Route implements Serializable{
     private int id;
     private String departure;
     private String destination;
-    private String type;
-    private String distance;
+    private Double distance;
     
     @Column (name = "journey_time")
     private Time journeyTime;
@@ -37,6 +44,29 @@ public class Route implements Serializable{
     @Column(name = "ticket_price")
     private long ticketPrice;
 
+    @Column(name = "image_departure")
+    private String imageDeparture;
+    
+    @Column (name = "image_destination")
+    private String imageDestination;
+
+    //Không ứng với một cột của bảng csdl nào thì gắn @Transient
+    @Transient
+    private MultipartFile fileDeparture;
+    
+    @Transient
+    private MultipartFile fileDestination;
+
+    
+    //Cau hinh khoa ngoai
+    @ManyToOne(fetch = FetchType.EAGER) 
+    @JoinColumn(name = "id_bus")
+    private Bus bus;
+    
+    
+    
+    
+    
     /**
      * @return the id
      */
@@ -79,31 +109,18 @@ public class Route implements Serializable{
         this.destination = destination;
     }
 
-    /**
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * @param type the type to set
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
-
+   
     /**
      * @return the distance
      */
-    public String getDistance() {
+    public Double getDistance() {
         return distance;
     }
 
     /**
      * @param distance the distance to set
      */
-    public void setDistance(String distance) {
+    public void setDistance(Double distance) {
         this.distance = distance;
     }
 
@@ -133,6 +150,76 @@ public class Route implements Serializable{
      */
     public void setTicketPrice(long ticketPrice) {
         this.ticketPrice = ticketPrice;
+    }
+
+    /**
+     * @return the imageDeparture
+     */
+    public String getImageDeparture() {
+        return imageDeparture;
+    }
+
+    /**
+     * @param imageDeparture the imageDeparture to set
+     */
+    public void setImageDeparture(String imageDeparture) {
+        this.imageDeparture = imageDeparture;
+    }
+
+    /**
+     * @return the imageDestination
+     */
+    public String getImageDestination() {
+        return imageDestination;
+    }
+
+    /**
+     * @param imageDestination the imageDestination to set
+     */
+    public void setImageDestination(String imageDestination) {
+        this.imageDestination = imageDestination;
+    }
+
+    /**
+     * @return the fileDeparture
+     */
+    public MultipartFile getFileDeparture() {
+        return fileDeparture;
+    }
+
+    /**
+     * @param fileDeparture the fileDeparture to set
+     */
+    public void setFileDeparture(MultipartFile fileDeparture) {
+        this.fileDeparture = fileDeparture;
+    }
+
+    /**
+     * @return the fileDestination
+     */
+    public MultipartFile getFileDestination() {
+        return fileDestination;
+    }
+
+    /**
+     * @param fileDestination the fileDestination to set
+     */
+    public void setFileDestination(MultipartFile fileDestination) {
+        this.fileDestination = fileDestination;
+    }
+
+    /**
+     * @return the bus
+     */
+    public Bus getBus() {
+        return bus;
+    }
+
+    /**
+     * @param bus the bus to set
+     */
+    public void setBus(Bus bus) {
+        this.bus = bus;
     }
     
     

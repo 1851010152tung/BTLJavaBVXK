@@ -76,7 +76,7 @@ footer .pull-right{
 }
 
 div#left-sidebar {
-    position: absolute;
+    position:fixed;
 }
 
 

@@ -53,7 +53,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
                 .passwordParameter("password");
         
         //http.formLogin().loginPage("/register")
-        http.formLogin().defaultSuccessUrl("/admin/buses") //Trường hợp thành công
+        http.formLogin().defaultSuccessUrl("/admin/employees") //Trường hợp thành công
                 .failureUrl("/login?error"); //Trường hợp thất bại - có lỗi xảy ra
         
         //http.logout().logoutSuccessUrl("/login");

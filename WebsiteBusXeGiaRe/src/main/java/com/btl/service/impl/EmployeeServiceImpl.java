@@ -37,15 +37,34 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public boolean addOrUpdate(Employee employee) {
-         //Hứng giá trị bus từ getMapping ở trên
+        //Hứng giá trị bus từ getMapping ở trên
         //Xử lý upload
         try {
-            // Để hứng dữ liệu sau khi upload xong dùng Map
-            Map r = this.cloudinary.uploader().upload(employee.getFile().getBytes(),
-                    ObjectUtils.asMap("resource_type", "auto"));
+            if(employee.getIdEmployee()> 0) { //sua 
+                if (employee.getFile().getBytes().length == 0) {
+                    Employee b = this.employeeRepository.findById(employee.getIdEmployee());
+                    employee.setImage(b.getImage());
+                }else
+                {
+                    // Để hứng dữ liệu sau khi upload xong dùng Map
+                            Map r = this.cloudinary.uploader().upload(employee.getFile().getBytes(),
+                                    ObjectUtils.asMap("resource_type", "auto"));
 
-            employee.setImage((String) r.get("secure_url"));
+                            employee.setImage((String) r.get("secure_url"));
+                }
+            }else{
+                if(employee.getFile().getBytes().length !=0) {
+                            // Để hứng dữ liệu sau khi upload xong dùng Map
+                            Map r = this.cloudinary.uploader().upload(employee.getFile().getBytes(),
+                                    ObjectUtils.asMap("resource_type", "auto"));
 
+                            employee.setImage((String) r.get("secure_url"));
+                }else
+                {
+                    employee.setImage("");
+                }
+
+            }
             //Gọi repository để lưu xuống
             return this.employeeRepository.addOrUpdate(employee);
 
@@ -56,6 +75,16 @@ public class EmployeeServiceImpl implements EmployeeService{
             System.err.println("Add employee " + ex.getMessage());
         }
         return false;
+    }
+
+    @Override
+    public boolean delete(Employee employee) {
+        return this.employeeRepository.delete(employee);
+    }
+
+    @Override
+    public Employee findById(int id) {
+        return this.employeeRepository.findById(id);
     }
     
     

@@ -16,16 +16,7 @@
                                 <h3>ĐĂNG KÝ NHÂN VIÊN</h3>
                         </div>
 
-                        <div class="title_right">
-                                <div class="col-md-5 col-sm-5  form-group pull-right top_search">
-                                        <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Search for...">
-                                                <span class="input-group-btn">
-                                                        <button class="btn btn-default" type="button">Go!</button>
-                                                </span>
-                                        </div>
-                                </div>
-                        </div>
+                      
                 </div>
                 <div class="clearfix"></div>
                 <div class="row">
@@ -115,17 +106,33 @@
                                                                 <div class="col-md-6 col-sm-6 ">
                                                                     <div id="gender" class="btn-group" data-toggle="buttons">
                                                                         <label class="btn btn-secondary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                            <form:radiobutton class="join-btn" path="gender" value="Male"/> Nam
+                                                                            <form:radiobutton class="join-btn" path="gender" value="Nam"/> Nam
                                                                         </label>
                                                                         <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                            <form:radiobutton class="join-btn" path="gender" value="Female" /> Nữ
+                                                                            <form:radiobutton class="join-btn" path="gender" value="Nữ" /> Nữ
                                                                         </label>
                                                                     </div>
 
                                                                 </div>
                                                         </div>
                                                                         
-                                                                     
+                                                        <div class="item form-group">
+                                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Ngày sinh <span class="required">*</span>
+                                                            </label>
+                                                            
+                                                            <div class="col-md-6 col-sm-6 ">
+                                                                            
+                                                                    <form:input type="date" cssClass="form-control" id="birthday" path="birthday"/>
+                                                                                <script>
+                                                                                        function timeFunctionLong(input) {
+                                                                                                setTimeout(function() {
+                                                                                                        input.type = 'text';
+                                                                                                }, 60000);
+                                                                                        }
+                                                                                </script>
+                                                                        </div>
+                                                        
+                                                        </div>  
                                                                         
                                                                    
 
@@ -138,7 +145,6 @@
 
                                                             <div class="button-form">
                                                             <div class="col-md-6 col-sm-6 offset-md-3" id="button-form-submit">
-                                                                <form:button class="btn btn-primary" type="button">Hủy</form:button>
                                                                 <form:button class="btn btn-primary" type="reset">Nhập lại</form:button>
                                                                 <form:button type="submit" class="btn btn-success">Xác nhận</form:button>
                                                                 </div>

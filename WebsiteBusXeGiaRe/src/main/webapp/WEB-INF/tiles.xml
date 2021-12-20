@@ -49,8 +49,10 @@ and open the template in the editor.
 
     </definition>
     
+            <!--THÊM DỮ LIỆU-->
+            
     <definition name="employee" extends ="adminBaseLayout">
-        <put-attribute name ="title" value ="Thêm nhân viên" />
+        <put-attribute name ="title" value ="Đăng ký nhân viên" />
          <put-attribute name="admin_content" value="/WEB-INF/jsp/form_employee.jsp"/>
     </definition>
     <definition name="bus" extends ="adminBaseLayout">
@@ -58,9 +60,47 @@ and open the template in the editor.
          <put-attribute name="admin_content" value="/WEB-INF/jsp/form_bus.jsp"/>
     </definition>
     <definition name="route" extends ="adminBaseLayout">
-        <put-attribute name ="title" value ="Tạo chuyến xe" />
+        <put-attribute name ="title" value ="Tạo tuyến xe" />
          <put-attribute name="admin_content" value="/WEB-INF/jsp/form_route.jsp"/>
     </definition>
+    <definition name="schedule" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Tạo lịch trình" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/form_schedule.jsp"/>
+    </definition>
+            
+            
+            <!--SỬA DỮ LIỆU-->
+            
+                <!--Chuyến xe -->
+    <definition name="data_bus" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Bảng dữ liệu chuyến xe" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/data_bus.jsp"/>
+    </definition>
+    <definition name="update_bus" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Cập nhật chuyến xe" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/form_update_bus.jsp"/>
+    </definition>
     
-
+                <!--Nhân viên -->
+    <definition name="data_employee" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Bảng dữ liệu nhân viên" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/data_employee.jsp"/>
+    </definition>
+    <definition name="update_employee" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Cập nhật nhân viên" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/form_update_employee.jsp"/>
+    </definition>
+    
+                <!--Tuyến xe-->
+    <definition name="data_route" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Bảng dữ liệu tuyến xe" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/data_route.jsp"/>
+    </definition>
+    <definition name="update_route" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Cập nhật nhân viên" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/form_update_route.jsp"/>
+    </definition>
+    
+        
+                
 </tiles-definitions>

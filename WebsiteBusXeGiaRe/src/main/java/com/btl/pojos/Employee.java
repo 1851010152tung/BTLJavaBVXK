@@ -6,12 +6,14 @@
 package com.btl.pojos;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
@@ -45,14 +47,19 @@ public class Employee implements Serializable{
         
     //@DateTimeFormat(pattern = "dd-MM-yyyy")
     //@DateTimeFormat(pattern = "dd-MM-yyyy")
-    @Temporal(javax.persistence.TemporalType.DATE)
+//    @Temporal(javax.persistence.TemporalType.DATE)
     private Date birthday;
+    
     private String position; 
     private String image;
 
     //Không ứng với một cột của bảng csdl nào thì gắn @Transient
     @Transient
     private MultipartFile file;
+    
+    
+    @OneToMany(mappedBy = "employee")
+    private List<Schedule> schedules;
 
     /**
      * @return the idEmployee
@@ -221,6 +228,20 @@ public class Employee implements Serializable{
      */
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    /**
+     * @return the schedules
+     */
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    /**
+     * @param schedules the schedules to set
+     */
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
     }
     
 }

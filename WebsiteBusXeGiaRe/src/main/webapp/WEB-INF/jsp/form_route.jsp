@@ -16,16 +16,7 @@
                 <h3>ĐĂNG KÝ CHUYẾN ĐI</h3>
             </div>
 
-            <div class="title_right">
-                <div class="col-md-5 col-sm-5  form-group pull-right top_search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                    </div>
-                </div>
-            </div>
+            
         </div>
         <div class="clearfix"></div>
         <div class="row">
@@ -82,14 +73,33 @@
                                     <form:input id="distance" class="form-control" type="text" name="distance" path="distance" />
                                 </div>
                             </div>
-                               
+                            
+<!--                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Thời gian di chuyển <span class="required">*</span>
+                                </label>-->
+
+<!--                                <div class="col-md-6 col-sm-6 ">
+
+                                        <!form:input path="journeyTime" type="time" cssClass="form-control" id="journeyTime" />
+                                                    <script>
+                                                            function timeFunctionLong(input) {
+                                                                    setTimeout(function() {
+                                                                            input.type = 'text';
+                                                                    }, 60000);
+                                                            }
+                                                    </script>
+                                </div>
+                                                        
+                            </div>                                  -->
+                                
+                                
                             <div class="item form-group">
                                 <label for="bus" class="col-form-label col-md-3 col-sm-3 label-align">Chuyến xe <span class="required">*</span> </label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <form:select  id="bus" class="form-control"  path="bus">
                                         
                                         <c:forEach items="${buses}" var="bus">
-                                            <option value="${bus.idBus}">${bus.busName}</option>
+                                            <option value="${bus.idBus}">${bus.busName}-${bus.categoryBus.name}</option>
                                         </c:forEach>
                                         
 
@@ -127,7 +137,6 @@
 
                                 <div class="button-form">
                                     <div class="col-md-6 col-sm-6 offset-md-3" id="button-form-submit">
-                                        <form:button class="btn btn-primary" type="button">Hủy</form:button>
                                         <form:button class="btn btn-primary" type="reset">Nhập lại</form:button>
                                         <form:button type="submit" class="btn btn-success">Xác nhận</form:button>
                                         </div>

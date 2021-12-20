@@ -5,16 +5,17 @@
  */
 package com.btl.service;
 
-import com.btl.pojos.Route;
+import com.btl.pojos.Schedule;
 import java.util.List;
 
 /**
  *
  * @author Truc Lam
  */
-public interface RouteService {
-    List<Route> getRoutes();
-    boolean addOrUpdate(Route route);
-    boolean delete(Route route);
-    Route findById(int idRoute);
+public interface ScheduleService {
+    List<Schedule> getSchedules();
+    boolean addOrUpdate(Schedule schedule);
+    boolean delete(Schedule schedule);
+    Schedule findById(int id);
+    
 }

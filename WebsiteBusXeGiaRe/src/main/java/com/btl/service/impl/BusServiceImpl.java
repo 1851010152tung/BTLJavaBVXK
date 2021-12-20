@@ -41,12 +41,31 @@ public class BusServiceImpl implements BusService {
         //Hứng giá trị bus từ getMapping ở trên
         //Xử lý upload
         try {
-            // Để hứng dữ liệu sau khi upload xong dùng Map
-            Map r = this.cloudinary.uploader().upload(bus.getFile().getBytes(),
-                    ObjectUtils.asMap("resource_type", "auto"));
+            if(bus.getIdBus() > 0) { //sua 
+                if (bus.getFile().getBytes().length == 0) {
+                    Bus b = this.busRepository.findById(bus.getIdBus());
+                    bus.setImage(b.getImage());
+                }else
+                {
+                    // Để hứng dữ liệu sau khi upload xong dùng Map
+                            Map r = this.cloudinary.uploader().upload(bus.getFile().getBytes(),
+                                    ObjectUtils.asMap("resource_type", "auto"));
 
-            bus.setImage((String) r.get("secure_url"));
+                            bus.setImage((String) r.get("secure_url"));
+                }
+            }else{
+                if(bus.getFile().getBytes().length !=0) {
+                            // Để hứng dữ liệu sau khi upload xong dùng Map
+                            Map r = this.cloudinary.uploader().upload(bus.getFile().getBytes(),
+                                    ObjectUtils.asMap("resource_type", "auto"));
 
+                            bus.setImage((String) r.get("secure_url"));
+                }else
+                {
+                    bus.setImage("");
+                }
+
+            }
             //Gọi repository để lưu xuống
             return this.busRepository.addOrUpdate(bus);
 
@@ -57,6 +76,23 @@ public class BusServiceImpl implements BusService {
             System.err.println("Add bus " + ex.getMessage());
         }
         return false;
+    }
+
+   
+
+    @Override
+    public boolean delete(Bus bus) {
+        return this.busRepository.delete(bus);
+    }
+
+    @Override
+    public Bus findById(int l) {
+        return this.busRepository.findById(l);
+    }
+
+    @Override
+    public int totalItem() {
+        return this.busRepository.totalItem();
     }
 
 }

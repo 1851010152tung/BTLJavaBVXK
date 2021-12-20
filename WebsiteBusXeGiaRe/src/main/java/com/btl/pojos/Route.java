@@ -7,6 +7,7 @@ package com.btl.pojos;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.List;
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,7 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "route")
-//@JsonRootName(value = "routes ")
+@JsonRootName(value = "routes ")
 public class Route implements Serializable{
     
     @Id
@@ -42,7 +44,7 @@ public class Route implements Serializable{
     private Time journeyTime;
     
     @Column(name = "ticket_price")
-    private long ticketPrice;
+    private BigDecimal ticketPrice;
 
     @Column(name = "image_departure")
     private String imageDeparture;
@@ -63,7 +65,8 @@ public class Route implements Serializable{
     @JoinColumn(name = "id_bus")
     private Bus bus;
     
-    
+    @OneToMany(mappedBy = "route")
+    private List<Schedule> schedules;
     
     
     
@@ -141,14 +144,14 @@ public class Route implements Serializable{
     /**
      * @return the ticketPrice
      */
-    public long getTicketPrice() {
+    public BigDecimal getTicketPrice() {
         return ticketPrice;
     }
 
     /**
      * @param ticketPrice the ticketPrice to set
      */
-    public void setTicketPrice(long ticketPrice) {
+    public void setTicketPrice(BigDecimal ticketPrice) {
         this.ticketPrice = ticketPrice;
     }
 
@@ -220,6 +223,20 @@ public class Route implements Serializable{
      */
     public void setBus(Bus bus) {
         this.bus = bus;
+    }
+
+    /**
+     * @return the schedules
+     */
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    /**
+     * @param schedules the schedules to set
+     */
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
     }
     
     

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : admin_form_bus
-    Created on : Dec 12, 2021, 5:18:34 PM
+    Document   : form_update_bus
+    Created on : Dec 20, 2021, 12:44:51 PM
     Author     : Truc Lam
 --%>
 
@@ -8,12 +8,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<c:url value="/admin/buses" var="action" />
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>ĐĂNG KÝ CHUYẾN XE</h3>
+                <h3>SỬA CHUYẾN XE</h3>
             </div>
 
             
@@ -122,8 +121,10 @@
 
                                 <div class="button-form">
                                     <div class="col-md-6 col-sm-6 offset-md-3" id="button-form-submit">
-                                        <form:button class="btn btn-primary" type="reset">Nhập lại</form:button>
-                                        <form:button type="submit" class="btn btn-success">Xác nhận</form:button>
+                                            <form:button class="btn btn-primary" type="reset">Nhập lại</form:button>
+                                        <c:if test="${bus.idBus > 0}">
+                                            <form:button type="submit" class="btn btn-success">Xác nhận</form:button>
+                                        </c:if>
                                         </div>
                                     </div>
 
@@ -136,4 +137,3 @@
         </div>
     </div>
 </div>
-

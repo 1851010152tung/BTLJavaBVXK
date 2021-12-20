@@ -124,6 +124,10 @@ div#contain-form {
     padding: 0px 20px;
 }
 
+div#table-buses {
+    padding: 0px 20px;
+}
+
 .x_title h2{
     color: #8f979f;
     font-weight: 600;
@@ -143,4 +147,40 @@ div#button-form-submit {
 
 form#demo-form2 {
     margin-top: 15px;
+}
+
+
+/**************************************************** BẢNG DỮ LIỆU THÔNG TIN **********************************************************/
+
+/**************************************************** BẢNG DỮ LIỆU THÔNG TIN **********************************************************/
+
+/**************************************************** BẢNG DỮ LIỆU THÔNG TIN **********************************************************/
+
+th.column-title {
+    width: 250px;
+}
+
+th#description {
+    width: 1500px;
+}
+
+th#col-image{
+    width: 700px;
+}
+th#col-num{
+    width: 200px;
+}
+
+.table thead th{
+    vertical-align: middle;
+    text-align: center
+}
+
+.table tbody td{
+    text-align: center
+
+}
+
+.table td, .table th{
+    padding: 0.8rem;
 }

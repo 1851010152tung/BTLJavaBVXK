@@ -5,12 +5,15 @@ com\btl\configs\WebApplicationContextConfig.class
 com\btl\repository\impl\EmployeeRepositoryImpl.class
 com\btl\repository\impl\CategoryBusRepositoryImpl.class
 com\btl\service\RouteService.class
+com\btl\repository\ScheduleRepository.class
 com\btl\repository\BusRepository.class
 com\btl\pojos\Route.class
 com\btl\formatter\BusFormatter.class
+com\btl\service\ScheduleService.class
 com\btl\service\UserService.class
 com\btl\service\impl\UserServiceImpl.class
 com\btl\configs\SpringSecurityConfig.class
+com\btl\pojos\Schedule.class
 com\btl\service\impl\CategoryBusServiceImpl.class
 com\btl\controllers\HomeController.class
 com\btl\controllers\RouteController.class
@@ -20,6 +23,7 @@ com\btl\service\impl\EmployeeServiceImpl.class
 com\btl\controllers\UserController.class
 com\btl\controllers\BusController.class
 com\btl\controllers\EmployeeController.class
+com\btl\service\impl\ScheduleServiceImpl.class
 com\btl\repository\impl\RouteRepositoryImpl.class
 com\btl\service\EmployeeService.class
 com\btl\repository\RouteRepository.class
@@ -29,6 +33,7 @@ com\btl\pojos\Bus.class
 com\btl\repository\CategoryBusRepository.class
 com\btl\pojos\CategoryBus.class
 com\btl\configs\HibernateConfig.class
+com\btl\repository\impl\ScheduleRepositoryImpl.class
 com\btl\configs\TilesConfig.class
 com\btl\service\BusService.class
 com\btl\repository\EmployeeRepository.class

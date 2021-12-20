@@ -5,18 +5,21 @@
  */
 package com.btl.repository;
 
-import com.btl.pojos.Employee;
+import com.btl.pojos.Schedule;
 import java.util.List;
+
 
 /**
  *
  * @author Truc Lam
  */
-public interface EmployeeRepository {
-    List<Employee> getEmployees();
-    boolean addOrUpdate(Employee employee); 
-    boolean delete(Employee employee);
-    Employee findById(int idEmployee);
-   
 
+public interface ScheduleRepository {
+
+    List<Schedule> getSchedules();
+    boolean addOrUpdate(Schedule schedule);
+    boolean delete(Schedule schedule);
+    
+    Schedule findById(int id);
+    
 }

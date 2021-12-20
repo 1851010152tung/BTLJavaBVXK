@@ -94,7 +94,8 @@ public class Bus implements Serializable{
     @OneToMany(mappedBy = "bus")
     private List<Route> routes;
     
-    
+    @OneToMany(mappedBy = "bus")
+    private List<Schedule> schedules;
 
     /**
      * @return the idBus
@@ -263,6 +264,20 @@ public class Bus implements Serializable{
      */
     public void setCategoryBus(CategoryBus categoryBus) {
         this.categoryBus = categoryBus;
+    }
+
+    /**
+     * @return the schedules
+     */
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    /**
+     * @param schedules the schedules to set
+     */
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
     }
     
    

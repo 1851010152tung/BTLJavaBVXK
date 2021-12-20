@@ -15,4 +15,7 @@ import java.util.List;
 public interface EmployeeService {
     List<Employee> getEmployees();
     boolean addOrUpdate(Employee employee);
+    boolean delete(Employee employee);
+    Employee findById(int id);
+
 }

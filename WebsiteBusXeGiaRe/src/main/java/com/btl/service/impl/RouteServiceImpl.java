@@ -38,17 +38,38 @@ public class RouteServiceImpl implements RouteService{
     @Override
     public boolean addOrUpdate(Route route) {
         try {
-            // Để hứng dữ liệu sau khi upload xong dùng Map
-            Map r = this.cloudinary.uploader().upload(route.getFileDeparture().getBytes(),
-                    ObjectUtils.asMap("resource_type", "auto"));
+            if(route.getId()>0) 
+            {
+                if(route.getFileDeparture().getBytes().length == 0 && route.getFileDestination().getBytes().length == 0) {
+                    Route ro = this.routeRepository.findById(route.getId());
+                    route.setImageDeparture(ro.getImageDeparture());
+                }else{
+                        // Để hứng dữ liệu sau khi upload xong dùng Map
+                    Map r = this.cloudinary.uploader().upload(route.getFileDeparture().getBytes(),
+                            ObjectUtils.asMap("resource_type", "auto"));
+                    route.setImageDeparture((String) r.get("secure_url"));
 
-            route.setImageDeparture((String) r.get("secure_url"));
+                    Map n = this.cloudinary.uploader().upload(route.getFileDestination().getBytes(), 
+                            ObjectUtils.asMap("resource_type", "auto"));            
+                    route.setImageDestination((String) n.get("secure_url"));
+                }
+            }else{
+                if(route.getFileDeparture().getBytes().length !=0 && route.getFileDestination().getBytes().length !=0)
+                {
+                    // Để hứng dữ liệu sau khi upload xong dùng Map
+                    Map r = this.cloudinary.uploader().upload(route.getFileDeparture().getBytes(),
+                            ObjectUtils.asMap("resource_type", "auto"));
+                    route.setImageDeparture((String) r.get("secure_url"));
 
-            
-            Map n = this.cloudinary.uploader().upload(route.getFileDestination().getBytes(), ObjectUtils.asMap("resource_type", "auto"));
-            
-            route.setImageDestination((String) n.get("secure_url"));
-
+                    Map n = this.cloudinary.uploader().upload(route.getFileDestination().getBytes(), 
+                            ObjectUtils.asMap("resource_type", "auto"));            
+                    route.setImageDestination((String) n.get("secure_url"));
+                }else
+                {
+                    route.setImageDeparture("");
+                    route.setImageDestination("");
+                }
+            }    
             //Gọi repository để lưu xuống
             return this.routeRepository.addOrUpdate(route);
 
@@ -59,6 +80,16 @@ public class RouteServiceImpl implements RouteService{
             System.err.println("Add route " + ex.getMessage());
         }
         return false;
+    }
+
+    @Override
+    public boolean delete(Route route) {
+        return this.routeRepository.delete(route);
+    }
+
+    @Override
+    public Route findById(int idRoute) {
+        return this.routeRepository.findById(idRoute);
     }
     
     

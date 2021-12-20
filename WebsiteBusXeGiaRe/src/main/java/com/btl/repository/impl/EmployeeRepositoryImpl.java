@@ -37,16 +37,31 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
     public boolean addOrUpdate(Employee employee) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         try{
-            session.save(employee);
+            if(employee.getIdEmployee() > 0)
+            {
+                session.update(employee);
+            }else
+                session.save(employee);              
             //Thêm thành công
             return true;
         }catch (Exception ex){
-            System.err.println("Add employee error" + ex.getMessage());
+            System.err.println("Lỗi xảy ra khi thêm hoặc sửa" + ex.getMessage());
             ex.printStackTrace();
         }
         
         //Thêm thất bại
         return false;
+    }
+
+    @Override
+    public boolean delete(Employee empl) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Employee findById(int i) {
+    Session session = this.sessionFactory.getObject().getCurrentSession();   
+    return session.get(Employee.class,i);
     }
     
     

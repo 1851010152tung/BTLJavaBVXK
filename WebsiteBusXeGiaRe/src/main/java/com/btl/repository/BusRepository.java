@@ -14,6 +14,16 @@ import java.util.List;
  */
 public interface BusRepository {
     List<Bus> getBuses();
+    //create
     boolean addOrUpdate(Bus bus);
+    //delete
+    boolean delete(Bus bus);
+    
+    //find by id
+    Bus findById(int idBus);
+    //total item
+    int totalItem();
+    
+    
     
 }

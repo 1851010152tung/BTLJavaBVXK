@@ -5,15 +5,17 @@
  */
 package com.btl.repository.impl;
 
-import com.btl.pojos.Route;
-import com.btl.repository.RouteRepository;
+import com.btl.pojos.Schedule;
+import com.btl.repository.ScheduleRepository;
 import java.util.List;
-import javax.persistence.Query;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+
 
 /**
  *
@@ -21,28 +23,28 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class RouteRepositoryImpl implements RouteRepository{
+public class ScheduleRepositoryImpl implements ScheduleRepository{
 
     @Autowired
-    private LocalSessionFactoryBean sessionFactory;
+    private LocalSessionFactoryBean sessionFactory;    
     
     @Override
-    public List<Route> getRoutes() {
+    public List<Schedule> getSchedules() {
     Session s = sessionFactory.getObject().getCurrentSession();
-        Query q = s.createQuery("From Route");
-        return q.getResultList();
-    
+        Query q = s.createQuery("From Schedule");
+        return q.getResultList();        
     }
 
     @Override
-    public boolean addOrUpdate(Route route) {
+    public boolean addOrUpdate(Schedule schedule) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         try{
-            if(route.getId() > 0)
+            if(schedule.getId() > 0)
             {
-                session.update(route);
+                session.update(schedule);
             }else
-                session.save(route);     //create            
+                session.save(schedule);     //create
+            
             //Thêm thành công
             return true;
         }catch (Exception ex){
@@ -51,17 +53,22 @@ public class RouteRepositoryImpl implements RouteRepository{
         }
         
         //Thêm thất bại
-        return false;    }
+        return false;        
+    }
 
     @Override
-    public boolean delete(Route route) {
+    public boolean delete(Schedule schedule) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Route findById(int idRoute) {
+    public Schedule findById(int id) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        return session.get(Route.class, idRoute);
+        return session.get(Schedule.class, id);        
     }
+
+
+    
+    
     
 }

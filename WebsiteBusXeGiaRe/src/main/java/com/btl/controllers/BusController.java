@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -36,7 +39,7 @@ public class BusController {
     //Tính năng upload
     //Khai báo upload controller và thêm chuyến xe
     @PostMapping("/admin/buses")
-    public String addBus(Model model, @ModelAttribute(value = "bus") Bus bus)
+    public String add(Model model, @ModelAttribute(value = "bus") Bus bus)
     { 
         
         //Trường hợp dữ liệu ổn
@@ -48,7 +51,58 @@ public class BusController {
         {
             model.addAttribute("errMsg", "Có lỗi xảy ra");
         //Khi upload thất bại vẫn ở lại trang bus.
-            return "bus";
         }
+                    return "bus";
+
     }
+    
+    
+    //EDIT BUS
+    @RequestMapping("/admin/data_buses")
+    public String indexUpdate(Model model)
+    {
+        model.addAttribute("buses", this.busService.getBuses());
+        return "data_bus";
+    }
+    
+     @PostMapping("/admin/data_buses/update")
+    public String Update(Model model, @ModelAttribute(value = "bus") Bus bus)
+    { 
+        
+        //Trường hợp dữ liệu ổn
+        if(this.busService.addOrUpdate(bus) == true)
+        {
+            return "redirect:/";
+        }
+        else 
+        {
+            model.addAttribute("errMsg", "Có lỗi xảy ra");
+        //Khi upload thất bại vẫn ở lại trang bus.
+        }
+                    return "update_bus";
+
+    }
+    
+    
+    @GetMapping("/admin/data_buses/update")
+    public String listEdit(Model model,
+            @RequestParam(name ="idBus", defaultValue ="0") int idBus)
+    {
+        if(idBus > 0)
+            model.addAttribute("bus", this.busService.findById(idBus));
+        else
+            model.addAttribute("bus", new Bus());
+        return "update_bus";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -99,7 +99,7 @@
                                     <form:select  id="bus" class="form-control"  path="bus">
                                         
                                         <c:forEach items="${buses}" var="bus">
-                                            <option value="${bus.idBus}">${bus.busName}-${bus.categoryBus.name}</option>
+                                            <option value="${bus.idBus}">${bus.busName} - ${bus.categoryBus.name}</option>
                                         </c:forEach>
                                         
 

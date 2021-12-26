@@ -158,90 +158,118 @@
             </div>
         </div>
 
-        <div class=" test">
-            <ul>
-                <c:forEach var="bus" items="${buses}">
-                <li> ${bus.busName}</li>
-                </c:forEach>
-            </ul>
-        </div>        
+       <!--BANNER BACKGROUND TOP ĐIỂM ĐẾN-->
+
+       <div class="banner-container">
+        <section class=""  id="home"  >
+            <div class="background-city">
+                
+                <div class="title-text">
+                   <p class="title-text-h1">ĐIỂM ĐẾN PHỔ BIẾN</p> 
+                   <p class="small-title">Gợi ý những điểm du lịch được ưa thích trong năm</p> 
+                </div>
+                
+
+                <img class="background-img" src="<c:url value="/img/backgroundcity.png"/>" >
+                
+                
+               
+       <main class="page-content">
+        <div class="card">
+          <div class="content">
+            <h2 class="title">Mountain View</h2>
+            <p class="copy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p>
+            <button class="btn">View Trips</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="content">
+            <h2 class="title">To The Beach</h2>
+            <p class="copy">Plan your next beach trip with these fabulous destinations</p>
+            <button class="btn">View Trips</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="content">
+            <h2 class="title">Desert Destinations</h2>
+            <p class="copy">It's the desert you've always dreamed of</p>
+            <button class="btn">Book Now</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="content">
+            <h2 class="title">Explore The Galaxy</h2>
+            <p class="copy">Seriously, straight up, just blast off into outer space today</p>
+            <button class="btn">Book Now</button>
+          </div>
+        </div>
+      </main>
+ 
+          
+                
+                
+            </div>
+                
+        </section>
+       </div>        
         
-        <div class=" test">
-            <ul>
-                <c:forEach var="employee" items="${employees}">
-                <li> ${employee.lastName}</li>
-                </c:forEach>
-            </ul>
-        </div>   
+       
+        <!--DỊCH VỤ XE KHÁCH-->
+         
+                
+      <section class="services" id="services">
+
+    <h1 class="heading">
+        <span>D</span>
+        <span>Ị</span>
+        <span>C</span>
+        <span>H</span>
+        
+        <span>V</span>
+        <span>Ụ</span>
+     
+    </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <i class="fa fa-medkit"></i>
+            <h3>An toàn hàng đầu</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore commodi earum, quis voluptate exercitationem ut minima itaque iusto ipsum corrupti!</p>
+        </div>
+        <div class="box">
+            <i class="fa fa-coffee"></i>
+            <h3>Nước uống miễn phí</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore commodi earum, quis voluptate exercitationem ut minima itaque iusto ipsum corrupti!</p>
+        </div>
+        <div class="box">
+            <i class="fa fa-bullhorn"></i>
+            <h3>Nhiều ưu đãi</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore commodi earum, quis voluptate exercitationem ut minima itaque iusto ipsum corrupti!</p>
+        </div>
+        <div class="box">
+            <i class="fa fa-ticket"></i>
+            <h3>Đặt vé dễ dàng</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore commodi earum, quis voluptate exercitationem ut minima itaque iusto ipsum corrupti!</p>
+        </div>
+        <div class="box">
+            <i class="fa fa-bus"></i>
+            <h3>Nhà xe chất lượng cao</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore commodi earum, quis voluptate exercitationem ut minima itaque iusto ipsum corrupti!</p>
+        </div>
+        <div class="box">
+            <i class="fa fa-star"></i>
+            <h3>Đánh giá chuyến đi</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore commodi earum, quis voluptate exercitationem ut minima itaque iusto ipsum corrupti!</p>
+        </div>
+
+    </div>
+
+</section> 
+                
           
           
     </body>
 </html>
 
 
-
-<%--
- <ul>
-    <c:forEach var="cat" items="${categories}">
-     <li>${cat.id} - ${cat.name}</li>
-    </c:forEach>
-</ul>
---%>
-
-<%--
-    <body>
-        <a href="<c:url value="/test" />">Redirect/Forward</a>
-        <div>
-            <img src="<c:url value="/images/sb1.jpg" />" alt="test" />
-        </div>
-        <h1>Welcome to my Website! ^^</h1>
-        <h1>Hello ${name}</h1>
-        
-        <%-- Thuong sd khi dang nhap thi hien thi dong co muon dang xuat ko? va nguoc lai --%>
-<%--        <c:if test="${ fullName != null}">
-             <h1>${fullName}</h1>
-        </c:if>
-             <ul>
-                 <c:forEach var="i" begin="1" end="5">
-                     <li>${i}</li>
-                 </c:forEach>
-             </ul>
-             
-             <ol>
-                 <c:forEach var="u" items="${users}"> 
-                     <li>${u.firstName} ${u.lastName}</li>
-                 </c:forEach>
-             </ol>
-             
-             <ul>
-                 <c:forTokens var="f" delims="," 
-                              items="Apple,Lemon,Orange"> <%--Delims dung de ngan cach giua cac items--%>
-<%--                    <li>${f}</li>
-                 </c:forTokens>
-             </ul>
-             
-             <ul>
-                 <c:forEach var="i" begin="1" end="10">
-                     <c:choose>
-                         <c:when test="${i%2 == 0}">
-                             <li style="color: red">${i}</li>
-                         </c:when>
-                         <c:when test="${i%2 != 0}">
-                            <li style="color: blue">${i}</li>
-                         </c:when>
-                     </c:choose>
-                 </c:forEach>
-             </ul>
-              
-        <c:url value="/hello-post" var="link"/>
-       
-        <form:form method="post" action="${link}" modelAttribute="user"> 
-            <spring:message code="label.firstName"/>
-            <form:input path="firstName" /> <%-- gia tri cua path phai giong vs ten bien trong class User --%>
-<%--            <br>
-            <spring:message code="label.lastName"/>
-            <form:input path="lastName" />
-            <input type="submit" value="Send"/>
-        </form:form>
-    </body>
---%>

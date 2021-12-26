@@ -7,6 +7,7 @@ package com.btl.controllers;
 
 import com.btl.pojos.Bus;
 import com.btl.service.BusService;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,9 +60,14 @@ public class BusController {
     
     //EDIT BUS
     @RequestMapping("/admin/data_buses")
-    public String indexUpdate(Model model)
+    public String indexUpdate(Model model, 
+            @RequestParam(required = false) Map<String, String> params)
     {
-        model.addAttribute("buses", this.busService.getBuses());
+        String kw = params.getOrDefault("kw", null);
+        String page = params.getOrDefault("page", "1");
+        
+        
+        model.addAttribute("buses", this.busService.getListByCondition(kw, Integer.parseInt(page)));
         return "data_bus";
     }
     
@@ -96,6 +102,17 @@ public class BusController {
     }
     
     
+    @GetMapping("/admin/data_buses/delete")
+    public String delete(Model model,
+            @RequestParam(name = "idBus",defaultValue ="0")int idBus)
+    {
+        if(this.busService.delete(idBus))
+            model.addAttribute("message", "Xoa thanh cong");
+        else 
+            model.addAttribute("message", "Xoa that bai");
+        
+        return "redirect:/admin/data_buses";
+    }
     
     
     

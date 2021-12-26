@@ -6,7 +6,9 @@
 package com.btl.service.impl;
 
 import com.btl.pojos.Employee;
+import com.btl.pojos.User;
 import com.btl.repository.EmployeeRepository;
+import com.btl.repository.UserRepository;
 import com.btl.service.EmployeeService;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -14,6 +16,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,6 +29,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Autowired
     private EmployeeRepository employeeRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
     
     @Autowired
     private Cloudinary cloudinary;
@@ -59,12 +65,33 @@ public class EmployeeServiceImpl implements EmployeeService{
                                     ObjectUtils.asMap("resource_type", "auto"));
 
                             employee.setImage((String) r.get("secure_url"));
+                            
+                            
+                            //CHUYỂN ROLE_USER THÀNH ROLE_DRIVER HOẶC ROLE_SELLER
+                            //lay user
+                            User u = this.userRepository.getUserByUsername(
+                                    SecurityContextHolder.getContext().getAuthentication().getName());
+                            //Set role
+                            if(employee.getPosition() == "Tài xế")
+                            {
+                                u.setUserRole("ROLE_DRIVER");
+
+                            }
+                            else
+                            {
+                                u.setUserRole("ROLE_SELLER");
+                            }
+                            this.userRepository.updateUser(u);
+                            
+                            
+                            
                 }else
                 {
                     employee.setImage("");
                 }
 
             }
+            
             //Gọi repository để lưu xuống
             return this.employeeRepository.addOrUpdate(employee);
 

@@ -10,9 +10,15 @@ package com.btl.service.impl;
 import com.btl.pojos.User;
 import com.btl.repository.UserRepository;
 import com.btl.service.UserService;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -36,13 +42,31 @@ public class UserServiceImpl implements UserService {
     //Trước khi gửi vào Repository cần băm mật khẩu
     private BCryptPasswordEncoder passwordEncoder;
     
+        @Autowired
+    private Cloudinary cloudinary;
+    
     
     @Override
     public boolean addUser(User user) {
         String pass = user.getPassword();
         user.setPassword(this.passwordEncoder.encode(pass));
         user.setUserRole(User.USER);
-        return this.userRepository.addUser(user);
+        
+         // Để hứng dữ liệu sau khi upload xong dùng Map
+        Map r;
+        try {
+            r = this.cloudinary.uploader().upload(user.getFile().getBytes(),
+                    ObjectUtils.asMap("resource_type", "auto"));
+                    user.setAvatar((String) r.get("secure_url"));
+
+            return this.userRepository.addUser(user);
+        
+        } catch (IOException ex) {
+            //Xuất lỗi
+            System.err.println("Add user " + ex.getMessage());
+        }
+
+        return false;
 
     }
 
@@ -69,6 +93,11 @@ public class UserServiceImpl implements UserService {
         
         
 
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return this.userRepository.getUserByUsername(username);
     }
     
 }

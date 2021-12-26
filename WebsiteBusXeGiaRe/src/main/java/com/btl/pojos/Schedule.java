@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -32,9 +33,11 @@ public class Schedule implements Serializable{
     private int id;
     
     @Column(name = "departure_date")
+    //@Temporal (javax.persistence.TemporalType.TIMESTAMP)
     private Date departureDate;        
     
     @Column(name = "destination_date")
+    //@Temporal (javax.persistence.TemporalType.TIMESTAMP)
     private Date destinationDate;
     
     @ManyToOne(fetch = FetchType.EAGER) 
@@ -42,12 +45,10 @@ public class Schedule implements Serializable{
     private Route route;
     
     @ManyToOne(fetch = FetchType.EAGER) 
-    @JoinColumn(name = "id_employee")
+    @JoinColumn(name = "id_driver")
     private Employee employee;
     
-    @ManyToOne(fetch = FetchType.EAGER) 
-    @JoinColumn(name = "id_bus")
-    private Bus bus;
+
 
     /**
      * @return the id
@@ -119,19 +120,7 @@ public class Schedule implements Serializable{
         this.employee = employee;
     }
 
-    /**
-     * @return the bus
-     */
-    public Bus getBus() {
-        return bus;
-    }
 
-    /**
-     * @param bus the bus to set
-     */
-    public void setBus(Bus bus) {
-        this.bus = bus;
-    }
     
     
 }

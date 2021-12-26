@@ -9,6 +9,8 @@ import com.btl.pojos.User;
 import com.btl.service.BusService;
 import com.btl.service.CategoryBusService;
 import com.btl.service.EmployeeService;
+import com.btl.service.RouteService;
+import com.btl.service.ScheduleService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +47,12 @@ public class HomeController {
     
     @Autowired
     private EmployeeService employeeService;
+    
+    @Autowired
+    private RouteService routeService;
+    
+    @Autowired
+    private ScheduleService scheduleService;    
             
     
     @ModelAttribute
@@ -67,6 +75,20 @@ public class HomeController {
         model.addAttribute("employee", this.employeeService.getEmployees() );
         //s.close();
         return "index";
+    }
+    
+    
+    @RequestMapping("/home_routine") //HTTP GET
+    @Transactional
+    public String homeRoutine(Model model){
+        model.addAttribute("bus", this.busService.getBuses());
+        model.addAttribute("employee", this.employeeService.getEmployees() );
+        model.addAttribute("categoryBus", this.categoryBusService.getCategoryBuses());
+        model.addAttribute("route", this.routeService.getRoutes());
+        model.addAttribute("schedule", this.scheduleService.getSchedules());
+        
+        //s.close();
+        return "home_routine";
     }
     
     

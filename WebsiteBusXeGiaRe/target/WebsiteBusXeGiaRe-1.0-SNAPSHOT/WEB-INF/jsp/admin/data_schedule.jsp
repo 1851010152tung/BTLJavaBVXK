@@ -1,6 +1,6 @@
 <%-- 
-    Document   : table_bus
-    Created on : Dec 17, 2021, 3:46:44 AM
+    Document   : data_schedule
+    Created on : Dec 21, 2021, 2:07:22 AM
     Author     : Truc Lam
 --%>
 
@@ -13,7 +13,7 @@
     
     <div class="page-title">
                         <div class="title_left">
-                                <h3>BẢNG DỮ LIỆU CHUYẾN XE</h3>
+                                <h3>BẢNG DỮ LIỆU TUYẾN XE</h3>
                         </div>
 
                         <div class="title_right">
@@ -33,7 +33,7 @@
                     <div class="col-md-12 col-sm-12  " id="table-buses">
                             <div class="x_panel">
                               <div class="x_title">
-                                <h2>Cập nhật<small>chuyến xe</small></h2>
+                                <h2>Cập nhật<small>tuyến xe</small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                   </li>
@@ -61,14 +61,14 @@
                                           <input type="checkbox" id="check-all" class="flat">
                                         </th>-->
                                         <th class="column-title" id="col-num">Id </th>
-                                        <th class="column-title">Tên xe </th>
-                                        <th class="column-title">Biển số xe </th>
-                                        <th class="column-title">Thương hiệu </th>
-                                        <th class="column-title">Loại xe </th>
-                                        <th class="column-title" id="col-num">Số chỗ </th>                                        
-                                        <th class="column-title">Tiêu đề </th>
-                                        <th class="column-title" id="description">Mô tả </th>
-                                        <th class="column-title" id="col-image">Hình ảnh </th>                                        
+                                        <th class="column-title">Điểm khởi hành </th>
+                                        <th class="column-title">Điểm đến </th>
+                                        <th class="column-title">Ngày khởi hành </th>
+                                        <th class="column-title">Ngày về </th>
+                                        <th class="column-title">Tài xế </th>                                        
+                                        <th class="column-title">Chuyến xe </th>                                       
+                                   
+                                        
                                         <th class="column-title no-link last  a-right a-right"><span class="nobr ">Action</span>
                                         </th>
                                         <th class="bulk-actions" colspan="7">
@@ -78,30 +78,25 @@
                                     </thead>
 
                                     <tbody>
-                                        <c:forEach var="b" items="${buses}">
+                                        <c:forEach var="s" items="${schedules}">
                                       <tr class="even pointer">
 <!--                                        <td class="a-center ">
                                           <input type="checkbox" class="flat" name="table_records">
                                         </td>-->
-                                        <td class=" ">${b.idBus}</td>
-                                        <td class=" ">${b.busName}</td>
-                                        <td class=" ">${b.numberPlate}</td>
-                                        <td class=" ">${b.manufacturer}</td>
-                                        <td class="">${b.categoryBus.name}</td>                                        
-                                        <td class=" ">${b.seatNumber}</td>
-                                        <td class=" ">${b.title}</td>
-                                        <td class=" ">${b.description}</td>
-                                        <td>
-                                            <c:if test="${b.image != null && b.image.startsWith('https') == true}">
-                                                <img class="img-fluid" src="${b.image}" alt="${b.busName}"/>
-                                            </c:if>
-
-                                        </td>
+                                        <td class=" ">${s.id}</td>
+                                        <td class=" ">${s.route.departure}</td>
+                                        <td class=" ">${s.route.destination}</td>
+                                        <td class=" ">${s.departureDate}</td>
+                                        <td class=" ">${s.destinationDate}</td>                                        
+                                        <td class=" ">${s.employee.positon}</td>
+                                        <td class=" ">${s.bus.busName} - ${s.bus.categoryBus.name}</td>
+                                       
+                                        
                                         
 
                                         <td class=" last a-right a-right ">
                                             <div class="btn-edit">
-                                                <a class="btn btn-default" href=" <c:url value="data_buses/update?idBus=${b.idBus}" />"><span class="glyphicon glyphicon-pencil"></span></a>
+                                                <a class="btn btn-default" href=" <c:url value="data_routes/update?id=${s.id}" />"><span class="glyphicon glyphicon-pencil"></span></a>
                                                 <a class="btn btn-default" href=""><span class="glyphicon glyphicon-trash"></span></a>                                                
                                             </div>
                                         </td>
@@ -121,3 +116,4 @@
         
         
 </div>
+

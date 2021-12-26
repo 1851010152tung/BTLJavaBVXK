@@ -1,6 +1,6 @@
 <%-- 
-    Document   : form_schedule
-    Created on : Dec 12, 2021, 5:49:19 PM
+    Document   : form_update_employee
+    Created on : Dec 21, 2021, 2:08:28 AM
     Author     : Truc Lam
 --%>
 
@@ -8,12 +8,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<c:url value="/admin/schedules" var="action" />
 <div class="right_col" role="main">
     <div class="">
                 <div class="page-title">
                         <div class="title_left">
-                                <h3>ĐĂNG KÝ NHÂN VIÊN</h3>
+                                <h3>CẬP NHẬT THÔNG TIN NHÂN VIÊN</h3>
                         </div>
 
                       
@@ -23,8 +22,9 @@
                     <div class="col-md-12 col-sm-12 " id="contain-form">
                                 <div class="x_panel">
                                         <div class="x_title">
-                                                <h2>FORM ĐĂNG KÝ <small>LỊCH TRÌNH</small>
-                                                    </h2>
+                                                <h2>FORM ĐĂNG KÝ <small>NHÂN VIÊN BÁN VÉ</small>
+                                                    <small> | </small>
+                                                    <small>TÀI XẾ</small></h2>
                                                 <ul class="nav navbar-right panel_toolbox">
                                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                                         </li>
@@ -135,12 +135,22 @@
                                                                         
                                                                    
 
-                                                        <div class="item form-group">
-                                                            <label for="file" class="col-form-label col-md-3 col-sm-3 label-align">Hình ảnh </label>
-                                                            <div class="col-md-6 col-sm-6 ">
+
+                                              <div class="item form-group">
+                                                <label for="file" class="col-form-label col-md-3 col-sm-3 label-align">Hình ảnh </label>
+                                                <div class="col-md-6 col-sm-6 ">
+                                                    <c:if test="${employee.image != null && employee.image.startsWith('https') == true}">
+                                                                <img class="img-fluid" id="size-image" src="${employee.image}" alt="${employee.lastName}"/>
                                                                 <form:input id="file" Class="form-control" type="file" path="file"/>
-                                                            </div>
-                                                        </div>
+
+                                                    </c:if>
+                                                    <c:if test="${employee.image == null || employee.image.startsWith('https') == false}">
+                                                              <form:input id="file" Class="form-control" type="file" path="file"/>
+
+                                                    </c:if>            
+                                                </div>
+                                              </div>
+
 
                                                             <div class="button-form">
                                                             <div class="col-md-6 col-sm-6 offset-md-3" id="button-form-submit">
@@ -158,7 +168,5 @@
         </div>
 
 </div>
-
-
 
 

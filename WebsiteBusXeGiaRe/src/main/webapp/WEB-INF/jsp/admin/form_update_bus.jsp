@@ -12,7 +12,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>SỬA CHUYẾN XE</h3>
+                <h3>CẬP NHẬT THÔNG TIN CHUYẾN XE</h3>
             </div>
 
             
@@ -110,14 +110,22 @@
                                     <form:textarea id="message" required="required" class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Bạn cần nhập ít nhất 20 ký tự..." data-parsley-validation-threshold="10" path="description"  />
                                 </div>
                             </div>
-                            <div class="item form-group">
+
+
+                              <div class="item form-group">
                                 <label for="file" class="col-form-label col-md-3 col-sm-3 label-align">Hình ảnh </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <form:input id="file" Class="form-control" type="file" path="file"/>
+                                    <c:if test="${bus.image != null && bus.image.startsWith('https') == true}">
+                                                <img class="img-fluid" id="size-image" src="${bus.image}" alt="${bus.busName}"/>
+                                                <form:input id="file" Class="form-control" type="file" path="file"/>
+
+                                    </c:if>
+                                    <c:if test="${bus.image == null || bus.image.startsWith('https') == false}">
+                                              <form:input id="file" Class="form-control" type="file" path="file"/>
+
+                                    </c:if>            
                                 </div>
-                            </div>
-
-
+                              </div>
 
                                 <div class="button-form">
                                     <div class="col-md-6 col-sm-6 offset-md-3" id="button-form-submit">

@@ -97,8 +97,11 @@ public class EmployeeController {
             @RequestParam(name ="idEmployee", defaultValue ="0") int idEmployee)
     {
         if(idEmployee > 0)
+        {
             model.addAttribute("employee", this.employeeService.findById(idEmployee));
-        else
+        List<String> positionList = Arrays.asList("Nhân viên bán vé","Tài xế");
+        model.addAttribute("positionList", positionList);
+        }else
             model.addAttribute("employee", new Employee());
         return "update_employee";
     }

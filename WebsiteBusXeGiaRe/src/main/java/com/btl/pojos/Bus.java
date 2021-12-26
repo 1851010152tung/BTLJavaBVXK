@@ -8,6 +8,7 @@ package com.btl.pojos;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -91,11 +92,8 @@ public class Bus implements Serializable{
     private CategoryBus categoryBus;
     
 
-    @OneToMany(mappedBy = "bus")
+    @OneToMany(mappedBy = "bus", cascade = {CascadeType.REMOVE}, orphanRemoval = true )
     private List<Route> routes;
-    
-    @OneToMany(mappedBy = "bus")
-    private List<Schedule> schedules;
 
     /**
      * @return the idBus
@@ -266,19 +264,7 @@ public class Bus implements Serializable{
         this.categoryBus = categoryBus;
     }
 
-    /**
-     * @return the schedules
-     */
-    public List<Schedule> getSchedules() {
-        return schedules;
-    }
 
-    /**
-     * @param schedules the schedules to set
-     */
-    public void setSchedules(List<Schedule> schedules) {
-        this.schedules = schedules;
-    }
     
    
 }

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,7 +36,7 @@ public class CategoryBus implements Serializable{
     private String description;
     
     //Demo oneToMany
-    @OneToMany(mappedBy = "categoryBus") //nếu để trống thì mặc định của OneToMany là LAZY
+    @OneToMany(mappedBy = "categoryBus", fetch = FetchType.EAGER) //nếu để trống thì mặc định của OneToMany là LAZY
     //Mappedby đến "private CategoryBus categoryBus;" của lớp Bus.java
     private List<Bus> buses;
     

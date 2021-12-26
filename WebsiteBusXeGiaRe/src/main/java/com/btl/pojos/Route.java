@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -65,7 +66,7 @@ public class Route implements Serializable{
     @JoinColumn(name = "id_bus")
     private Bus bus;
     
-    @OneToMany(mappedBy = "route")
+    @OneToMany(mappedBy = "route", cascade = {CascadeType.REMOVE}, orphanRemoval = true)
     private List<Schedule> schedules;
     
     

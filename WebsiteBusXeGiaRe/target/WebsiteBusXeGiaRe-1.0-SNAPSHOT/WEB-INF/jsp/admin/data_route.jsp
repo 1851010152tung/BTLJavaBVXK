@@ -63,7 +63,7 @@
                                         <th class="column-title" id="col-num">Id </th>
                                         <th class="column-title">Điểm khởi hành </th>
                                         <th class="column-title">Điểm đến </th>
-                                        <th class="column-title">Khoảng cách </th>
+                                        <th class="column-title">Khoảng cách (km) </th>
                                         <th class="column-title">Chuyến xe </th>
                                         <th class="column-title">Loại xe </th>                                        
                                         <th class="column-title">Giá vé </th>                                       
@@ -87,7 +87,7 @@
                                         <td class=" ">${r.id}</td>
                                         <td class=" ">${r.departure}</td>
                                         <td class=" ">${r.destination}</td>
-                                        <td class=" ">${r.distance}</td>
+                                        <td class=" ">${r.distance}km</td>
                                         <td class=" ">${r.bus.busName}</td>                                        
                                         <td class=" ">${r.bus.categoryBus.name}</td>
                                         <td class=" ">${r.ticketPrice}</td>
@@ -108,7 +108,7 @@
 
                                         <td class=" last a-right a-right ">
                                             <div class="btn-edit">
-                                                <a class="btn btn-default" href=" <c:url value="data_routes/update?id=${e.id}" />"><span class="glyphicon glyphicon-pencil"></span></a>
+                                                <a class="btn btn-default" href=" <c:url value="data_routes/update?id=${r.id}" />"><span class="glyphicon glyphicon-pencil"></span></a>
                                                 <a class="btn btn-default" href=""><span class="glyphicon glyphicon-trash"></span></a>                                                
                                             </div>
                                         </td>

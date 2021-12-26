@@ -11,8 +11,8 @@
         <img class="logo" src="<c:url value="/img/logo_busgiare.png"/>" alt="logo">
       <nav>
         <ul class="nav-links">
-          <li class="nav-item active"><a href="#trangchu">TRANG CHỦ</a></li>
-            <li class="nav-item"><a href="#lichtrinh">LỊCH TRÌNH</a></li>
+          <li class="nav-item active"><a href="<c:url value="/" />">TRANG CHỦ</a></li>
+            <li class="nav-item"><a href="<c:url value="/home_routine" />">LỊCH TRÌNH</a></li>
             <li class="nav-item"><a href="#tintuc">TIN TỨC</a></li>
             <li class="nav-item"><a href="#vechungtoi">VỀ CHÚNG TÔI</a></li>
         </ul>

@@ -7,6 +7,9 @@ package com.btl.controllers;
 
 import com.btl.pojos.Bus;
 import com.btl.pojos.Schedule;
+import com.btl.service.BusService;
+import com.btl.service.EmployeeService;
+import com.btl.service.RouteService;
 import com.btl.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,10 +32,23 @@ public class ScheduleControllers {
     @Autowired
     private ScheduleService scheduleService;
     
+    @Autowired
+    private EmployeeService employeeService;
+   
+    @Autowired
+    private BusService busService;
+
+    
+    @Autowired
+    private RouteService routeService;
+    
     @GetMapping("/admin/schedules")
     public String list(Model model)
     {
         model.addAttribute("schedule", new Schedule());
+        model.addAttribute("employees", this.employeeService.getEmployees() );
+        model.addAttribute("routes", this.routeService.getRoutes());
+        model.addAttribute("bus", this.busService.getBuses());
         return "schedule";
     }
     

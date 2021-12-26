@@ -24,6 +24,7 @@ public interface BusRepository {
     //total item
     int totalItem();
     
+    List<Object> getListByCondition(String kw, int page);
     
     
 }

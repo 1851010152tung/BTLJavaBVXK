@@ -81,8 +81,9 @@ public class BusServiceImpl implements BusService {
    
 
     @Override
-    public boolean delete(Bus bus) {
-        return this.busRepository.delete(bus);
+    public boolean delete(int id) {
+        Bus b = this.busRepository.findById(id);
+        return this.busRepository.delete(b);
     }
 
     @Override
@@ -93,6 +94,11 @@ public class BusServiceImpl implements BusService {
     @Override
     public int totalItem() {
         return this.busRepository.totalItem();
+    }
+
+    @Override
+    public List<Object> getListByCondition(String kw, int page) {
+        return this.busRepository.getListByCondition(kw, page);
     }
 
 }

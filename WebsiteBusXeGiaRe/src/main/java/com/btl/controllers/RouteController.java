@@ -7,6 +7,8 @@ package com.btl.controllers;
 
 import com.btl.pojos.Bus;
 import com.btl.pojos.Route;
+import com.btl.service.BusService;
+import com.btl.service.CategoryBusService;
 import com.btl.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,13 @@ public class RouteController {
      
     @Autowired
     private RouteService routeService;
+    
+        @Autowired
+    private BusService busService;
+        
+        @Autowired
+        private CategoryBusService categoryBusService;
+        
     
     @GetMapping("/admin/routes")
     public String list(Model model)
@@ -85,9 +94,11 @@ public class RouteController {
     public String listEdit(Model model,
             @RequestParam(name ="id", defaultValue ="0") int id)
     {
-        if(id > 0)
+        if(id > 0){
             model.addAttribute("route", this.routeService.findById(id));
-        else
+                model.addAttribute("buses", this.categoryBusService.getCategoryBuses());
+
+        }else
             model.addAttribute("route", new Route());
         return "update_route";
     }

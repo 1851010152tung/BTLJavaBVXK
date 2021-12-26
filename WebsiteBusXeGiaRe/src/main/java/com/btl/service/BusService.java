@@ -16,9 +16,11 @@ public interface BusService {
     List<Bus> getBuses();
     boolean addOrUpdate(Bus bus);
     //boolean update(Bus bus);
-    boolean delete(Bus bus);
+    boolean delete(int id);
     Bus findById(int idBus);
     int totalItem();
+    List<Object> getListByCondition(String kw, int page);
+    
     
     
 }

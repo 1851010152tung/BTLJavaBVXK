@@ -13,7 +13,7 @@
           <div class="col-sm-12 col-md-6">
             <h6>About</h6>
             <p class="text-justify">CÔNG TY CỔ PHẦN XE KHÁCH BUSGIARE.COM</p>
-            <p> Địa : 97 Võ Văn Tần, Phường Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh. </p>
+            <p> Địa chỉ: 97 Võ Văn Tần, Phường Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh. </p>
           </div>
           <div class="col-xs-6 col-md-3">
         </div>

@@ -149,6 +149,11 @@ form#demo-form2 {
     margin-top: 15px;
 }
 
+img#size-image {
+    /* block-size: inherit; */
+    max-height: 300px;
+}
+
 
 /**************************************************** BẢNG DỮ LIỆU THÔNG TIN **********************************************************/
 

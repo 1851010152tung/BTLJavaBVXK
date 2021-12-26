@@ -43,6 +43,8 @@ public class UserRepositoryImpl implements UserRepository {
         return false;
 
     }
+    
+    
 
     @Override
     public List<User> getUsers(String username) {
@@ -59,6 +61,37 @@ public class UserRepositoryImpl implements UserRepository {
         
         Query q = session.createQuery(query);
         return q.getResultList();
+    }
+
+    @Override
+    public boolean updateUser(User user) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try{
+            session.update(user);
+            return true;
+        }catch (HibernateException ex){
+            System.err.println(ex.getMessage());
+        
+        } 
+        return false;
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<User> query = builder.createQuery(User.class);
+        Root root = query.from(User.class);
+        query = query.select(root);
+        
+        if (!username.isEmpty() ) {
+            Predicate p = builder.equal(root.get("username").as(String.class), username.trim());
+            query = query.where(p);
+        }else
+            System.out.println("Chưa có tên đăng nhập!!");
+        
+        User user = s.createQuery(query).uniqueResult();
+        return user;
     }
     
 }

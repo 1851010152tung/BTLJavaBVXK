@@ -40,13 +40,20 @@ public class Schedule implements Serializable{
     //@Temporal (javax.persistence.TemporalType.TIMESTAMP)
     private Date destinationDate;
     
+    @Column(name = "departure_time")
+    private String departureTime;
+    
+    @Column(name = "destination_time")
+    private String destinationTime;
+    
     @ManyToOne(fetch = FetchType.EAGER) 
     @JoinColumn(name = "id_route")
     private Route route;
     
-    @ManyToOne(fetch = FetchType.EAGER) 
-    @JoinColumn(name = "id_driver")
-    private Employee employee;
+
+    
+    
+    
     
 
 
@@ -107,17 +114,31 @@ public class Schedule implements Serializable{
     }
 
     /**
-     * @return the employee
+     * @return the departureTime
      */
-    public Employee getEmployee() {
-        return employee;
+    public String getDepartureTime() {
+        return departureTime;
     }
 
     /**
-     * @param employee the employee to set
+     * @param departureTime the departureTime to set
      */
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    /**
+     * @return the destinationTimeString
+     */
+    public String getDestinationTime() {
+        return destinationTime;
+    }
+
+    /**
+     * @param destinationTime the destinationTimeString to set
+     */
+    public void setDestinationTime(String destinationTime) {
+        this.destinationTime = destinationTime;
     }
 
 

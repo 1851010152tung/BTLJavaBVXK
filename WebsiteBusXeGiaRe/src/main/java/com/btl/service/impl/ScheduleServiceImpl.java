@@ -38,13 +38,19 @@ public class ScheduleServiceImpl implements ScheduleService{
     }
 
     @Override
-    public boolean delete(Schedule schedule) {
-        return this.scheduleRepository.delete(schedule);
+    public boolean delete(int id) {
+        Schedule s = this.findById(id);
+        return this.scheduleRepository.delete(s);
     }
 
     @Override
     public Schedule findById(int id) {
         return this.scheduleRepository.findById(id);
+    }
+
+    @Override
+    public List<Schedule> getListSchedulesByIdRoute(int id) {
+        return this.scheduleRepository.getListSchedulesByIdRoute(id);
     }
     
 }

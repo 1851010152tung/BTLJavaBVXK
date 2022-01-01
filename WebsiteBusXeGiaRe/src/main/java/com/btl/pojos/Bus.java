@@ -94,6 +94,12 @@ public class Bus implements Serializable{
 
     @OneToMany(mappedBy = "bus", cascade = {CascadeType.REMOVE}, orphanRemoval = true )
     private List<Route> routes;
+    
+    
+    @ManyToOne(fetch = FetchType.EAGER) 
+    @JoinColumn(name = "id_driver")
+    private Employee employee;
+    
 
     /**
      * @return the idBus
@@ -262,6 +268,20 @@ public class Bus implements Serializable{
      */
     public void setCategoryBus(CategoryBus categoryBus) {
         this.categoryBus = categoryBus;
+    }
+
+    /**
+     * @return the employee
+     */
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    /**
+     * @param employee the employee to set
+     */
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
 

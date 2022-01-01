@@ -17,14 +17,18 @@
                         </div>
 
                         <div class="title_right">
+                                <form action="">
+                                
                                 <div class="col-md-5 col-sm-5  form-group pull-right top_search">
                                         <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Search for...">
+                                                <input type="text" class="form-control" name="kw" placeholder="Tìm kiếm nhân viên...">
                                                 <span class="input-group-btn">
-                                                        <button class="btn btn-default" type="button">Go!</button>
+                                                    <button class="btn btn-default" value="Search" type="submit">Tìm!</button>
                                                 </span>
                                         </div>
                                 </div>
+                                
+                            </form>
                         </div>
                 </div>
         <div class="clearfix"></div>
@@ -104,7 +108,7 @@
                                         <td class=" last a-right a-right ">
                                             <div class="btn-edit">
                                                 <a class="btn btn-default" href=" <c:url value="data_employees/update?idEmployee=${e.idEmployee}" />"><span class="glyphicon glyphicon-pencil"></span></a>
-                                                <a class="btn btn-default" href=""><span class="glyphicon glyphicon-trash"></span></a>                                                
+                                                <a class="btn btn-default" href="<c:url value="data_employees/delete?idEmployee=${e.idEmployee}" />"><span class="glyphicon glyphicon-trash"></span></a>                                                
                                             </div>
                                         </td>
                                       </tr>
@@ -114,6 +118,18 @@
                                   </table>
                                 </div>
 
+                                <div class="pagination-table">
+                                      <!--$!{counter}-->
+                                      <ul class="pagination">
+                                          <c:forEach  begin="1" end="${Math.ceil(counter/6)}" var="i">
+                                              
+                                          <li class="page-item"><a class="page-link" href="<c:url value="/admin/data_employees"/>?page=${i}">${i}</a></li>
+                                              
+                                          </c:forEach>
+                                       
+                                        </ul>
+                                          
+                                  </div>      
 
                               </div>
                             </div>

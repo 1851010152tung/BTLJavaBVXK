@@ -73,22 +73,41 @@ public class HomeController {
     public String index(Model model){
         model.addAttribute("bus", this.busService.getBuses());
         model.addAttribute("employee", this.employeeService.getEmployees() );
+        model.addAttribute("routes", this.routeService.getRoutes());
         //s.close();
         return "index";
     }
     
     
+    //LỊCH TRÌNH
     @RequestMapping("/home_routine") //HTTP GET
     @Transactional
-    public String homeRoutine(Model model){
+    public String homeRoutine(Model model
+                        ){
         model.addAttribute("bus", this.busService.getBuses());
-        model.addAttribute("employee", this.employeeService.getEmployees() );
-        model.addAttribute("categoryBus", this.categoryBusService.getCategoryBuses());
-        model.addAttribute("route", this.routeService.getRoutes());
-        model.addAttribute("schedule", this.scheduleService.getSchedules());
+        model.addAttribute("routes", this.routeService.getRoutes());
+        model.addAttribute("schedules", this.scheduleService.getSchedules());
+       
+        return "home_routine";
+        
         
         //s.close();
-        return "home_routine";
+        
+    }
+    
+    //LỊCH TRÌNH
+    @RequestMapping("/home_routine/list_schedule") //HTTP GET
+    @Transactional
+    public String listSchedule(Model model,
+            @RequestParam(name ="id", defaultValue ="0") int id) {
+//        model.addAttribute("bus", this.busService.getBuses());
+//        model.addAttribute("routes", this.routeService.getRoutes());
+//        model.addAttribute("schedules", this.scheduleService.getSchedules());
+//        
+//        
+        model.addAttribute("schedules",this.scheduleService.getListSchedulesByIdRoute(id));   
+        //s.close();
+        return "list_schedule";
     }
     
     

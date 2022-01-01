@@ -42,7 +42,7 @@ public class Route implements Serializable{
     private Double distance;
     
     @Column (name = "journey_time")
-    private Time journeyTime;
+    private String journeyTime;
     
     @Column(name = "ticket_price")
     private BigDecimal ticketPrice;
@@ -52,6 +52,13 @@ public class Route implements Serializable{
     
     @Column (name = "image_destination")
     private String imageDestination;
+    
+    @Column(name = "pick_up_point")
+    private String pickUpPoint;
+    
+    @Column(name = "drop_off_point")
+    private String dropOffPoint; 
+    
 
     //Không ứng với một cột của bảng csdl nào thì gắn @Transient
     @Transient
@@ -66,6 +73,7 @@ public class Route implements Serializable{
     @JoinColumn(name = "id_bus")
     private Bus bus;
     
+    //Đối tượng cha bị xóa, thì đối tượng con cũng bị xóa
     @OneToMany(mappedBy = "route", cascade = {CascadeType.REMOVE}, orphanRemoval = true)
     private List<Schedule> schedules;
     
@@ -131,14 +139,14 @@ public class Route implements Serializable{
     /**
      * @return the journeyTime
      */
-    public Time getJourneyTime() {
+    public String getJourneyTime() {
         return journeyTime;
     }
 
     /**
      * @param journeyTime the journeyTime to set
      */
-    public void setJourneyTime(Time journeyTime) {
+    public void setJourneyTime(String journeyTime) {
         this.journeyTime = journeyTime;
     }
 
@@ -238,6 +246,34 @@ public class Route implements Serializable{
      */
     public void setSchedules(List<Schedule> schedules) {
         this.schedules = schedules;
+    }
+
+    /**
+     * @return the pickUpPoint
+     */
+    public String getPickUpPoint() {
+        return pickUpPoint;
+    }
+
+    /**
+     * @param pickUpPoint the pickUpPoint to set
+     */
+    public void setPickUpPoint(String pickUpPoint) {
+        this.pickUpPoint = pickUpPoint;
+    }
+
+    /**
+     * @return the dropOffPoint
+     */
+    public String getDropOffPoint() {
+        return dropOffPoint;
+    }
+
+    /**
+     * @param dropOffPoint the dropOffPoint to set
+     */
+    public void setDropOffPoint(String dropOffPoint) {
+        this.dropOffPoint = dropOffPoint;
     }
     
     

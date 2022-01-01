@@ -22,4 +22,6 @@ public interface ScheduleRepository {
     
     Schedule findById(int id);
     
+    List<Schedule> getListSchedulesByIdRoute(int id);
+    
 }

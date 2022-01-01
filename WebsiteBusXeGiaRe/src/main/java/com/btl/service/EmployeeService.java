@@ -15,7 +15,10 @@ import java.util.List;
 public interface EmployeeService {
     List<Employee> getEmployees();
     boolean addOrUpdate(Employee employee);
-    boolean delete(Employee employee);
+    boolean delete(int id);
     Employee findById(int id);
 
+    Long totalItem();
+    List<Object> getListByCondition(String kw, int page);
+    List<Employee> getEmployees(String kwString, int page);
 }

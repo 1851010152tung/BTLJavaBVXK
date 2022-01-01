@@ -24,7 +24,7 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet"/>
         <!-- import CSS -->
-        <link href="css/header_footer.css" rel="stylesheet">
+        <link href="<c:url value="/css/header_footer.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/homebase.css"/>" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     </head>

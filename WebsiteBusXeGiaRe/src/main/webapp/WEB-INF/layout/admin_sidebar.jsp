@@ -49,7 +49,7 @@
                       <li><a href="form.html">Khách hàng</a></li>
                       <li><a href="<c:url value="/admin/buses"/>"> Chuyến xe</a></li>
                       <li><a href="<c:url value="/admin/routes"/>">Tuyến xe</a></li>
-                      <li><a href="<c:url value="/admin/schedules"/>">Lịch chạy</a></li>
+                      <li><a href="<c:url value="/admin/schedules"/>">Lịch trình</a></li>
                       <li><a href="form.html">Thông tin đặt vé</a></li>
 
 
@@ -66,7 +66,7 @@
                         <li><a href="form.html">Khách hàng</a></li>
                         <li><a href="<c:url value ="/admin/data_buses"></c:url>">Chuyến xe</a></li>
                         <li><a href="<c:url value ="/admin/data_routes"></c:url>">Tuyến xe</a></li>
-                        <li><a href="form.html">Lịch chạy</a></li>
+                        <li><a href="<c:url value ="/admin/data_schedules"></c:url>">Lịch trình</a></li>
                         <li><a href="form.html">Doanh thu</a></li>
                         <li><a href="form.html">Thông tin đặt vé</a></li>
 

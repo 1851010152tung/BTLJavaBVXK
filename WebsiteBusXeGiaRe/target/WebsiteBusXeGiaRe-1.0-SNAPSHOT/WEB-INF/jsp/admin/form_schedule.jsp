@@ -100,39 +100,20 @@
                                                                                 </script>
                                                                         </div>
                                                         
-                                                        </div>                        
-                                                        
-                                                        <div class="item form-group">
-                                                            <label for="employee" class="col-form-label col-md-3 col-sm-3 label-align">Tài xế <span class="required">*</span> </label>
-                                                            <div class="col-md-6 col-sm-6 ">
-                                                                <form:select  id="employee" class="form-control"  path="employee.idEmployee">
-
-                                                                    <c:forEach items="${employees}" var="e">
-                                                                        <c:if test="${e.position == 'Tài xế'}">
-                                                                        <option value="${e.idEmployee}">${e.lastName}</option>
-                                                                        </c:if>
-                                                                    </c:forEach>
-
-
-                                                                </form:select>                                                                        
-                                                            </div>
                                                         </div>
+                                                                                
+                                                    <div class="item form-group">
+                                                                <label for="departureTime" class="col-form-label col-md-3 col-sm-3 label-align">Giờ khởi hành <span class="required">*</span> </label>
+                                                                <div class="col-md-6 col-sm-6 ">
+                                                                    <form:select id="heard" class="form-control" path="departureTime" items="${departureTimeList}">
+                                                                            
+                                                                    </form:select>                                                                        
+                                                                </div>
+                                                        </div>                            
                                                         
-                                                       <div class="item form-group">
-                                                            <label for="bus" class="col-form-label col-md-3 col-sm-3 label-align">Chuyến xe <span class="required">*</span> </label>
-                                                            <div class="col-md-6 col-sm-6 ">
-                                                                <form:select  id="bus" class="form-control"  path="route.bus.idBus">
-
-                                                                    <c:forEach items="${routes}" var="r">
-                                                                            <option value="${r.id}">${r.bus.busName} - ${r.bus.categoryBus.name}</option>
-
-                                                                        
-                                                                    </c:forEach>
-
-
-                                                                </form:select>                                                                        
-                                                            </div>
-                                                        </div> 
+                                                        
+                                                        
+                                                       
 
                                                         
                                               

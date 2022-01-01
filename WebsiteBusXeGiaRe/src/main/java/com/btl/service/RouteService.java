@@ -15,6 +15,10 @@ import java.util.List;
 public interface RouteService {
     List<Route> getRoutes();
     boolean addOrUpdate(Route route);
-    boolean delete(Route route);
+    boolean delete(int id);
     Route findById(int idRoute);
+    
+    Long totalItem();
+    List<Object> getListByCondition(String kw, int page );
+    
 }

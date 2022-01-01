@@ -7,9 +7,15 @@ package com.btl.repository.impl;
 
 import com.btl.pojos.Employee;
 import com.btl.repository.EmployeeRepository;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -55,18 +61,96 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 
     @Override
     public boolean delete(Employee empl) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Transaction transaction = null;
+        try{
+            //delete
+            session.delete(empl);
+            //delete thành công
+            return true;
+        }catch (Exception ex){
+            
+            System.err.println("Delete employee error" + ex.getMessage());
+            ex.printStackTrace();
+        }
+        
+        return false;
     }
 
     @Override
     public Employee findById(int i) {
-    Session session = this.sessionFactory.getObject().getCurrentSession();   
-    
-    
+    Session session = this.sessionFactory.getObject().getCurrentSession();           
     return session.get(Employee.class,i);
     
     
     
+    }
+
+    @Override
+    public List<Object> getListByCondition(String kw, int page) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        Root rootE = query.from(Employee.class);
+        
+        query = query.select(rootE);
+        List<Predicate> predicates = new ArrayList<>();
+        
+        if(kw != null){
+            Predicate p2 = builder.like(rootE.get("firstName").as(String.class), 
+                        String.format("%%s%%", kw));
+            Predicate p3 = builder.like(rootE.get("lastName").as(String.class), 
+                        String.format("%%s%%", kw));
+        }
+        
+        query = query.where(predicates.toArray(new Predicate[]{}));
+        Query q = session.createQuery(query);
+        
+        //Phan trang
+        int maxPage = 6;
+        q.setMaxResults(maxPage);
+        //Vị trí bắt đầu
+        q.setFirstResult((page -1 )* maxPage);
+        return q.getResultList();
+
+    }
+
+    @Override
+    public long totalItem() {
+       Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("SELECT COUNT(*) FROM Employee");
+        return Long.parseLong(q.getSingleResult().toString()); 
+    }
+
+    @Override
+    public List<Employee> getEmployees(String kw, int page) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Employee> query = builder.createQuery(Employee.class);
+        Root root = query.from(Employee.class);
+        query = query.select(root);
+        
+        if(kw != null)
+        {
+//            Predicate p1 = builder.like(root.get("firstName").as(String.class),
+//                        String.format("%%%s%%", kw));
+            Predicate p2 = builder.like(root.get("lastName").as(String.class),
+                        String.format("%%%s%%", kw));
+            
+            query = query.where(p2);
+        }
+        
+        
+        Query q = session.createQuery(query);
+        //Phan trang
+        int maxPage = 6;
+        q.setMaxResults(maxPage);
+        //Vị trí bắt đầu
+        q.setFirstResult((page -1 )* maxPage);
+        return q.getResultList();
+        
+        
+        
     }
     
     

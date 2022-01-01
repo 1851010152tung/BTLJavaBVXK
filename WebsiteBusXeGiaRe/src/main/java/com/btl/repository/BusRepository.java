@@ -22,7 +22,7 @@ public interface BusRepository {
     //find by id
     Bus findById(int idBus);
     //total item
-    int totalItem();
+    long totalItem();
     
     List<Object> getListByCondition(String kw, int page);
     

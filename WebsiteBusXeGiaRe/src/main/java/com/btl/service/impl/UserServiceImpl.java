@@ -52,21 +52,10 @@ public class UserServiceImpl implements UserService {
         user.setPassword(this.passwordEncoder.encode(pass));
         user.setUserRole(User.USER);
         
-         // Để hứng dữ liệu sau khi upload xong dùng Map
-        Map r;
-        try {
-            r = this.cloudinary.uploader().upload(user.getFile().getBytes(),
-                    ObjectUtils.asMap("resource_type", "auto"));
-                    user.setAvatar((String) r.get("secure_url"));
-
+        
             return this.userRepository.addUser(user);
         
-        } catch (IOException ex) {
-            //Xuất lỗi
-            System.err.println("Add user " + ex.getMessage());
-        }
-
-        return false;
+       
 
     }
 
@@ -98,6 +87,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByUsername(String username) {
         return this.userRepository.getUserByUsername(username);
+    }
+
+    @Override
+    public boolean updateUserRole(User user) {
+        return this.userRepository.updateUser(user);
     }
     
 }

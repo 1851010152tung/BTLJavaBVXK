@@ -8,6 +8,7 @@ package com.btl.pojos;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -75,8 +76,8 @@ public class Employee implements Serializable{
     private MultipartFile file;
     
     
-    @OneToMany(mappedBy = "employee" )
-    private List<Schedule> schedules;
+    @OneToMany(mappedBy = "employee",cascade = {CascadeType.REMOVE},orphanRemoval = true )
+    private List<Bus> buses ;
     
     @OneToOne(fetch =FetchType.LAZY)
     @JoinColumn(name = "id_user")
@@ -253,17 +254,19 @@ public class Employee implements Serializable{
     }
 
     /**
-     * @return the schedules
+     * @return the buses
      */
-    public List<Schedule> getSchedules() {
-        return schedules;
+    public List<Bus> getBuses() {
+        return buses;
     }
 
     /**
-     * @param schedules the schedules to set
+     * @param buses the buses to set
      */
-    public void setSchedules(List<Schedule> schedules) {
-        this.schedules = schedules;
+    public void setBuses(List<Bus> buses) {
+        this.buses = buses;
     }
+
+ 
     
 }

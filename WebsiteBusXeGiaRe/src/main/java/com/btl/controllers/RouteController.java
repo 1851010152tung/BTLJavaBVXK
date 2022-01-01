@@ -10,6 +10,7 @@ import com.btl.pojos.Route;
 import com.btl.service.BusService;
 import com.btl.service.CategoryBusService;
 import com.btl.service.RouteService;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +31,7 @@ public class RouteController {
     @Autowired
     private RouteService routeService;
     
-        @Autowired
+    @Autowired
     private BusService busService;
         
         @Autowired
@@ -65,9 +66,18 @@ public class RouteController {
     
     //EDIT ROUTE
     @RequestMapping("/admin/data_routes")
-    public String indexUpdate(Model model)
+    public String indexUpdate(Model model, 
+            @RequestParam(required = false) Map<String, String> params)
     {
-        model.addAttribute("routes", this.routeService.getRoutes());
+        
+        String kw = params.getOrDefault("kw", null);
+        int page = Integer.parseInt(params.getOrDefault("page", "1")); // nếu có thì lấy biến page còn không thì trả về 1
+        
+        model.addAttribute("routes", this.routeService.getListByCondition(kw, page));
+        model.addAttribute("size", this.routeService.getListByCondition(kw, page).size());
+        model.addAttribute("counter", this.routeService.totalItem());
+        //model.addAttribute("buses", this.busService.getBuses());
+        //model.addAttribute("categoryBuses", this.categoryBusService.getCategoryBuses());
         return "data_route";
     }
     
@@ -96,13 +106,26 @@ public class RouteController {
     {
         if(id > 0){
             model.addAttribute("route", this.routeService.findById(id));
-                model.addAttribute("buses", this.categoryBusService.getCategoryBuses());
+                //model.addAttribute("buses", this.categoryBusService.getCategoryBuses());
 
         }else
             model.addAttribute("route", new Route());
         return "update_route";
     }
     
+    
+    //DELETE DATA_ROUTES
+    @GetMapping("/admin/data_routes/delete")
+    public String delete(Model model,
+            @RequestParam(name = "id",defaultValue ="0")int id)
+    {
+        if(this.routeService.delete(id))
+            model.addAttribute("message", "Xóa thành công");
+        else 
+            model.addAttribute("message", "Xóa thất bại");
+        
+        return "redirect:/admin/data_routes";
+    }
     
     
 }

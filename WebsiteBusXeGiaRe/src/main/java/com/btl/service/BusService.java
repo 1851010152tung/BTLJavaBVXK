@@ -18,7 +18,7 @@ public interface BusService {
     //boolean update(Bus bus);
     boolean delete(int id);
     Bus findById(int idBus);
-    int totalItem();
+    Long totalItem();
     List<Object> getListByCondition(String kw, int page);
     
     

@@ -8,8 +8,13 @@ package com.btl.repository.impl;
 import com.btl.pojos.Schedule;
 import com.btl.repository.ScheduleRepository;
 import java.util.List;
-import org.hibernate.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+//import org.hibernate.Query;
+import javax.persistence.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -58,13 +63,39 @@ public class ScheduleRepositoryImpl implements ScheduleRepository{
 
     @Override
     public boolean delete(Schedule schedule) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Transaction transaction = null;
+        try{
+            //delete
+            session.delete(schedule);
+            //delete thành công
+            return true;
+        }catch (Exception ex){
+            
+            System.err.println("Delete bus error" + ex.getMessage());
+            ex.printStackTrace();
+        }
+        
+        return false;    }
 
     @Override
     public Schedule findById(int id) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         return session.get(Schedule.class, id);        
+    }
+
+    @Override
+    public List<Schedule> getListSchedulesByIdRoute(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Schedule> query = builder.createQuery(Schedule.class);
+        Root root = query.from(Schedule.class);
+
+        query = query.where(builder.equal(root.get("route"), id));
+        
+        Query q = session.createQuery(query);
+
+        return q.getResultList(); 
     }
 
 

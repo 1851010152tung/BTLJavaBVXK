@@ -83,13 +83,24 @@ public class RouteServiceImpl implements RouteService{
     }
 
     @Override
-    public boolean delete(Route route) {
-        return this.routeRepository.delete(route);
+    public boolean delete(int id) {
+        Route r = this.findById(id);
+        return this.routeRepository.delete(r);
     }
 
     @Override
     public Route findById(int idRoute) {
         return this.routeRepository.findById(idRoute);
+    }
+
+    @Override
+    public Long totalItem() {
+        return this.routeRepository.totalItem();
+    }
+
+    @Override
+    public List<Object> getListByCondition(String kw, int page) {
+        return this.routeRepository.getListByCondition(kw, page);
     }
     
     

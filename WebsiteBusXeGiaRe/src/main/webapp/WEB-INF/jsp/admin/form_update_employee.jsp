@@ -77,13 +77,10 @@
                                                         <div class="item form-group">
                                                                 <label for="position" class="col-form-label col-md-3 col-sm-3 label-align">Chức vụ <span class="required">*</span> </label>
                                                                 <div class="col-md-6 col-sm-6 ">
-                                                                    <form:select id="heard" class="form-control" path="position" items="${positionList}">
-                                                                            <!--
-                                                                            <option value="">Chọn chức vụ...</option>
-                                                                            <option value="bookingclerk">Nhân viên bán vé</option>
-                                                                            <option value="driver">Tài xế</option>
-                                                                            -->
-                                                                    </form:select>                                                                        
+                                                                    <form:select id="heard" class="form-control" path="position">
+                                                                            <form:option value="Tài xế">Tài xế</form:option>
+                                                                            <form:option value="Nhân viên bán vé">Nhân viên bán vé</form:option>
+                                                                    </form:select>                                                                         
                                                                 </div>
                                                         </div>
 

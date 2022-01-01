@@ -640,6 +640,7 @@ body {
     /*********************************************************************************************
                                             
                                             DỊCH VỤ XE KHÁCH
+                                            TUYẾN XE PHỔ BIẾN
     
     **********************************************************************************************/
     
@@ -700,4 +701,97 @@ body {
   box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
 }
     
-    
+
+.packages .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.packages .box-container .box {
+    flex: 1 1 30rem;
+    border-radius: .5rem;
+    overflow: hidden;
+    box-shadow: 0 1rem 2rem rgb(0 0 0 / 10%);
+    max-width: 350px;
+}
+
+.packages .box-container .box .img-fluid {
+    height: 14rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.packages .box-container .box .content-text-booking {
+    padding: 2rem;
+}
+
+.packages .box-container .box .content-text-booking h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    line-height: 25px
+}
+
+.packages .box-container .box .content-text-booking h3 i {
+    color: var(--blue);
+}
+
+.packages .box-container .box .content-text-booking p {
+    font-size: 17px;
+    color: #666;
+    padding: 1rem 0;
+}
+
+.packages .box-container .box .content-text-booking .price {
+    font-size: 18px;
+    color: #333;
+}
+
+.btn-book {
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--blue);
+    color: #fff;
+    padding: .8rem 3rem;
+    border: .2rem solid var(--blue);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.packages{
+    padding: 2rem 9%;
+}
+
+
+.packages .box .label[data-v-7026b95e] {
+    color: #111;
+    margin: 8px 0 16px;
+    font-size: 15px;
+    font-weight: 500;
+    min-width: 200px;
+    height: 28px;
+    border-radius: 16px;
+    padding: 5px 12px;
+    display: inline-block;
+    background-color: rgba(99,114,128,.1);
+}
+
+.packages .box .label>.dot[data-v-7026b95e] {
+    display: inline-block;
+    width: 6px;
+    border-radius: 3px;
+    height: 6px;
+    opacity: .3;
+    margin: 3px 12px;
+    background-color: #000;
+}
+
+.packages .content-text-booking .fromto {
+    width: 28px;
+    height: 7px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 6px;
+}

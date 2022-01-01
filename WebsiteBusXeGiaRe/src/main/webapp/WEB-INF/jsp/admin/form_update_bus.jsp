@@ -98,6 +98,23 @@
                                     <form:input id="middle-name" class="form-control" type="text" name="no-seats" path="seatNumber" />
                                 </div>
                             </div>
+                            
+                  <div class="item form-group">
+                                <label for="employee" class="col-form-label col-md-3 col-sm-3 label-align">Tài xế <span class="required">*</span> </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <form:select  id="employee" class="form-control"  path="employee.idEmployee">
+
+                                        <c:forEach items="${employees}" var="e">
+                                            <c:if test="${e.position == 'Tài xế'}">
+                                            <option value="${e.idEmployee}">${e.firstName} ${e.lastName}</option>
+                                            </c:if>
+                                        </c:forEach>
+
+
+                                    </form:select>                                                                        
+                                </div>
+                            </div>              
+                                
                             <div class="item form-group">
                                 <label for="title" class="col-form-label col-md-3 col-sm-3 label-align">Tiêu đề </label>
                                 <div class="col-md-6 col-sm-6 ">

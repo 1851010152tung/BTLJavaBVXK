@@ -23,19 +23,18 @@ import org.springframework.stereotype.Service;
  *
  * @author Truc Lam
  */
-
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
-    
+
     @Autowired
     private UserRepository userRepository;
-    
+
     @Autowired
     private Cloudinary cloudinary;
-    
+
     @Override
     public List<Employee> getEmployees() {
         return this.employeeRepository.getEmployees();
@@ -46,52 +45,47 @@ public class EmployeeServiceImpl implements EmployeeService{
         //Hứng giá trị bus từ getMapping ở trên
         //Xử lý upload
         try {
-            if(employee.getIdEmployee()> 0) { //sua 
+            if (employee.getIdEmployee() > 0) { //sua 
                 if (employee.getFile().getBytes().length == 0) {
                     Employee b = this.employeeRepository.findById(employee.getIdEmployee());
                     employee.setImage(b.getImage());
-                }else
-                {
+                } else {
                     // Để hứng dữ liệu sau khi upload xong dùng Map
-                            Map r = this.cloudinary.uploader().upload(employee.getFile().getBytes(),
-                                    ObjectUtils.asMap("resource_type", "auto"));
+                    Map r = this.cloudinary.uploader().upload(employee.getFile().getBytes(),
+                            ObjectUtils.asMap("resource_type", "auto"));
 
-                            employee.setImage((String) r.get("secure_url"));
+                    employee.setImage((String) r.get("secure_url"));
                 }
-            }else{
-                if(employee.getFile().getBytes().length !=0) {
-                            // Để hứng dữ liệu sau khi upload xong dùng Map
-                            Map r = this.cloudinary.uploader().upload(employee.getFile().getBytes(),
-                                    ObjectUtils.asMap("resource_type", "auto"));
+            } else {
+                if (employee.getFile().getBytes().length != 0) {
+                    // Để hứng dữ liệu sau khi upload xong dùng Map
+                    Map r = this.cloudinary.uploader().upload(employee.getFile().getBytes(),
+                            ObjectUtils.asMap("resource_type", "auto"));
 
-                            employee.setImage((String) r.get("secure_url"));
-                            
-                            
-                            //CHUYỂN ROLE_USER THÀNH ROLE_DRIVER HOẶC ROLE_SELLER
-                            //lay user
-                            User u = this.userRepository.getUserByUsername(
-                                    SecurityContextHolder.getContext().getAuthentication().getName());
-                            //Set role
-                            if(employee.getPosition() == "Tài xế")
-                            {
-                                u.setUserRole("ROLE_DRIVER");
+                    employee.setImage((String) r.get("secure_url"));
 
-                            }
-                            else
-                            {
-                                u.setUserRole("ROLE_SELLER");
-                            }
-                            this.userRepository.updateUser(u);
-                            
-                            
-                            
-                }else
-                {
+                    
+                } else {
                     employee.setImage("");
                 }
+                
+                //CHUYỂN ROLE_USER THÀNH ROLE_DRIVER HOẶC ROLE_SELLER
+                    User u = this.userRepository.getUserByUsername(employee.getUsername());
+                    //Set role
+
+                    if (employee.getPosition().equals("Tài xế")) {
+                        u.setUserRole("ROLE_DRIVER");
+
+                    } else if (employee.getPosition().equals("Nhân viên bán vé")) {
+                        u.setUserRole("ROLE_SELLER");
+                    } else {
+                        u.setUserRole("ROLE_ADMIN");
+                    }
+                    this.userRepository.updateUser(u);
+
 
             }
-            
+
             //Gọi repository để lưu xuống
             return this.employeeRepository.addOrUpdate(employee);
 
@@ -105,14 +99,29 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public boolean delete(Employee employee) {
-        return this.employeeRepository.delete(employee);
-    }
-
-    @Override
     public Employee findById(int id) {
         return this.employeeRepository.findById(id);
     }
-    
-    
+
+    @Override
+    public boolean delete(int id) {
+        Employee e = this.employeeRepository.findById(id);
+        return this.employeeRepository.delete(e);
+    }
+
+    @Override
+    public Long totalItem() {
+        return this.employeeRepository.totalItem();
+    }
+
+    @Override
+    public List<Object> getListByCondition(String string, int i) {
+        return this.employeeRepository.getListByCondition(string, i);
+    }
+
+    @Override
+    public List<Employee> getEmployees(String kwString, int page) {
+        return this.employeeRepository.getEmployees(kwString, page); 
+    }
+
 }

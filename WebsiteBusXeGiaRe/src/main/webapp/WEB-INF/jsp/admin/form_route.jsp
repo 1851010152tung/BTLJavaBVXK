@@ -74,23 +74,13 @@
                                 </div>
                             </div>
                             
-<!--                            <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align">Thời gian di chuyển <span class="required">*</span>
-                                </label>-->
-
-<!--                                <div class="col-md-6 col-sm-6 ">
-
-                                        <!form:input path="journeyTime" type="time" cssClass="form-control" id="journeyTime" />
-                                                    <script>
-                                                            function timeFunctionLong(input) {
-                                                                    setTimeout(function() {
-                                                                            input.type = 'text';
-                                                                    }, 60000);
-                                                            }
-                                                    </script>
+                         <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="journeyTime">Thời gian di chuyển <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <form:input type="text" id="journeyTime" name="journeyTime" required="required" class="form-control" path="journeyTime"/>
                                 </div>
-                                                        
-                            </div>                                  -->
+                            </div>                                  
                                 
                                 
                             <div class="item form-group">
@@ -114,6 +104,21 @@
                                     <form:input id="ticketPrice" class="form-control" type="text" name="ticketPrice" path="ticketPrice"/>
                                 </div>
                             </div>
+                                
+                                
+                            <div class="item form-group">
+                                <label for="pickUpPoint" class="col-form-label col-md-3 col-sm-3 label-align">Điểm đón </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <form:input id="pickUpPoint" class="form-control" type="text" name="pickUpPoint" path="pickUpPoint"/>
+                                </div>
+                            </div>
+                                
+                            <div class="item form-group">
+                                <label for="dropOffPoint" class="col-form-label col-md-3 col-sm-3 label-align">Điểm trả </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <form:input id="dropOffPoint" class="form-control" type="text" name="dropOffPoint" path="dropOffPoint"/>
+                                </div>
+                            </div>    
                                 
                                 
                                 

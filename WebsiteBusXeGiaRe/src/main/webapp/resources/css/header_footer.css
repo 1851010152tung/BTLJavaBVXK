@@ -21,9 +21,7 @@ Small Window Size and Mobile Style
     margin: 10px 10px !important;
   }
 
-  h2 {
-    font-size: 15vw !important;
-  }
+ 
 }
 @media screen and (max-width: 550px) {
   .nav, .navbar {

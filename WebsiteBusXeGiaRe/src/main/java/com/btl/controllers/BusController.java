@@ -7,6 +7,7 @@ package com.btl.controllers;
 
 import com.btl.pojos.Bus;
 import com.btl.service.BusService;
+import com.btl.service.EmployeeService;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,10 +31,16 @@ public class BusController {
     @Autowired
     private BusService busService;
     
+    @Autowired
+    private EmployeeService employeeService;
+    
     @GetMapping("/admin/buses")
     public String list(Model model)
     {
+        
         model.addAttribute("bus", new Bus());
+        model.addAttribute("employees", this.employeeService.getEmployees() );
+
         return "bus";
     }
     
@@ -64,10 +71,14 @@ public class BusController {
             @RequestParam(required = false) Map<String, String> params)
     {
         String kw = params.getOrDefault("kw", null);
-        String page = params.getOrDefault("page", "1");
+        int page = Integer.parseInt(params.getOrDefault("page", "1")); // nếu có thì lấy biến page còn không thì trả về 1
         
         
-        model.addAttribute("buses", this.busService.getListByCondition(kw, Integer.parseInt(page)));
+        model.addAttribute("buses", this.busService.getListByCondition(kw, page));
+        model.addAttribute("size", this.busService.getListByCondition(kw, page).size());
+        model.addAttribute("counter", this.busService.totalItem());
+        model.addAttribute("employees", this.employeeService.getEmployees() );
+
         return "data_bus";
     }
     
@@ -94,22 +105,26 @@ public class BusController {
     public String listEdit(Model model,
             @RequestParam(name ="idBus", defaultValue ="0") int idBus)
     {
-        if(idBus > 0)
+        if(idBus > 0){
             model.addAttribute("bus", this.busService.findById(idBus));
-        else
+            model.addAttribute("employees", this.employeeService.getEmployees() );
+
+        }else
             model.addAttribute("bus", new Bus());
         return "update_bus";
     }
     
+    
+    //DELETE DATA BUSES
     
     @GetMapping("/admin/data_buses/delete")
     public String delete(Model model,
             @RequestParam(name = "idBus",defaultValue ="0")int idBus)
     {
         if(this.busService.delete(idBus))
-            model.addAttribute("message", "Xoa thanh cong");
+            model.addAttribute("message", "Xóa thành công");
         else 
-            model.addAttribute("message", "Xoa that bai");
+            model.addAttribute("message", "Xóa thất bại");
         
         return "redirect:/admin/data_buses";
     }

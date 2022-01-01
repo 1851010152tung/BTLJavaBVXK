@@ -97,29 +97,6 @@ public class BusRepositoryImpl implements BusRepository {
         return session.get(Bus.class, idBus);
     }
 
-//    @Override
-//    public int totalItem() {
-//        Session session = this.sessionFactory.getObject().getCurrentSession();
-//        Transaction transaction = null;
-//        try{
-//            transaction = session.beginTransaction();
-//            Query query = session.createQuery("SELECT count(*) FROM Bus");
-//            //query.setLong("idBus",idBus);
-//            Long bus = (long) query.uniqueResult();
-//            transaction.commit();
-//            return bus.intValue();
-//        }catch (Exception ex){
-//            if(transaction != null){
-//                transaction.rollback();
-//            }
-//            //System.err.println("Delete bus error" + ex.getMessage());
-//            ex.printStackTrace();
-//        }finally{
-//            session.flush();
-//            session.close();
-//        }
-//        return 0;
-//    }
 
     @Override
     public List<Object> getListByCondition(String kw, int page) {
@@ -127,40 +104,24 @@ public class BusRepositoryImpl implements BusRepository {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
         Root rootB = query.from(Bus.class);
-        Root rootR = query.from(Route.class);
+        //Root rootR = query.from(Route.class);
         Root rootE = query.from(Employee.class);
-        Root rootS = query.from(Schedule.class);
+        //Root rootS = query.from(Schedule.class);
         Root rootC = query.from(CategoryBus.class);
         
-        Predicate p = builder.equal(rootB.get("idBus"), rootR.get("bus"));
-        Predicate pc = builder.equal(rootC.get("id"), rootB.get("CateoryBus"));
-        Predicate pr = builder.equal(rootR.get("id"),rootS.get("route"));
-        Predicate pe = builder.equal(rootE.get("idEmployee"), rootS.get("employee"));
+        //Predicate p = builder.equal(rootB.get("idBus"), rootR.get("bus"));
+        Predicate pc = builder.equal(rootC.get("id"), rootB.get("categoryBus"));
+        //Predicate pr = builder.equal(rootR.get("id"),rootS.get("route"));
+        Predicate pe = builder.equal(rootE.get("idEmployee"), rootB.get("employee"));
         
         query.multiselect(rootB.get("idBus"),rootB.get("busName"),rootB.get("numberPlate"),rootB.get("manufacturer"),rootC.get("name"),rootB.get("seatNumber"),rootB.get("title"),rootB.get("description"),rootB.get("image"),
-                rootR.get("id"),rootR.get("departure"),rootR.get("destination"),rootR.get("distance"),rootR.get("ticketPrice"),rootR.get("imageDeparture"),rootR.get("imageDestination"),
-                rootE.get("idEmployee"),rootE.get("firstName"),rootE.get("lastName"),rootE.get("phone"),rootE.get("username"),rootR.get("password"),rootR.get("email"),rootR.get("gender"),rootE.get("birthday"),rootE.get("position"),rootE.get("image"),
-                rootS.get("id"),rootS.get("departureDate"),rootS.get("destinationDate"));
+                //rootR.get("id"),rootR.get("departure"),rootR.get("destination"),rootR.get("distance"),rootR.get("ticketPrice"),
+                rootE.get("idEmployee"),rootE.get("firstName"),rootE.get("lastName"),rootE.get("phone"),rootE.get("username"),rootE.get("email"),rootE.get("gender"),rootE.get("birthday"),rootE.get("position"),rootE.get("image"));
+                //rootS.get("id"),rootS.get("departureDate"),rootS.get("destinationDate"));
         if(kw!=null)
         {
-            if(kw.contains("-"))
-            {
-                String[] s = kw.split("-");
-                if(Integer.parseInt(s[0])==0 && Integer.parseInt(s[1])==0)
-                {
-                    Predicate p1 = builder.equal(rootR.get("ticketPrice").as(BigDecimal.class), 0);
-                    query = query.where(builder.and(p,pc,pe,pr,p1));
-                }else{
-                    Predicate p1 = builder.between(rootR.get("ticketPrice").as(BigDecimal.class), 
-                            Integer.parseInt(s[0]), Integer.parseInt(s[1]));
-                    query = query.where(builder.and(p,pc,pe,pr,p1));
-                }
-            }else if(kw.equals("1"))
-            {
-                query = query.where(builder.and(p,pc,pr,pe, builder.equal(rootR.get("now"), Integer.parseInt(kw))));
-                
-            }else
-            {
+            
+           
                 Predicate p1 = builder.like(rootB.get("busName").as(String.class),
                         String.format("%%s%%", kw));
                 Predicate p2 = builder.like(rootE.get("firstName").as(String.class), 
@@ -170,23 +131,15 @@ public class BusRepositoryImpl implements BusRepository {
                 //Loai ghe
                 Predicate p4 = builder.like(rootC.get("name").as(String.class), 
                         String.format("%%s%%", kw));
-                Predicate p5 = builder.like(rootR.get("departure").as(String.class), 
-                        String.format("%%s%%", kw));
-                Predicate p6 = builder.like(rootR.get("destination").as(String.class), 
-                        String.format("%%s%%", kw));
-                Predicate p7 = builder.like(rootR.get("ticketPrice").as(String.class), 
-                        String.format("%%s%%", kw));
-                Predicate p8 = builder.like(rootS.get("departureDate").as(String.class), 
-                        String.format("%%s%%", kw));
-                Predicate p9 = builder.like(rootS.get("destinationDate").as(String.class), 
-                        String.format("%%s%%", kw));
-                query = query.where(builder.and(builder.or(p1,p2,p3,p4,p5,p6,p7,p8,p9),p,pr,pe,pc));
+
+//                
+                query = query.where(builder.and(builder.or(p1,p2,p3,p4),pe,pc));
             
-            }
+           
            
             
         }else{
-            query = query.where(builder.and(p,pc,pe,pr));
+            query = query.where(builder.and(pc,pe));
             
         }
         query = query.orderBy(builder.asc(rootB.get("idBus")));
@@ -195,8 +148,9 @@ public class BusRepositoryImpl implements BusRepository {
         
 
         //Phan trang
-        int maxPage = 10;
+        int maxPage = 6;
         q.setMaxResults(maxPage);
+        //Vị trí bắt đầu
         q.setFirstResult((page -1 )* maxPage);
         return q.getResultList();
 
@@ -204,7 +158,9 @@ public class BusRepositoryImpl implements BusRepository {
     }
 
     @Override
-    public int totalItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public long totalItem() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("SELECT COUNT(*) FROM Bus");
+        return Long.parseLong(q.getSingleResult().toString());
     }
 }

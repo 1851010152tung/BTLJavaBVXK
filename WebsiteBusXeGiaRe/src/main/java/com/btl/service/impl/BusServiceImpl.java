@@ -91,8 +91,9 @@ public class BusServiceImpl implements BusService {
         return this.busRepository.findById(l);
     }
 
+    //Trả ra số lượng item
     @Override
-    public int totalItem() {
+    public Long totalItem() {
         return this.busRepository.totalItem();
     }
 

@@ -67,14 +67,26 @@ public class UserRepositoryImpl implements UserRepository {
     public boolean updateUser(User user) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         try{
-            session.update(user);
+            
+            //UPDATE USER ROLE
+            if(!user.getUserRole().isEmpty()){
+                Query q = session.createQuery("UPDATE User SET userRole=:ul WHERE id=:id");
+                q.setParameter("ul", user.getUserRole());
+                q.setParameter("id", user.getId());
+                q.executeUpdate();
+            //session.update(user);
             return true;
+            }
         }catch (HibernateException ex){
             System.err.println(ex.getMessage());
         
         } 
         return false;
     }
+    
+    
+    
+    
 
     @Override
     public User getUserByUsername(String username) {

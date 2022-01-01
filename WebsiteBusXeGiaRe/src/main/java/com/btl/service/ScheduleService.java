@@ -15,7 +15,10 @@ import java.util.List;
 public interface ScheduleService {
     List<Schedule> getSchedules();
     boolean addOrUpdate(Schedule schedule);
-    boolean delete(Schedule schedule);
+    boolean delete(int id);
     Schedule findById(int id);
     
+    
+    List<Schedule> getListSchedulesByIdRoute(int id);
+
 }

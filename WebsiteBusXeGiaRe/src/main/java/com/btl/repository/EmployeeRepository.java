@@ -18,5 +18,10 @@ public interface EmployeeRepository {
     boolean delete(Employee employee);
     Employee findById(int idEmployee);
    
+    List<Object> getListByCondition(String kw, int page);
+    
+    List<Employee> getEmployees(String kw,int page);
+    
+    long totalItem();
 
 }

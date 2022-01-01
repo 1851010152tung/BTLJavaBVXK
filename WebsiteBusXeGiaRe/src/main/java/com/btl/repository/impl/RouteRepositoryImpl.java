@@ -5,11 +5,18 @@
  */
 package com.btl.repository.impl;
 
+import com.btl.pojos.Bus;
+import com.btl.pojos.CategoryBus;
 import com.btl.pojos.Route;
 import com.btl.repository.RouteRepository;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -55,13 +62,81 @@ public class RouteRepositoryImpl implements RouteRepository{
 
     @Override
     public boolean delete(Route route) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Transaction transaction = null;
+        try{
+            //delete
+            session.delete(route);
+            //delete thành công
+            return true;
+        }catch (Exception ex){
+            
+            System.err.println("Delete route error" + ex.getMessage());
+            ex.printStackTrace();
+        }
+        
+        return false;
     }
 
     @Override
     public Route findById(int idRoute) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         return session.get(Route.class, idRoute);
+    }
+
+    @Override
+    public long totalItem() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("SELECT COUNT(*) FROM Route");
+        return Long.parseLong(q.getSingleResult().toString());    
+    }
+
+    @Override
+    public List<Object> getListByCondition(String kw, int page) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        Root rootB = query.from(Bus.class);
+        Root rootR = query.from(Route.class);
+        Root rootC = query.from(CategoryBus.class);
+
+        Predicate p = builder.equal(rootB.get("idBus"), rootR.get("bus"));
+        Predicate pc = builder.equal(rootC.get("id"), rootB.get("categoryBus"));
+        
+        query.multiselect(rootR.get("id"),rootB.get("idBus"),rootB.get("busName"),rootB.get("numberPlate"),rootC.get("name"),rootB.get("seatNumber"),
+                rootR.get("departure"),rootR.get("destination"), rootR.get("journeyTime"),rootR.get("distance"),rootR.get("ticketPrice"),
+                rootR.get("imageDeparture"),rootR.get("imageDestination"),rootR.get("pickUpPoint"),rootR.get("dropOffPoint"));
+        
+
+        if(kw!=null)
+        {
+            Predicate p1 = builder.like(rootB.get("busName").as(String.class),
+                        String.format("%%s%%", kw));
+            //Loai ghe
+            Predicate p4 = builder.like(rootC.get("name").as(String.class), 
+                        String.format("%%s%%", kw));
+                
+            Predicate p5 = builder.like(rootR.get("departure").as(String.class), 
+                        String.format("%%s%%", kw));
+            Predicate p6 = builder.like(rootR.get("destination").as(String.class), 
+                        String.format("%%s%%", kw));
+            
+            query = query.where(builder.and(builder.or(p1,p4,p5,p6),p,pc));
+        
+        }else{
+            query = query.where(builder.and(p,pc));
+        }
+        //query = query.orderBy(builder.asc(rootR.get("id")));
+        
+        Query q = session.createQuery(query);
+        
+        //Phan trang
+        int maxPage = 6;
+        q.setMaxResults(maxPage);
+        //Vị trí bắt đầu
+        q.setFirstResult((page -1 )* maxPage);
+        return q.getResultList();
+        
     }
     
 }

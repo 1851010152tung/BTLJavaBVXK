@@ -8,8 +8,10 @@ package com.btl.controllers;
 import com.btl.pojos.Bus;
 import com.btl.pojos.Employee;
 import com.btl.service.EmployeeService;
+import com.btl.service.UserService;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,8 @@ public class EmployeeController {
     
     @Autowired
     private EmployeeService employeeService;
+    @Autowired
+    private UserService userService;
     
     @GetMapping("/admin/employees")
     public String list(Model model)
@@ -38,6 +42,7 @@ public class EmployeeController {
         
         List<String> positionList = Arrays.asList("Nhân viên bán vé","Tài xế");
         model.addAttribute("positionList", positionList);
+        model.addAttribute("user", this.userService.getUserByUsername("taixe2"));
         
         return "employee";
     }
@@ -65,11 +70,18 @@ public class EmployeeController {
     }
     
     
-   //EDIT BUS
+   //EDIT EMPLOYEE
     @RequestMapping("/admin/data_employees")
-    public String indexUpdate(Model model)
+    public String indexUpdate(Model model, 
+            @RequestParam(required = false) Map<String, String> params)
     {
-        model.addAttribute("employees", this.employeeService.getEmployees());
+        String kw = params.getOrDefault("kw", null);
+        int page = Integer.parseInt(params.getOrDefault("page", "1")); // nếu có thì lấy biến page còn không thì trả về 1
+        
+        
+        model.addAttribute("employees", this.employeeService.getEmployees(kw,page));
+        model.addAttribute("size", this.employeeService.getEmployees(kw, page).size());
+        model.addAttribute("counter", this.employeeService.totalItem());        
         return "data_employee";
     }
     
@@ -99,13 +111,22 @@ public class EmployeeController {
         if(idEmployee > 0)
         {
             model.addAttribute("employee", this.employeeService.findById(idEmployee));
-        List<String> positionList = Arrays.asList("Nhân viên bán vé","Tài xế");
-        model.addAttribute("positionList", positionList);
+
         }else
             model.addAttribute("employee", new Employee());
         return "update_employee";
     }
      
     
+    //DELETE DATA EMPLOYEE
+    public String delete(Model model,
+            @RequestParam(name = "idEmployee", defaultValue = "0")int idEmployee)
+    {
+        if(this.employeeService.delete(idEmployee))
+            model.addAttribute("message","Xóa thành công!!");
+        else
+            model.addAttribute("message", "Xóa thất bại!!");
+        return "redirect:/admin/data_employees";
+    }
     
 }

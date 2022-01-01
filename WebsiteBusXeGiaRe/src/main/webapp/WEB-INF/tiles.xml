@@ -32,6 +32,11 @@ and open the template in the editor.
          <put-attribute name="content" value="/WEB-INF/jsp/home_routine.jsp"/>
     </definition>
     
+    <definition name="list_schedule" extends ="baseLayout">
+        <put-attribute name ="title" value ="Đặt vé" />
+         <put-attribute name="content" value="/WEB-INF/jsp/list_schedule.jsp"/>
+    </definition>
+    
     <definition name="login" template = "/WEB-INF/jsp/login.jsp" >
         <put-attribute name ="title" value ="Đăng nhập" />
          <put-attribute name="content" value="/WEB-INF/jsp/login.jsp"/>
@@ -102,10 +107,18 @@ and open the template in the editor.
          <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/data_route.jsp"/>
     </definition>
     <definition name="update_route" extends ="adminBaseLayout">
-        <put-attribute name ="title" value ="Cập nhật nhân viên" />
+        <put-attribute name ="title" value ="Cập nhật tuyến xe" />
          <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/form_update_route.jsp"/>
     </definition>
     
-        
+                <!--Lịch chạy-->
+    <definition name="data_schedule" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Bảng dữ liệu lịch chạy" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/data_schedule.jsp"/>
+    </definition>
+    <definition name="update_schedule" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Cập nhật lịch chạy" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/form_update_schedule.jsp"/>
+    </definition>        
                 
 </tiles-definitions>

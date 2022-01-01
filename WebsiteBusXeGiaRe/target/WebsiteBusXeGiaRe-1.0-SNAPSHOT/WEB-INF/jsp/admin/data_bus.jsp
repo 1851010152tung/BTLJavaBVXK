@@ -19,12 +19,14 @@
                             
                         <div class="title_right">
                             <form action="">
-                                
+                        
                                 <div class="col-md-5 col-sm-5  form-group pull-right top_search">
                                         <div class="input-group">
                                                 <input type="text" class="form-control" name="kw" placeholder="Tìm kiếm chuyến xe...">
                                                 <span class="input-group-btn">
-                                                        <button class="btn btn-default" type="button">Tìm!</button>
+                                                        <button class="btn btn-default" type="submit">
+                                                            <i aria-hiden ="true"></i>
+                                                            Tìm!</button>
                                                 </span>
                                         </div>
                                 </div>
@@ -64,15 +66,14 @@
                                   <table class="table table-striped jambo_table bulk_action">
                                     <thead>
                                       <tr class="headings">
-<!--                                        <th>
-                                          <input type="checkbox" id="check-all" class="flat">
-                                        </th>-->
+
                                         <th class="column-title" id="col-num">Id </th>
                                         <th class="column-title">Tên xe </th>
                                         <th class="column-title">Biển số xe </th>
                                         <th class="column-title">Thương hiệu </th>
                                         <th class="column-title">Loại xe </th>
-                                        <th class="column-title" id="col-num">Số chỗ </th>                                        
+                                        <th class="column-title" id="col-num">Số chỗ </th>
+                                        <th class="column-title">Tài xế </th>                                        
                                         <th class="column-title">Tiêu đề </th>
                                         <th class="column-title" id="description">Mô tả </th>
                                         <th class="column-title" id="col-image">Hình ảnh </th>                                        
@@ -87,31 +88,30 @@
                                     <tbody>
                                         <c:forEach var="b" items="${buses}">
                                       <tr class="even pointer">
-<!--                                        <td class="a-center ">
-                                          <input type="checkbox" class="flat" name="table_records">
-                                        </td>-->
-                                        <td class=" ">${b.idBus}</td>
-                                        <td class=" ">${b.busName}</td>
-                                        <td class=" ">${b.numberPlate}</td>
-                                        <td class=" ">${b.manufacturer}</td>
-                                        <td class="">${b.categoryBus.name}</td>                                        
-                                        <td class=" ">${b.seatNumber}</td>
-                                        <td class=" ">${b.title}</td>
-                                        <td class=" ">${b.description}</td>
+
+                                        <td class=" ">${b[0]}</td>
+                                        <td class=" ">${b[1]}</td>
+                                        <td class=" ">${b[2]}</td>
+                                        <td class=" ">${b[3]}</td>
+                                        <td class=" ">${b[4]}</td>
+                                        <td class=" ">${b[5]}</td>
+                                        <td class=" ">${b[10]} ${b[11]}</td>
+                                        <td class=" ">${b[6]}</td>
+                                        <td class=" ">${b[7]}</td>
+
                                         <td>
-                                            <c:if test="${b.image != null && b.image.startsWith('https') == true}">
-                                                <img class="img-fluid" src="${b.image}" alt="${b.busName}"/>
-                                            </c:if>
+                                                <img class="img-fluid" src="${b[8]}" alt="${b[1]}"/>
+                                           
 
                                         </td>
-                                        
 
                                         <td class=" last a-right a-right ">
                                             <div class="btn-edit">
-                                                <a class="btn btn-default" href=" <c:url value="data_buses/update?idBus=${b.idBus}" />"><span class="glyphicon glyphicon-pencil"></span></a>
-                                                <a class="btn btn-default" href=" <c:url value="data_buses/delete?idBus=${b.idBus}" />"><span class="glyphicon glyphicon-trash"></span></a>                                                
+                                                <a class="btn btn-default" href=" <c:url value="data_buses/update?idBus=${b[0]}" />"><span class="glyphicon glyphicon-pencil"></span></a>
+                                                <a class="btn btn-default" href=" <c:url value="data_buses/delete?idBus=${b[0]}" />"><span class="glyphicon glyphicon-trash"></span></a>                                                
                                             </div>
-                                        </td>
+                                        </td>                                        
+                                                                             
                                       </tr>
                                         </c:forEach>
 
@@ -119,7 +119,19 @@
                                   </table>
                                 </div>
 
-
+                                  <div class="pagination-table">
+                                      <!--$!{counter}-->
+                                      <ul class="pagination">
+                                          <c:forEach  begin="1" end="${Math.ceil(counter/6)}" var="i">
+                                              
+                                          <li class="page-item"><a class="page-link" href="<c:url value="/admin/data_buses"/>?page=${i}">${i}</a></li>
+                                              
+                                          </c:forEach>
+                                       
+                                        </ul>
+                                          
+                                  </div>    
+                                  
                               </div>
                             </div>
                           </div>

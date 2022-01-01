@@ -13,13 +13,13 @@
     
     <div class="page-title">
                         <div class="title_left">
-                                <h3>BẢNG DỮ LIỆU TUYẾN XE</h3>
+                                <h3>BẢNG DỮ LIỆU LỊCH CHẠY</h3>
                         </div>
 
                         <div class="title_right">
                                 <div class="col-md-5 col-sm-5  form-group pull-right top_search">
                                         <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Search for...">
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm lịch chạy...">
                                                 <span class="input-group-btn">
                                                         <button class="btn btn-default" type="button">Go!</button>
                                                 </span>
@@ -33,7 +33,7 @@
                     <div class="col-md-12 col-sm-12  " id="table-buses">
                             <div class="x_panel">
                               <div class="x_title">
-                                <h2>Cập nhật<small>tuyến xe</small></h2>
+                                <h2>Cập nhật<small>lịch trình</small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                   </li>
@@ -61,11 +61,10 @@
                                           <input type="checkbox" id="check-all" class="flat">
                                         </th>-->
                                         <th class="column-title" id="col-num">Id </th>
-                                        <th class="column-title">Điểm khởi hành </th>
-                                        <th class="column-title">Điểm đến </th>
+                                        <th class="column-title">Tuyến xe </th>
                                         <th class="column-title">Ngày khởi hành </th>
                                         <th class="column-title">Ngày về </th>
-                                        <th class="column-title">Tài xế </th>                                        
+                                        <th class="column-title">Giờ khởi hành</th>
                                         <th class="column-title">Chuyến xe </th>                                       
                                    
                                         
@@ -84,20 +83,19 @@
                                           <input type="checkbox" class="flat" name="table_records">
                                         </td>-->
                                         <td class=" ">${s.id}</td>
-                                        <td class=" ">${s.route.departure}</td>
-                                        <td class=" ">${s.route.destination}</td>
+                                        <td class=" ">${s.route.departure} - <br>  ${s.route.destination}</td>
                                         <td class=" ">${s.departureDate}</td>
-                                        <td class=" ">${s.destinationDate}</td>                                        
-                                        <td class=" ">${s.employee.positon}</td>
-                                        <td class=" ">${s.bus.busName} - ${s.bus.categoryBus.name}</td>
+                                        <td class=" ">${s.destinationDate}</td>
+                                        <td class=" ">${s.departureTime}</td>                                        
+                                        <td class=" ">${s.route.bus.busName} - ${s.route.bus.categoryBus.name}</td>
                                        
                                         
                                         
 
                                         <td class=" last a-right a-right ">
                                             <div class="btn-edit">
-                                                <a class="btn btn-default" href=" <c:url value="data_routes/update?id=${s.id}" />"><span class="glyphicon glyphicon-pencil"></span></a>
-                                                <a class="btn btn-default" href=""><span class="glyphicon glyphicon-trash"></span></a>                                                
+                                                <a class="btn btn-default" href=" <c:url value="data_schedules/update?id=${s.id}" />"><span class="glyphicon glyphicon-pencil"></span></a>
+                                                <a class="btn btn-default" href="<c:url value="data_schedules/delete?id=${s.id}"/>"><span class="glyphicon glyphicon-trash"></span></a>                                                
                                             </div>
                                         </td>
                                       </tr>

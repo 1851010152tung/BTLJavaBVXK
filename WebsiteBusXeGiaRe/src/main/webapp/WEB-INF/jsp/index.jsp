@@ -214,8 +214,7 @@
        </div>        
         
        
-        <!--DỊCH VỤ XE KHÁCH-->
-         
+        <!--DỊCH VỤ XE KHÁCH-->         
                 
       <section class="services" id="services">
 
@@ -267,7 +266,46 @@
 
 </section> 
                 
-          
+      
+        
+<!-- packages section starts  -->
+
+<section class="packages" id="packages">
+
+    <h1 class="heading">
+        <span>Đ</span>
+        <span>Ặ</span>
+        <span>T</span>
+        <span>V</span>
+        <span>É</span>
+
+    </h1>
+
+    <div class="box-container">
+
+        <c:forEach var="r" items="${routes}">
+        <div class="box">
+            <c:if test="${r.bus.image != null && r.bus.image.startsWith('https') == true}">
+                <img class="img-fluid" src="${r.bus.image}" alt="${r.bus.busName}"/>
+            </c:if>
+            <div class="content-text-booking">
+                <h3>${r.departure} <img class="fromto" alt="fromto" width="28" height="7" src="<c:url value="/img/fromto.png"/>" data-v-7026b95e="">  ${r.destination}</h3>
+                <p>Nhà xe: ${r.bus.busName}</p>
+                
+                <div class="label" data-v-7026b95e="">
+                    ${r.bus.categoryBus.name} <span class="dot" data-v-7026b95e=""></span>
+                    <span data-v-7026b95e="">Còn ${r.bus.seatNumber} chỗ</span> 
+                </div>
+                <p>${r.distance} km</p>
+                <div class="price">${r.ticketPrice} VNĐ</div>
+                <a href="#" class="btn-book">Đặt vé</a>
+            </div>
+        </div>
+        </c:forEach>
+    </div>
+    
+</section>
+
           
     </body>
 </html>

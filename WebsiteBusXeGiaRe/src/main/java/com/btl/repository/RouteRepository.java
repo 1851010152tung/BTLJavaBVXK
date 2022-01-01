@@ -18,4 +18,8 @@ public interface RouteRepository {
     boolean addOrUpdate(Route route);
     boolean delete(Route route);
     Route findById(int idRoute);
+    
+    long totalItem();
+    
+    List<Object> getListByCondition(String kw, int page);
 }

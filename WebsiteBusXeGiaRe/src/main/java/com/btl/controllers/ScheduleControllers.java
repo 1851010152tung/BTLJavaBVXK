@@ -8,9 +8,12 @@ package com.btl.controllers;
 import com.btl.pojos.Bus;
 import com.btl.pojos.Schedule;
 import com.btl.service.BusService;
+import com.btl.service.CategoryBusService;
 import com.btl.service.EmployeeService;
 import com.btl.service.RouteService;
 import com.btl.service.ScheduleService;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,10 +40,14 @@ public class ScheduleControllers {
    
     @Autowired
     private BusService busService;
-
+    
+    @Autowired
+    private CategoryBusService categoryBusService;
     
     @Autowired
     private RouteService routeService;
+
+
     
     @GetMapping("/admin/schedules")
     public String list(Model model)
@@ -49,6 +56,10 @@ public class ScheduleControllers {
         model.addAttribute("employees", this.employeeService.getEmployees() );
         model.addAttribute("routes", this.routeService.getRoutes());
         model.addAttribute("bus", this.busService.getBuses());
+        
+        List<String> departureTimeList = Arrays.asList("01:00","03:00","05:00","07:00","09:00","11:00","13:00","15:00","17:00","19:00","21:00","23:00");
+        model.addAttribute("departureTimeList", departureTimeList);
+        
         return "schedule";
     }
     
@@ -78,6 +89,10 @@ public class ScheduleControllers {
     public String indexUpdate(Model model)
     {
         model.addAttribute("schedules", this.scheduleService.getSchedules());
+        model.addAttribute("employees", this.employeeService.getEmployees() );
+        model.addAttribute("routes", this.routeService.getRoutes());
+        model.addAttribute("buses", this.busService.getBuses());
+        model.addAttribute("categoryBuses", this.categoryBusService.getCategoryBuses());
         return "data_schedule";
     }
     
@@ -102,8 +117,7 @@ public class ScheduleControllers {
     
     @GetMapping("/admin/data_schedules/update")
     public String listEdit(Model model,
-            @RequestParam(name ="id", defaultValue ="0") int id)
-    {
+            @RequestParam(name ="id", defaultValue ="0") int id)    {
         if(id > 0)
             model.addAttribute("schedule", this.scheduleService.findById(id));
         else
@@ -111,8 +125,18 @@ public class ScheduleControllers {
         return "update_schedule";
     }
     
-    
-    
+    //DELETE DATA_SCHEDULE
+    @GetMapping("/admin/data_schedules/delete")
+    public String delete(Model model,
+            @RequestParam(name = "id",defaultValue ="0")int id)
+    {
+        if(this.scheduleService.delete(id))
+            model.addAttribute("message", "Xóa thành công");
+        else 
+            model.addAttribute("message", "Xóa thất bại");
+        
+        return "redirect:/admin/data_schedules";
+    }
     
     
     

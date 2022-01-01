@@ -58,3 +58,8 @@ thead#header-table{
     background-color: #3E74FF;
     color: whitesmoke
 }
+
+.time-detail[data-v-62c8fe4c] {
+    color: var(--blue);
+    background-color: #f2f2f2 
+}

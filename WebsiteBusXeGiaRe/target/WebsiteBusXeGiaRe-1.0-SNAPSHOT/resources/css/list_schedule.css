@@ -105,9 +105,10 @@ and open the template in the editor.
 }
 
 .ticket-content-info {
-    font-weight: 500;
+    margin-top: -10px;
+    font-weight: 700;
     position: relative;
-    line-height: 1.25;
+    line-height: 1.0;
 }
 
 .ticket-content-info.pickup-time, .ticket-content-info.dropoff-time {
@@ -116,6 +117,7 @@ and open the template in the editor.
     display: inline;
     color: var(--blue);
     border: 1px solid var(--blue);
+    font-weight: 500;
 }
 
 .ticket-content-from > div, .ticket-content-to > div, .ticket-content-way > div, .ticket-content-booking-date > div {
@@ -179,7 +181,7 @@ and open the template in the editor.
 
 .title-route h2
 {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     font-weight: 700;
     font-size: 20px;
 }

@@ -15,11 +15,17 @@
             <li class="nav-item"><a href="<c:url value="/home_routine" />">LỊCH TRÌNH</a></li>
             <li class="nav-item"><a href="#tintuc">TIN TỨC</a></li>
             <li class="nav-item"><a href="#vechungtoi">VỀ CHÚNG TÔI</a></li>
+            <li><a href="<c:url value="/cart" ></c:url>" id="cart"><i class="fa fa-shopping-cart"></i><span class="badge" id="quantityTicket">${cartCounter}</span></a></li>
+        
         </ul>
       </nav>
       
+              
+        
+    <div class="navbar-right">
       
-      <c:if test="${pageContext.request.userPrincipal.name == null}">
+        
+        <c:if test="${pageContext.request.userPrincipal.name == null}">
           <div class="button">
           <a class="sign-in" href="<c:url value="/login" />"> <button>ĐĂNG NHẬP</button></a>
           </div>
@@ -30,6 +36,9 @@
           <a class="user-name-sign-in" href="<c:url value="/" />"><button>${pageContext.request.userPrincipal.name}</button></a>
           </div>
       </c:if>
+      
+    </div>
+            
       
 
     </header>

@@ -5,6 +5,8 @@
  */
 package com.btl.configs;
 
+import com.btl.configs.handlers.LoginSuccessHandler;
+import com.btl.configs.handlers.LogoutHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,6 +17,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -32,9 +36,25 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private UserDetailsService userDetailsService;
     
+    @Autowired
+    private AuthenticationSuccessHandler loginSuccessHandler;
+    
+    @Autowired
+    private LogoutSuccessHandler logoutHandler;
+    
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+    
+    @Bean
+    public AuthenticationSuccessHandler loginSuccessHandler(){
+        return new LoginSuccessHandler();
+    }
+    
+    @Bean
+    public LogoutSuccessHandler logoutHandler(){
+        return new LogoutHandler();
     }
 
     //Cung cấp thông tin để chứng thực
@@ -55,8 +75,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
         //http.formLogin().loginPage("/register")
         http.formLogin().defaultSuccessUrl("/admin/employees") //Trường hợp thành công
                 .failureUrl("/login?error"); //Trường hợp thất bại - có lỗi xảy ra
+        http.formLogin().successHandler(this.loginSuccessHandler);
         
-        //http.logout().logoutSuccessUrl("/login");
+        
+        http.logout().logoutSuccessUrl("/login");
+        http.logout().logoutSuccessHandler(this.logoutHandler);
         
         //Từ chối truy cập
         http.exceptionHandling().accessDeniedPage("/login?accessDenied");

@@ -20,5 +20,7 @@ public interface RouteService {
     
     Long totalItem();
     List<Object> getListByCondition(String kw, int page );
-    
+ 
+    List<Route> getRoutes(String kw, int page);
+
 }

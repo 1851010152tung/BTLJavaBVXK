@@ -5,16 +5,19 @@
  */
 package com.btl.controllers;
 
+import com.btl.pojos.Cart;
 import com.btl.pojos.User;
 import com.btl.service.BusService;
 import com.btl.service.CategoryBusService;
 import com.btl.service.EmployeeService;
 import com.btl.service.RouteService;
 import com.btl.service.ScheduleService;
+import com.btl.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.Query;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -56,9 +59,11 @@ public class HomeController {
             
     
     @ModelAttribute
-    public void commAttr(Model model){
+    public void commAttr(Model model, HttpSession session){
         model.addAttribute("categoryBuses", this.categoryBusService.getCategoryBuses());
-                model.addAttribute("buses", this.busService.getBuses());
+        model.addAttribute("buses", this.busService.getBuses());
+        model.addAttribute("schedules", this.scheduleService.getSchedules());
+        model.addAttribute("cartCounter", Utils.countCart((Map<Integer, Cart>) session.getAttribute("cart")));
 
     }
     
@@ -68,13 +73,18 @@ public class HomeController {
     }
     */
     
-    @RequestMapping("/") //HTTP GET
+    @GetMapping("/") //HTTP GET
     @Transactional
-    public String index(Model model){
+    public String index(Model model,
+            @RequestParam(required = false) Map<String, String> params,
+            HttpSession session){
         model.addAttribute("bus", this.busService.getBuses());
         model.addAttribute("employee", this.employeeService.getEmployees() );
         model.addAttribute("routes", this.routeService.getRoutes());
+        model.addAttribute("schedules", this.scheduleService.getSchedules());
         //s.close();
+        model.addAttribute("currentUser", session.getAttribute("currentUser"));
+
         return "index";
     }
     
@@ -82,12 +92,10 @@ public class HomeController {
     //LỊCH TRÌNH
     @RequestMapping("/home_routine") //HTTP GET
     @Transactional
-    public String homeRoutine(Model model
-                        ){
+    public String homeRoutine(Model model){
         model.addAttribute("bus", this.busService.getBuses());
         model.addAttribute("routes", this.routeService.getRoutes());
         model.addAttribute("schedules", this.scheduleService.getSchedules());
-       
         return "home_routine";
         
         
@@ -100,17 +108,24 @@ public class HomeController {
     @Transactional
     public String listSchedule(Model model,
             @RequestParam(name ="id", defaultValue ="0") int id) {
-//        model.addAttribute("bus", this.busService.getBuses());
-//        model.addAttribute("routes", this.routeService.getRoutes());
-//        model.addAttribute("schedules", this.scheduleService.getSchedules());
-//        
-//        
-        model.addAttribute("schedules",this.scheduleService.getListSchedulesByIdRoute(id));   
+     
+        model.addAttribute("schedules",this.scheduleService.getListSchedulesByIdRoute(id));
+        model.addAttribute("size",this.scheduleService.getListSchedulesByIdRoute(id).size());   
+
         //s.close();
         return "list_schedule";
     }
     
-    
+     //CHI TIẾT CHUYẾN XE
+    @RequestMapping("/bus_detail") //HTTP GET
+    @Transactional
+    public String busDetail(Model model) {
+           model.addAttribute("bus", this.busService.getBuses());
+          
+
+        //s.close();
+        return "bus_detail";
+    }
     
    
 }

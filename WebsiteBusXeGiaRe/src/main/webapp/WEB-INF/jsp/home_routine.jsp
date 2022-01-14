@@ -23,12 +23,26 @@
 <div>
     
         <div class="table-responsive" >
+            <div class="title_right">
+                                <form action="">
+                                
+                                <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                                        <div class="input-group">
+                                                <input type="text" class="form-control" name="kw" placeholder="Tìm kiếm nhân viên...">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" value="Search" type="submit">Tìm!</button>
+                                                </span>
+                                        </div>
+                                </div>
+                                
+                            </form>
+                        </div>
             <div class="flex-center">
           <table class="table table-striped jambo_table bulk_action">
               <thead id="header-table">
               <tr class="headings">
                 <th class="column-title">Tuyến xe</th>
-                <th class="column-title">Loại xe</th>
+<!--                <th class="column-title">Loại xe</th>-->
                 <th class="column-title">Quãng đường</th>
                 <th class="column-title">Thời gian hành trình</th>
                 <th class="column-title">Giá vé</th>                                        
@@ -57,7 +71,7 @@
               <tr class="headings">
 
                 <td class="column-title ">${r.destination}</td>
-                <td class="column-title ">${r.bus.categoryBus.name}</td>
+<!--                <td class="column-title ">$!{r.bus.categoryBus.name}</td>-->
                 <td class="column-title ">${r.distance} km</td>
                 <td class="column-title ">${r.journeyTime}</td>
                 <td class="column-title ">${r.ticketPrice}</td>                                        

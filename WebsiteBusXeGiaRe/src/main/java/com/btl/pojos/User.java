@@ -7,12 +7,15 @@
 
 package com.btl.pojos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -60,6 +63,12 @@ public class User implements Serializable{
  
     @Transient
     private MultipartFile file;
+    
+    
+    //HoaDon
+    @OneToMany(mappedBy = "user")//gắn với thuộc tính trong class bên kết nối
+    @JsonIgnore// k lay khi truyenlen Json
+    private List<Booking> bookings;
 
     /**
      * @return the id

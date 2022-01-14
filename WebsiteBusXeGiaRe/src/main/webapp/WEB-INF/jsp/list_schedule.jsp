@@ -33,17 +33,17 @@
        
        <div class="row ticket-item">
            <div class="ticket-item-img">
-               <c:if test="${s.route.bus.image != null && s.route.bus.image.startsWith('https') == true}">
-                <img class="img-fluid" src="${s.route.bus.image}" alt="${s.route.bus.busName}"/>
+               <c:if test="${s.bus.image != null && s.bus.image.startsWith('https') == true}">
+                <img class="img-fluid" src="${s.bus.image}" alt="${s.bus.busName}"/>
             </c:if>
            </div>
            <div class="ticket-item-info">
                <div class="ticket-header">
-                   <h2>${s.route.bus.busName}</h2>
+                   <h2>${s.bus.busName}</h2>
                    <div class="ticket-header-seat">
-                       <p>${s.route.bus.categoryBus.name} ${s.route.bus.seatNumber} chỗ</p>
+                       <p>${s.bus.categoryBus.name} ${s.bus.seatNumber} chỗ</p>
                        <p class="seat-pos">
-                           <span>${s.route.bus.seatNumber}</span> 
+                           <span>${s.bus.seatNumber}</span> 
                            ghế trống
                        </p>
                    </div>
@@ -57,7 +57,7 @@
                            </div>
                            <div>
                                <p class="ticket-content-title">Thời gian đi</p>
-                               <p class="ticket-content-info pickup-time">${s.departureTime}</p>
+                               <p class="ticket-content-info pickup-time">${s.departureDate}</p>
                            </div>
                        </div>
                        <div class="ticket-content-to">
@@ -66,15 +66,18 @@
                                <p class="ticket-content-info dropoff" >${s.route.dropOffPoint}</p>
                            </div>
                            <div><p class="ticket-content-title">Thời gian đến</p>
-                               <p class="ticket-content-info dropoff-time">${s.destinationTime}</p>
+                               <div>   
+                                <p class="ticket-content-info pickup-time">${s.departureTime} - ${s.destinationTime}</p> 
+<!--                               <p class="ticket-content-info dropoff-time"></p>-->
+                               </div>
                            </div>
                        </div>
                    </div>
                    <div class="ticket-content-suggest">
                        <div class="ticket-content-way">
                            <div>
-                               <p class="ticket-content-title">Khoảng cách (km)</p>
-                               <p class="ticket-content-info">${s.route.distance}</p>
+                               <p class="ticket-content-title">Khoảng cách</p>
+                               <p class="ticket-content-info">${s.route.distance} km</p>
                            </div>
                            <div>
                                <p class="ticket-content-title">Tổng thời gian</p>
@@ -92,8 +95,12 @@
                    <i aria-hidden="true" class="fa fa-star active"></i>
                    <i aria-hidden="true" class="fa fa-star active"></i>
                    <i aria-hidden="true" class="fa fa-star active"></i><!----><!---->
-                   <p>( <span>4.6</span> )</p></div><!---->
-                   <button type="button" class="btn-book">Đặt vé</button>
+                   <p><span>Xem chi tiết</span></p></div><!---->
+                   <a href="javascript:;" onclick="addToCart(${s.id}, '${s.route.departure}','${s.route.destination}','${s.bus.busName}','${s.bus.categoryBus.name}' 
+                       ,${s.route.ticketPrice}, ${s.bus.seatNumber}, ${s.departureDate}, '${s.departureTime}')">
+                     <button type="button" class="btn-book">Đặt vé</button>  
+                   </a>
+                   
                    
                  
            </div>

@@ -5,6 +5,7 @@
  */
 package com.btl.pojos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -33,20 +34,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(name = "bus")
 public class Bus implements Serializable{
 
-    /**
-     * @return the routes
-     */
-    public List<Route> getRoutes() {
-        return routes;
-    }
-
-    /**
-     * @param routes the routes to set
-     */
-    public void setRoutes(List<Route> routes) {
-        this.routes = routes;
-    }
-
+  
     public static final String SEAT = "SEAT_BUS";
     public static final String SLEEPER = "SLEEPER_BUS";
     public static final String DOUBLE_SLEEPER = "DOUBLE_SLEEPER_BUS";
@@ -93,12 +81,18 @@ public class Bus implements Serializable{
     
 
     @OneToMany(mappedBy = "bus", cascade = {CascadeType.REMOVE}, orphanRemoval = true )
-    private List<Route> routes;
+    private List<Schedule> schedules;
     
     
     @ManyToOne(fetch = FetchType.EAGER) 
     @JoinColumn(name = "id_driver")
     private Employee employee;
+    
+    
+    //Binh luan
+    @OneToMany(mappedBy = "bus")//gắn với thuộc tính trong class bên kết nối
+    @JsonIgnore// k lay khi truyenlen Json
+    private List<Comment> comments;
     
 
     /**
@@ -282,6 +276,34 @@ public class Bus implements Serializable{
      */
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    /**
+     * @return the schedules
+     */
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    /**
+     * @param schedules the schedules to set
+     */
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
+    }
+
+    /**
+     * @return the comments
+     */
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    /**
+     * @param comments the comments to set
+     */
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
 

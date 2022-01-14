@@ -66,6 +66,22 @@
                                                                 </form:select>                                                                        
                                                             </div>
                                                         </div>
+                                                        
+                                                        
+                                                       <div class="item form-group">
+                                                        <label for="bus" class="col-form-label col-md-3 col-sm-3 label-align">Chuyến xe <span class="required">*</span> </label>
+                                                        <div class="col-md-6 col-sm-6 ">
+                                                            <form:select  id="bus" class="form-control"  path="bus">
+
+                                                                <c:forEach items="${buses}" var="bus">
+                                                                    <option value="${bus.idBus}">${bus.busName} - ${bus.categoryBus.name}</option>
+                                                                </c:forEach>
+
+
+                                                            </form:select>                                                                        
+                                                        </div>
+                                                    </div>
+
                                    
                                         <div class="item form-group">
                                                             <label class="col-form-label col-md-3 col-sm-3 label-align">Ngày khởi hành <span class="required">*</span>

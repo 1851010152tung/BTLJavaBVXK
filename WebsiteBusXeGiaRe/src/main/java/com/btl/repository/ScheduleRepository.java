@@ -24,4 +24,6 @@ public interface ScheduleRepository {
     
     List<Schedule> getListSchedulesByIdRoute(int id);
     
+//    Object getTicketById(int idRoute, int idSchedule, int idBus);
+    
 }

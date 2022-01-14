@@ -80,6 +80,7 @@ header{
     background: linear-gradient(89.69deg, #3E74FF 0.5%, #3E8AFC 99.96%);
     position: fixed;
     z-index: 3;
+    font-family: "Montserrat", sans-serif;
 }
 
 
@@ -145,12 +146,47 @@ button{
     border-radius: 4px;
     cursor: pointer;
     transition:all 0.3s ease 0s;
+    max-width: 200px;
 
 }
 
 button:hover{
     background: #1f44e9;
     color: #ffffff;
+    
+}
+
+
+a#cart{
+   margin-left: 250px;
+}
+
+.badge {
+    background-color: #6394F8;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-size: 10px;
+    line-height: 1;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    
+}
+
+.badge:empty{
+    display: inherit
+}
+.cart-icon {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 7px;
+  float: left;
+}
+.fa-shopping-cart{
+    color: #fff;
+    font-size: 25px;
     
 }
 

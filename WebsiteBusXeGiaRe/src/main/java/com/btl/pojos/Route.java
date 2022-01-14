@@ -68,13 +68,10 @@ public class Route implements Serializable{
     private MultipartFile fileDestination;
 
     
-    //Cau hinh khoa ngoai
-    @ManyToOne(fetch = FetchType.EAGER) 
-    @JoinColumn(name = "id_bus")
-    private Bus bus;
-    
+ 
     //Đối tượng cha bị xóa, thì đối tượng con cũng bị xóa
-    @OneToMany(mappedBy = "route", cascade = {CascadeType.REMOVE}, orphanRemoval = true)
+    @OneToMany(mappedBy = "route", cascade = {CascadeType.REMOVE}, 
+            orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Schedule> schedules;
     
     
@@ -220,19 +217,7 @@ public class Route implements Serializable{
         this.fileDestination = fileDestination;
     }
 
-    /**
-     * @return the bus
-     */
-    public Bus getBus() {
-        return bus;
-    }
 
-    /**
-     * @param bus the bus to set
-     */
-    public void setBus(Bus bus) {
-        this.bus = bus;
-    }
 
     /**
      * @return the schedules

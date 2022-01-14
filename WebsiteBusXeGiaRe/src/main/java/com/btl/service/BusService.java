@@ -21,6 +21,4 @@ public interface BusService {
     Long totalItem();
     List<Object> getListByCondition(String kw, int page);
     
-    
-    
 }

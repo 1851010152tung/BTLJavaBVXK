@@ -43,6 +43,11 @@
             <tiles:insertAttribute name="footer"/>
             
         </div>
-            
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+        <script  type="text/javascript" src="<c:url value="/js/cart.js"/>" ></script>
+        <script  type="text/javascript" src="<c:url value="/js/main.js"/>" ></script>
+        <script  type="text/javascript" src="<c:url value="/js/bus_detail.js"/>" ></script>
+
+ 
     </body>
 </html>

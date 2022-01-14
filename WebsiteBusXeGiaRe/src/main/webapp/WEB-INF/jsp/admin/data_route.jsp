@@ -71,8 +71,8 @@
                                         <th class="column-title">Điểm đến </th>
                                         <th class="column-title">Thời gian di chuyển</th>
                                         <th class="column-title">Khoảng cách (km) </th>
-                                        <th class="column-title">Chuyến xe </th>
-                                        <th class="column-title">Loại xe </th>                                        
+<!--                                        <th class="column-title">Chuyến xe </th>
+                                        <th class="column-title">Loại xe </th>                                        -->
                                         <th class="column-title">Giá vé </th>    
                                         <th class="column-title">Điểm đón</th>
                                         <th class="column-title">Điểm trả</th>
@@ -93,26 +93,26 @@
 <!--                                        <td class="a-center ">
                                           <input type="checkbox" class="flat" name="table_records">
                                         </td>-->
-                                        <td class=" ">${r[0]}</td>
-                                        <td class=" ">${r[6]}</td>
-                                        <td class=" ">${r[7]}</td>
-                                        <td class=" ">${r[8]}</td>
-                                        <td class=" ">${r[9]}km</td>
-                                        <td class=" ">${r[2]}</td>                                        
-                                        <td class=" ">${r[4]}</td>
-                                        <td class=" ">${r[10]}</td>
-                                        <td class=" ">${r[13]}</td>
-                                        <td class=" ">${r[14]}</td>
+                                        <td class=" ">${r.id}</td>
+                                        <td class=" ">${r.departure}</td>
+                                        <td class=" ">${r.destination}</td>
+                                        <td class=" ">${r.journeyTime}</td>
+                                        <td class=" ">${r.distance}km</td>
+<!--                                        <td class=" ">$!{r[2]}</td>                                        
+                                        <td class=" ">$!{r[4]}</td>-->
+                                        <td class=" ">${r.ticketPrice}</td>
+                                        <td class=" ">${r.pickUpPoint}</td>
+                                        <td class=" ">${r.dropOffPoint}</td>
                                        
                                         <td>
-                                            <c:if test="${r[11] != null && r[11].startsWith('https') == true}">
-                                                <img class="img-fluid" src="${r[11]}" alt="${r[6]}"/>
+                                            <c:if test="${r.imageDeparture != null && r.imageDeparture.startsWith('https') == true}">
+                                                <img class="img-fluid" src="${r.imageDeparture}" alt="${r.departure}"/>
                                             </c:if>
 
                                         </td>
                                         <td>
-                                            <c:if test="${r[12] != null && r[12].startsWith('https') == true}">
-                                                <img class="img-fluid" src="${r[12]}" alt="${r[7]}"/>
+                                            <c:if test="${r.imageDestination != null && r.imageDestination.startsWith('https') == true}">
+                                                <img class="img-fluid" src="${r.imageDestination}" alt="${r.destination}"/>
                                             </c:if>
 
                                         </td>
@@ -120,8 +120,8 @@
 
                                         <td class=" last a-right a-right ">
                                             <div class="btn-edit">
-                                                <a class="btn btn-default" href=" <c:url value="data_routes/update?id=${r[0]}" />"><span class="glyphicon glyphicon-pencil"></span></a>
-                                                <a class="btn btn-default" href="<c:url value="data_routes/delete?id=${r[0]}" />"><span class="glyphicon glyphicon-trash"></span></a>                                                
+                                                <a class="btn btn-default" href=" <c:url value="data_routes/update?id=${r.id}" />"><span class="glyphicon glyphicon-pencil"></span></a>
+                                                <a class="btn btn-default" href="<c:url value="data_routes/delete?id=${r.id}" />"><span class="glyphicon glyphicon-trash"></span></a>                                                
                                             </div>
                                         </td>
                                       </tr>

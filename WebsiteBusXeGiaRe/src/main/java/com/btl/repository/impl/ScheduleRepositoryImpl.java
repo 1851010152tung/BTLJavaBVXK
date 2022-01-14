@@ -97,9 +97,7 @@ public class ScheduleRepositoryImpl implements ScheduleRepository{
 
         return q.getResultList(); 
     }
-
-
-    
+  
     
     
 }

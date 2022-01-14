@@ -30,12 +30,7 @@ public class RouteController {
      
     @Autowired
     private RouteService routeService;
-    
-    @Autowired
-    private BusService busService;
-        
-        @Autowired
-        private CategoryBusService categoryBusService;
+
         
     
     @GetMapping("/admin/routes")
@@ -73,8 +68,8 @@ public class RouteController {
         String kw = params.getOrDefault("kw", null);
         int page = Integer.parseInt(params.getOrDefault("page", "1")); // nếu có thì lấy biến page còn không thì trả về 1
         
-        model.addAttribute("routes", this.routeService.getListByCondition(kw, page));
-        model.addAttribute("size", this.routeService.getListByCondition(kw, page).size());
+        model.addAttribute("routes", this.routeService.getRoutes(kw, page));
+        model.addAttribute("size", this.routeService.getRoutes(kw, page).size());
         model.addAttribute("counter", this.routeService.totalItem());
         //model.addAttribute("buses", this.busService.getBuses());
         //model.addAttribute("categoryBuses", this.categoryBusService.getCategoryBuses());

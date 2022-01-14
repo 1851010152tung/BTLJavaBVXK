@@ -102,6 +102,11 @@ public class RouteServiceImpl implements RouteService{
     public List<Object> getListByCondition(String kw, int page) {
         return this.routeRepository.getListByCondition(kw, page);
     }
+
+    @Override
+    public List<Route> getRoutes(String kw, int page) {
+        return this.routeRepository.getRoutes(kw, page);
+    }
     
     
     

@@ -138,5 +138,34 @@ public class RouteRepositoryImpl implements RouteRepository{
         return q.getResultList();
         
     }
+
+    @Override
+    public List<Route> getRoutes(String kw, int page) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Route> query = builder.createQuery(Route.class);
+        Root root = query.from(Route.class);
+        query = query.select(root);
+        
+        if(kw != null)
+        {
+            Predicate p1 = builder.like(root.get("departure").as(String.class),
+                       String.format("%%%s%%", kw));
+            Predicate p2 = builder.like(root.get("destination").as(String.class),
+                        String.format("%%%s%%", kw));
+            
+            query = query.where(builder.or(p1,p2));
+        }
+        
+        
+        Query q = session.createQuery(query);
+        //Phan trang
+        int maxPage = 6;
+        q.setMaxResults(maxPage);
+        //Vị trí bắt đầu
+        q.setFirstResult((page -1 )* maxPage);
+        return q.getResultList();
+        
+    }
     
 }

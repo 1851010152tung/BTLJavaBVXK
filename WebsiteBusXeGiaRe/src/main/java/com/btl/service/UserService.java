@@ -19,5 +19,7 @@ public interface UserService extends UserDetailsService {
     boolean updateUserRole(User user);
     User getUserByUsername(String username);
     
+    User findById(int id);
+    
     
 }

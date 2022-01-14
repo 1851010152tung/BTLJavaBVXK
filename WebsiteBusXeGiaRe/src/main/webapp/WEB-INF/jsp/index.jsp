@@ -54,7 +54,7 @@
 
                             <div class="row">
 
-                                <h4>Check availability for <em>direction</em>:</h4>
+                                <h4>Tìm chuyến trực tuyến:</h4>
                                 <!--RADIO BUTTON: CHỌN MỘT CHIỀU HOẶC KHỨ HỒI-->
                                 <div class="col-md-6">
                                     <div class="radio-select">
@@ -123,13 +123,13 @@
 
                                             <fieldset class="fieldset-date">
                                                 <label for="departure">Ngày đi</label>
-                                                <input name="deparure" type="text" class="form-control date" id="deparure" placeholder="Select date..." required="" onchange='this.form'>
+                                                <input name="deparure" type="text" class="form-control date" id="deparure" placeholder="Chọn ngày..." required="" onchange='this.form'>
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6" id="datetime">
                                             <fieldset class="fielset-date">
                                                 <label for="return">Ngày về</label>
-                                                <input name="return" type="text" class="form-control date" id="return" placeholder="Select date..." required="" onchange='this.form.'>
+                                                <input name="return" type="text" class="form-control date" id="return" placeholder="Chọn ngày..." required="" onchange='this.form.'>
                                             </fieldset>
                                         </div>
 
@@ -169,43 +169,44 @@
                    <p class="small-title">Gợi ý những điểm du lịch được ưa thích trong năm</p> 
                 </div>
                 
-
-                <img class="background-img" src="<c:url value="/img/backgroundcity.png"/>" >
-                
-                
-               
+                            
        <main class="page-content">
         <div class="card">
           <div class="content">
-            <h2 class="title">Mountain View</h2>
-            <p class="copy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p>
-            <button class="btn">View Trips</button>
+            <h2 class="title">Hội An</h2>
+<!--            <p class="copy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p>-->
+            <button class="btn">Xem chuyến</button>
           </div>
         </div>
         <div class="card">
           <div class="content">
-            <h2 class="title">To The Beach</h2>
-            <p class="copy">Plan your next beach trip with these fabulous destinations</p>
-            <button class="btn">View Trips</button>
+            <h2 class="title">Ninh Bình</h2>
+<!--            <p class="copy">Plan your next beach trip with these fabulous destinations</p>-->
+            <button class="btn">Xem chuyến</button>
           </div>
         </div>
         <div class="card">
           <div class="content">
-            <h2 class="title">Desert Destinations</h2>
-            <p class="copy">It's the desert you've always dreamed of</p>
-            <button class="btn">Book Now</button>
+            <h2 class="title">Đà Nẵng</h2>
+<!--            <p class="copy">It's the desert you've always dreamed of</p>-->
+            <button class="btn">Xem chuyến</button>
           </div>
         </div>
         <div class="card">
           <div class="content">
-            <h2 class="title">Explore The Galaxy</h2>
-            <p class="copy">Seriously, straight up, just blast off into outer space today</p>
-            <button class="btn">Book Now</button>
+            <h2 class="title">TP.HCM</h2>
+<!--            <p class="copy">Seriously, straight up, just blast off into outer space today</p>-->
+            <button class="btn">Xem chuyến</button>
           </div>
         </div>
       </main>
  
           
+
+                <img class="background-img" src="<c:url value="/img/backgroundcity.png"/>" >
+                
+                
+   
                 
                 
             </div>
@@ -283,21 +284,21 @@
 
     <div class="box-container">
 
-        <c:forEach var="r" items="${routes}">
+        <c:forEach var="s" items="${schedules}">
         <div class="box">
-            <c:if test="${r.bus.image != null && r.bus.image.startsWith('https') == true}">
-                <img class="img-fluid" src="${r.bus.image}" alt="${r.bus.busName}"/>
+            <c:if test="${s.bus.image != null && s.bus.image.startsWith('https') == true}">
+                <img class="img-fluid" src="${s.bus.image}" alt="${s.bus.busName}"/>
             </c:if>
             <div class="content-text-booking">
-                <h3>${r.departure} <img class="fromto" alt="fromto" width="28" height="7" src="<c:url value="/img/fromto.png"/>" data-v-7026b95e="">  ${r.destination}</h3>
-                <p>Nhà xe: ${r.bus.busName}</p>
+                <h3>${s.route.departure} <img class="fromto" alt="fromto" width="28" height="7" src="<c:url value="/img/fromto.png"/>" data-v-7026b95e="">  ${s.route.destination}</h3>
+                <p>Nhà xe: ${s.bus.busName}</p>
                 
                 <div class="label" data-v-7026b95e="">
-                    ${r.bus.categoryBus.name} <span class="dot" data-v-7026b95e=""></span>
-                    <span data-v-7026b95e="">Còn ${r.bus.seatNumber} chỗ</span> 
+                    ${s.bus.categoryBus.name} <span class="dot" data-v-7026b95e=""></span>
+                    <span data-v-7026b95e="">Còn ${s.bus.seatNumber} chỗ</span> 
                 </div>
-                <p>${r.distance} km</p>
-                <div class="price">${r.ticketPrice} VNĐ</div>
+                <p>${s.route.distance} km</p>
+                <div class="price">${s.route.ticketPrice} VNĐ</div>
                 <a href="#" class="btn-book">Đặt vé</a>
             </div>
         </div>

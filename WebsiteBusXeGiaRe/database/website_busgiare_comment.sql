@@ -16,28 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `category_bus`
+-- Table structure for table `comment`
 --
 
-DROP TABLE IF EXISTS `category_bus`;
+DROP TABLE IF EXISTS `comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `category_bus` (
-  `id_bus_type` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_bus_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+CREATE TABLE `comment` (
+  `id_comment` int NOT NULL,
+  `content` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `create_date` date DEFAULT NULL,
+  `id_user` int DEFAULT NULL,
+  `id_bus` int DEFAULT NULL,
+  PRIMARY KEY (`id_comment`),
+  KEY `fk_comment_user_idx` (`id_user`),
+  KEY `fk_comment_bus_idx` (`id_bus`),
+  CONSTRAINT `fk_comment_bus` FOREIGN KEY (`id_bus`) REFERENCES `bus` (`id_bus`),
+  CONSTRAINT `fk_comment_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `category_bus`
+-- Dumping data for table `comment`
 --
 
-LOCK TABLES `category_bus` WRITE;
-/*!40000 ALTER TABLE `category_bus` DISABLE KEYS */;
-INSERT INTO `category_bus` VALUES (1,'Ghế ngồi',NULL),(2,'Giường nằm',NULL),(3,'Giường nằm đôi',NULL),(4,'Ghế VIP Limousine',NULL),(5,'Phòng đơn VIP Limousine',NULL),(6,'Phòng đôi VIP Limousine',NULL);
-/*!40000 ALTER TABLE `category_bus` ENABLE KEYS */;
+LOCK TABLES `comment` WRITE;
+/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

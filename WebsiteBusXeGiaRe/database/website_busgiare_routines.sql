@@ -16,29 +16,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `category_bus`
+-- Dumping events for database 'website_busgiare'
 --
 
-DROP TABLE IF EXISTS `category_bus`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `category_bus` (
-  `id_bus_type` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_bus_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
 --
--- Dumping data for table `category_bus`
+-- Dumping routines for database 'website_busgiare'
 --
-
-LOCK TABLES `category_bus` WRITE;
-/*!40000 ALTER TABLE `category_bus` DISABLE KEYS */;
-INSERT INTO `category_bus` VALUES (1,'Ghế ngồi',NULL),(2,'Giường nằm',NULL),(3,'Giường nằm đôi',NULL),(4,'Ghế VIP Limousine',NULL),(5,'Phòng đơn VIP Limousine',NULL),(6,'Phòng đôi VIP Limousine',NULL);
-/*!40000 ALTER TABLE `category_bus` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -49,4 +32,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-15  7:03:42
+-- Dump completed on 2022-01-15  7:03:43

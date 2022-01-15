@@ -35,7 +35,7 @@ CREATE TABLE `user` (
   `avatar` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,NULL,NULL,'truonglam9112000@gmail.com','0906844328','teeltruong','$2a$10$y1qb7hgvCwQtV7YeQsxRnuB4sYGmLDFYD0MlZU2gHoVuEx6m9tlWC','ROLE_USER',_binary '\0',NULL),(3,NULL,NULL,'admin123@gmail.com','0906844328','admin','$2a$10$zqXCok4aGfPZBT2hjm8KNuerJ2rKt3ooFKvEgUle/GVtyuN6F0cTq','ROLE_ADMIN',_binary '\0',NULL);
+INSERT INTO `user` VALUES (2,'Trương Ngọc Trúc','Lâm','truonglam9112000@gmail.com','0906844328','teeltruong','$2a$10$y1qb7hgvCwQtV7YeQsxRnuB4sYGmLDFYD0MlZU2gHoVuEx6m9tlWC','ROLE_SELLER',_binary '\0','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640794761/aooadr7hgcqyqywh1wrd.jpg'),(3,'Trúc','Lâm','admin123@gmail.com','0906844328','admin','$2a$10$zqXCok4aGfPZBT2hjm8KNuerJ2rKt3ooFKvEgUle/GVtyuN6F0cTq','ROLE_ADMIN',_binary '\0','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1639911128/ubcxluzkuprnalkrhy0k.jpg'),(4,' Chế Quang','Tùng','quangtung123@gmail.com','0906844328','taixe','$2a$10$z5cIukSr2blbxl/ZIjH7Q.BIYYK2eWeM9WnMXOwK/FQjHyzBALumO','ROLE_DRIVER',_binary '\0','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1639911190/i1lesfsvryezsxnfduvd.jpg'),(5,'Tài','xế 2','taixe2@gmail.com','15814569522','taixe2','$2a$10$rZMVtuVxS2db7UhHC4Yut.vicC54trIZj44Xo/TVrvyeH6zbt9Ija','ROLE_DRIVER',_binary '\0','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640794092/eaol9zcpcgyscxlyhwg7.jpg'),(6,'Nguyễn Văn','B','taixe3@gmail.com','0906800328','taixe3','$2a$10$m7OCUeNQeGbWBsveiBP6keIoDzdS.4JJ5apYK.yX/LWNaUKUqeMAC','ROLE_DRIVER',_binary '\0','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640794761/aooadr7hgcqyqywh1wrd.jpg'),(7,'Nguyễn Văn','C','taixeC@gmail.com','0958443257','taixeC','$2a$10$DqufT.I0vUfc/4isVqZIjO1bLcpP55v2f92koCzM6LesZExEgaFkS','ROLE_DRIVER',_binary '\0','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640794092/eaol9zcpcgyscxlyhwg7.jpg'),(8,'Nguyễn Văn','D','taixeD@gmail.com','0958443007','taixeD','$2a$10$ZzHE6JHkqfD7Q/kKvMESvuqkoBY/tBQiEjhFYikmkQMyC6PRzOaKC','ROLE_DRIVER',_binary '\0','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640794092/eaol9zcpcgyscxlyhwg7.jpg'),(9,'Nguyễn Văn','E','taixeE@gmail.com','0958443557','taixeE','$2a$10$FQy3DfM60pvL2AOQdhJAwul7WGFJX/d0ZCF0oSsZ5CjN71vqRvSeq','ROLE_DRIVER',_binary '\0','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640794092/eaol9zcpcgyscxlyhwg7.jpg');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-26 21:14:45
+-- Dump completed on 2022-01-15  7:03:43

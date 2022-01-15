@@ -27,13 +27,15 @@ CREATE TABLE `schedule` (
   `id_route` int DEFAULT NULL,
   `departure_date` date DEFAULT NULL,
   `destination_date` date DEFAULT NULL,
-  `id_driver` int DEFAULT NULL,
-  `bus_type` varchar(45) DEFAULT NULL,
+  `departure_time` varchar(45) DEFAULT NULL,
+  `destination_time` varchar(45) DEFAULT NULL,
+  `id_bus` int DEFAULT NULL,
   PRIMARY KEY (`id_schedule`),
   KEY `fk_schedule_route_idx` (`id_route`),
-  KEY `fk_schedule_employee_idx` (`id_driver`),
+  KEY `fk_schedule_bus_idx` (`id_bus`),
+  CONSTRAINT `fk_schedule_bus` FOREIGN KEY (`id_bus`) REFERENCES `bus` (`id_bus`),
   CONSTRAINT `fk_schedule_route` FOREIGN KEY (`id_route`) REFERENCES `route` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +44,7 @@ CREATE TABLE `schedule` (
 
 LOCK TABLES `schedule` WRITE;
 /*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
-INSERT INTO `schedule` VALUES (1,NULL,'2021-12-14','2021-12-22',NULL,NULL),(2,1,NULL,NULL,NULL,NULL),(3,1,'2021-12-22','2021-12-23',2,NULL),(5,2,'2021-12-24','2021-12-27',4,NULL);
+INSERT INTO `schedule` VALUES (3,6,'2021-12-22','2021-12-23','07:00','08:15',11),(6,6,'2021-12-28','2021-12-30','13:00','14:15',11),(7,11,'2022-01-01','2022-01-03','01:00','05:00',6),(8,6,'2022-01-01','2022-01-02','05:00','06:15',14),(9,3,'2022-01-01','2022-01-04','05:00','4:00',12),(11,6,'2022-01-01','2022-01-04','13:00','14:15',13),(12,8,'2022-01-04','2022-01-07','15:00','18:30',6),(13,12,'2022-01-04','2022-01-07','17:00','02:00',15),(14,10,'2022-01-07','2022-01-09','11:00','03:00',6);
 /*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-26 21:14:44
+-- Dump completed on 2022-01-15  7:03:42

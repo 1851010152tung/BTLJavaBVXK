@@ -16,28 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `category_bus`
+-- Table structure for table `booking_detail`
 --
 
-DROP TABLE IF EXISTS `category_bus`;
+DROP TABLE IF EXISTS `booking_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `category_bus` (
-  `id_bus_type` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_bus_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+CREATE TABLE `booking_detail` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `quantity` int DEFAULT NULL,
+  `id_booking` int DEFAULT NULL,
+  `id_schedule` int DEFAULT NULL,
+  `price` decimal(10,0) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_bookingdetail_user_idx` (`id_schedule`),
+  KEY `fk_bookingdetail_booking_idx` (`id_booking`),
+  CONSTRAINT `fk_bookingdetail_booking` FOREIGN KEY (`id_booking`) REFERENCES `booking` (`id`),
+  CONSTRAINT `fk_bookingdetail_schedule` FOREIGN KEY (`id_schedule`) REFERENCES `schedule` (`id_schedule`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `category_bus`
+-- Dumping data for table `booking_detail`
 --
 
-LOCK TABLES `category_bus` WRITE;
-/*!40000 ALTER TABLE `category_bus` DISABLE KEYS */;
-INSERT INTO `category_bus` VALUES (1,'Ghế ngồi',NULL),(2,'Giường nằm',NULL),(3,'Giường nằm đôi',NULL),(4,'Ghế VIP Limousine',NULL),(5,'Phòng đơn VIP Limousine',NULL),(6,'Phòng đôi VIP Limousine',NULL);
-/*!40000 ALTER TABLE `category_bus` ENABLE KEYS */;
+LOCK TABLES `booking_detail` WRITE;
+/*!40000 ALTER TABLE `booking_detail` DISABLE KEYS */;
+INSERT INTO `booking_detail` VALUES (1,1,1,3,100000),(2,1,1,6,100000),(3,1,1,8,100000),(4,2,1,11,100000);
+/*!40000 ALTER TABLE `booking_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

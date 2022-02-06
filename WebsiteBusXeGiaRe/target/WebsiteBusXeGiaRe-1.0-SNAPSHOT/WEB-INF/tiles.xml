@@ -41,7 +41,12 @@ and open the template in the editor.
         <put-attribute name ="title" value ="Giỏ hàng" />
          <put-attribute name="content" value="/WEB-INF/jsp/cart.jsp"/>
     </definition>
-    
+
+    <definition name="list_buses" extends ="baseLayout">
+        <put-attribute name ="title" value ="Danh sách chuyến xe" />
+        <put-attribute name="content" value="/WEB-INF/jsp/list_buses.jsp"/>
+    </definition>
+        
     <definition name="bus_detail" extends ="baseLayout">
         <put-attribute name ="title" value ="Chi tiết chuyến xe" />
         <put-attribute name="content" value="/WEB-INF/jsp/bus_detail.jsp"/>

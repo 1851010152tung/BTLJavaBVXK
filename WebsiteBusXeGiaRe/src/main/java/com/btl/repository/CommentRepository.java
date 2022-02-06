@@ -13,7 +13,7 @@ import java.util.List;
  * @author Truc Lam
  */
 public interface CommentRepository {
-    long totalItem(int idBus);
+    long totalItem(int id);
     Comment addComment(Comment comment, int idComment);
     List<Object[]> getListComment(int idBus, int page);
 }

@@ -584,7 +584,7 @@ main.page-content
 .btn {
   cursor: pointer;
   margin-top: 1.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.70rem 1.5rem;
   font-size: 0.65rem;
   font-weight: bold;
   letter-spacing: 0.025rem;
@@ -711,6 +711,8 @@ main.page-content
   box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
 }
     
+
+/* Tuyến xe */
 
 .packages .box-container {
     display: flex;

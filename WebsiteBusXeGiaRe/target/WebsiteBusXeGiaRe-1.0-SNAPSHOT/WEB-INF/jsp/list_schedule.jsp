@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<!DOCTYPE html>
+
 <html lang="es" dir="ltr">
   <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
@@ -20,6 +20,9 @@
   <body>
         
 
+      
+      
+      
       <div class="container"id="contain-ticket-item">
     
           <c:forEach begin="0" end="0" var="s" items="${schedules}">  
@@ -39,7 +42,9 @@
            </div>
            <div class="ticket-item-info">
                <div class="ticket-header">
-                   <h2>${s.bus.busName}</h2>
+                   <a href="<c:url value="/bus/bus_detail?id=${s.bus.idBus}"/>">
+                       <h2>${s.bus.busName}</h2>
+                   </a>
                    <div class="ticket-header-seat">
                        <p>${s.bus.categoryBus.name} ${s.bus.seatNumber} chỗ</p>
                        <p class="seat-pos">

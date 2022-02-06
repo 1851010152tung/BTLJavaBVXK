@@ -68,7 +68,7 @@ public class CommentRepositoryImpl implements CommentRepository{
         List<Predicate> predicates = new ArrayList<>();
         predicates.add(builder.equal(rootC.get("user"), rootU.get("id")));
         predicates.add(builder.equal(rootC.get("bus"), idBus));
-        query.multiselect(rootC.get("id"), rootC.get("content"),
+        query.multiselect(rootC.get("idComment"), rootC.get("content"),
                 rootC.get("createDate"), rootU.get("avatar"));
         query.where(predicates.toArray(new Predicate[] {}));
         query = query.orderBy(builder.desc(rootC.get("idComment")));//sap xep

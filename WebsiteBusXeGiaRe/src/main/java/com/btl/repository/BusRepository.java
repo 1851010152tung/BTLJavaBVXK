@@ -27,4 +27,5 @@ public interface BusRepository {
     List<Object> getListByCondition(String kw, int page);
     
     
+    
 }

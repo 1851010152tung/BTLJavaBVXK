@@ -40,7 +40,7 @@ public class Comment implements Serializable{
             optional = true,
             fetch = FetchType.EAGER)
     @JoinColumn(name = "id_bus")
-    @JsonIgnore
+//    @JsonIgnore
     private Bus bus; 
 
     /**

@@ -92,9 +92,15 @@ public class HomeController {
     //LỊCH TRÌNH
     @RequestMapping("/home_routine") //HTTP GET
     @Transactional
-    public String homeRoutine(Model model){
+    public String homeRoutine(Model model,
+            @RequestParam(required = false) Map<String, String> params){
+        
+        String kw = params.getOrDefault("kw", null);
+        int page = Integer.parseInt(params.getOrDefault("page", "1")); 
         model.addAttribute("bus", this.busService.getBuses());
-        model.addAttribute("routes", this.routeService.getRoutes());
+        model.addAttribute("routes", this.routeService.getRoutes(kw, page));
+        model.addAttribute("size", this.routeService.getRoutes(kw, page).size());
+        model.addAttribute("counter", this.routeService.totalItem());
         model.addAttribute("schedules", this.scheduleService.getSchedules());
         return "home_routine";
         
@@ -117,16 +123,16 @@ public class HomeController {
     }
     
      //CHI TIẾT CHUYẾN XE
-    @RequestMapping("/bus_detail") //HTTP GET
-    @Transactional
-    public String busDetail(Model model) {
-           model.addAttribute("bus", this.busService.getBuses());
-          
-
-        //s.close();
-        return "bus_detail";
-    }
-    
+//    @RequestMapping("/bus_detail") //HTTP GET
+//    @Transactional
+//    public String busDetail(Model model) {
+//           model.addAttribute("bus", this.busService.getBuses());
+//          
+//
+//        //s.close();
+//        return "bus_detail";
+//    }
+//    
    
 }
 

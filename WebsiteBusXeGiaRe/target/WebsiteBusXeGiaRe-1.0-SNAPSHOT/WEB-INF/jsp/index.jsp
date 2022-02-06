@@ -55,21 +55,7 @@
                             <div class="row">
 
                                 <h4>Tìm chuyến trực tuyến:</h4>
-                                <!--RADIO BUTTON: CHỌN MỘT CHIỀU HOẶC KHỨ HỒI-->
-                                <div class="col-md-6">
-                                    <div class="radio-select">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-6 col-xs-6" id="row-radio-btn">
-                                                <label for="round">Một chiều</label>
-                                                <input type="radio" name="trip" id="round" value="round" required="required"onchange='this.form.()'>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6 col-xs-6" id="row-radio-btn">
-                                                <label for="oneway">Khứ hồi</label>
-                                                <input type="radio" name="trip" id="oneway" value="one-way" required="required"onchange='this.form.()'>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                             </div>
 
 
@@ -295,7 +281,7 @@
                 
                 <div class="label" data-v-7026b95e="">
                     ${s.bus.categoryBus.name} <span class="dot" data-v-7026b95e=""></span>
-                    <span data-v-7026b95e="">Còn ${s.bus.seatNumber} chỗ</span> 
+                    <span data-v-7026b95e="">${s.bus.seatNumber} chỗ</span> 
                 </div>
                 <p>${s.route.distance} km</p>
                 <div class="price">${s.route.ticketPrice} VNĐ</div>

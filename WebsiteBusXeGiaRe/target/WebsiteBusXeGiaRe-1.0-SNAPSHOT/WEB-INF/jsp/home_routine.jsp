@@ -23,12 +23,14 @@
 <div>
     
         <div class="table-responsive" >
-            <div class="title_right">
+           
+            <div class="flex-center">
+                 <div class="title_right">
                                 <form action="">
                                 
                                 <div class="col-md-5 col-sm-5  form-group pull-right top_search">
                                         <div class="input-group">
-                                                <input type="text" class="form-control" name="kw" placeholder="Tìm kiếm nhân viên...">
+                                                <input type="text" class="form-control" name="kw" placeholder="Tìm kiếm tuyến xe...">
                                                 <span class="input-group-btn">
                                                     <button class="btn btn-default" value="Search" type="submit">Tìm!</button>
                                                 </span>
@@ -37,26 +39,27 @@
                                 
                             </form>
                         </div>
-            <div class="flex-center">
-          <table class="table table-striped jambo_table bulk_action">
-              <thead id="header-table">
-              <tr class="headings">
-                <th class="column-title">Tuyến xe</th>
-<!--                <th class="column-title">Loại xe</th>-->
-                <th class="column-title">Quãng đường</th>
-                <th class="column-title">Thời gian hành trình</th>
-                <th class="column-title">Giá vé</th>                                        
-                <th class="column-title">Giờ chạy</th>                                       
-                <th class="end"></th>                                      
+                <div class="table-routine">
+                    
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead id="header-table">
+                        <tr class="headings">
+                          <th class="column-title">Tuyến xe</th>
+          <!--                <th class="column-title">Loại xe</th>-->
+                          <th class="column-title">Quãng đường</th>
+                          <th class="column-title">Thời gian hành trình</th>
+                          <th class="column-title">Giá vé</th>                                        
+                          <th class="column-title">Giờ chạy</th>                                       
+                          <th class="end"></th>                                      
 
-              
-              </tr>
-            </thead>
-          </table>
+
+                        </tr>
+                      </thead>
+                    </table>
 
            
                 
-          <c:forEach var="r" items="${routes}" >                     
+                 <c:forEach var="r" items="${routes}" >                     
             <div class="groups">
                 <table class="table table-striped jambo_table bulk_action">
                     <thead>
@@ -91,8 +94,23 @@
           </table>
         </div>
                     
-      </c:forEach>            
+      </c:forEach>  
+                </div>
+                <div class="pagination-table" id="page-table">
+                  <!--$!{counter}-->
+                  <ul class="pagination">
+                      <c:forEach  begin="1" end="${Math.ceil(counter/6)}" var="i">
+
+                      <li class="page-item"><a class="page-link" href="<c:url value="/home_routine"/>?page=${i}">${i}</a></li>
+
+                      </c:forEach>
+
+                    </ul>
+                                          
+                </div>
             </div>
+            
+            
 
 </div>
 </div>

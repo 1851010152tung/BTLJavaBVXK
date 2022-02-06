@@ -13,8 +13,12 @@
         <ul class="nav-links">
           <li class="nav-item active"><a href="<c:url value="/" />">TRANG CHỦ</a></li>
             <li class="nav-item"><a href="<c:url value="/home_routine" />">LỊCH TRÌNH</a></li>
-            <li class="nav-item"><a href="#tintuc">TIN TỨC</a></li>
-            <li class="nav-item"><a href="#vechungtoi">VỀ CHÚNG TÔI</a></li>
+            <li class="nav-item"><a href="<c:url value="/list_buses" />">NHÀ XE</a></li>
+            
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li class="nav-item"><a href="<c:url value="/admin/employees" />">QUẢN LÝ</a></li>
+            </sec:authorize>
+            
             <li><a href="<c:url value="/cart" ></c:url>" id="cart"><i class="fa fa-shopping-cart"></i><span class="badge" id="quantityTicket">${cartCounter}</span></a></li>
         
         </ul>

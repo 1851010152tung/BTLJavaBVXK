@@ -285,7 +285,7 @@
                 </div>
                 <p>${s.route.distance} km</p>
                 <div class="price">${s.route.ticketPrice} VNĐ</div>
-                <a href="#" class="btn-book">Đặt vé</a>
+                <a href="<c:url value="/home_routine"/>" class="btn-book">Tìm hiểu</a>
             </div>
         </div>
         </c:forEach>

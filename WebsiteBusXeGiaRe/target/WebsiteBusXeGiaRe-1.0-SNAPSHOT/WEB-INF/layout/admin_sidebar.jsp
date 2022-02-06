@@ -39,18 +39,18 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="<c:url value="/"></c:url>">Dashboard</a></li>
                       
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Đăng ký thông tin <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<c:url value ="/admin/employees"></c:url>">Nhân viên</a></li>
-                      <li><a href="form.html">Khách hàng</a></li>
+<!--                      <li><a href="form.html">Khách hàng</a></li>-->
                       <li><a href="<c:url value="/admin/buses"/>"> Chuyến xe</a></li>
                       <li><a href="<c:url value="/admin/routes"/>">Tuyến xe</a></li>
                       <li><a href="<c:url value="/admin/schedules"/>">Lịch trình</a></li>
-                      <li><a href="form.html">Thông tin đặt vé</a></li>
+<!--                      <li><a href="form.html">Thông tin đặt vé</a></li>-->
 
 
                     </ul>

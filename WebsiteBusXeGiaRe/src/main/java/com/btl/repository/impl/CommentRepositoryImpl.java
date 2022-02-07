@@ -52,7 +52,8 @@ public class CommentRepositoryImpl implements CommentRepository{
         } catch (HibernateException ex) {
             ex.printStackTrace();
         }
-        return null;    }
+        return null;    
+    }  
 
     @Override
     public List<Object[]> getListComment(int idBus, int page) {
@@ -69,7 +70,7 @@ public class CommentRepositoryImpl implements CommentRepository{
         predicates.add(builder.equal(rootC.get("user"), rootU.get("id")));
         predicates.add(builder.equal(rootC.get("bus"), idBus));
         query.multiselect(rootC.get("idComment"), rootC.get("content"),
-                rootC.get("createDate"), rootU.get("avatar"));
+                rootC.get("createDate"), rootU.get("avatar"),rootU.get("username"));
         query.where(predicates.toArray(new Predicate[] {}));
         query = query.orderBy(builder.desc(rootC.get("idComment")));//sap xep
         

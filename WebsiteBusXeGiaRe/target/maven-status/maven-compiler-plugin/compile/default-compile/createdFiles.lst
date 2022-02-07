@@ -1,3 +1,4 @@
+com\btl\controllers\ApiCommentController.class
 com\btl\pojos\User.class
 com\btl\service\impl\BusServiceImpl.class
 com\btl\repository\impl\CommentRepositoryImpl.class

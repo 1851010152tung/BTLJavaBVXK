@@ -31,16 +31,19 @@ public class Comment implements Serializable{
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Column (name = "create_date")
     private Date createDate;
+    
     @ManyToOne(      
             optional = true,
             fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
+    @JsonIgnore
     private User user;
+    
     @ManyToOne(      
             optional = true,
             fetch = FetchType.EAGER)
     @JoinColumn(name = "id_bus")
-//    @JsonIgnore
+    @JsonIgnore
     private Bus bus; 
 
     /**

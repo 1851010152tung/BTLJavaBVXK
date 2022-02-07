@@ -34,24 +34,27 @@
           <div class="column-xs-12 column-md-7">
             <div class="product-gallery">
               <div class="product-image">
-                <img class="active" src="https://source.unsplash.com/W1yjvf5idqA">
-              </div>
+                    <c:if test="${bus.image != null && bus.image.startsWith('https') == true}">
+                        <img class="active" src="${bus.image}" alt="${bus.busName}" style="width: 710px; object-fit: cover"/>
+                    </c:if>
+                    <c:if test="${bus.image == null || bus.image.startsWith('https') == false}">
+                        <img class="img-fluid " src="<c:url value="/images/default.jpg"/>" alt="${bus.busName}"/>
+                    </c:if>              </div>
 
             </div>
           </div>
             
           <div class="column-xs-12 column-md-5">
-<!--            <h1>$!{bus.busName} - $!{bus.numberPlate}</h1>-->
-<!--            <h2>$!{bus.categoryBus.name}</h2>-->
+            <h1>${bus.busName} - ${bus.numberPlate}</h1>
+            <h2>${bus.categoryBus.name}</h2>
             <div class="description">
-              <p>The purposes of bonsai are primarily contemplation for the viewer, and the pleasant exercise of effort and ingenuity for the grower.</p>
-              <p>By contrast with other plant cultivation practices, bonsai is not intended for production of food or for medicine. Instead, bonsai practice focuses on long-term cultivation and shaping of one or more small trees growing in a container.</p>
+              <p>${bus.description}</p>
             </div>
           </div>
         </div>
           
 
-                  <div class="comments-app" ng-app="commentsApp" ng-controller="CommentsController as cmntCtrl">
+       <div class="comments-app" ng-app="commentsApp" ng-controller="CommentsController as cmntCtrl">
           <!-- From -->
           <div class="comment-form">
             <!-- Comment Avatar -->
@@ -61,7 +64,7 @@
 
             <form class="form" name="form" ng-submit="form.$valid && cmntCtrl.addComment()" novalidate>
               <div class="form-row">
-                <textarea
+                  <textarea id="commentId"
                           class="input"
                           ng-model="cmntCtrl.comment.text"
                           placeholder="Thêm bình luận..."
@@ -70,42 +73,62 @@
 
               
 
-              
-
               <div class="form-row">
-                <input type="submit" value="Bình luận">
+                  <input type="submit" onclick="addComment(${bus.idBus})" value="Bình luận">
               </div>
             </form>
           </div>
 
           <!-- Comments List -->
-          <div class="comments">
+          <div class="comments" id="commentArea">
             
+              <c:forEach var="c" items="${comments}" > 
             <!-- Comment - Dummy -->
-            <div class="comment">
+                  <div class="comment">
               <!-- Comment Avatar -->
               <div class="comment-avatar">
-                <img src="http://gravatar.com/avatar/412c0b0ec99008245d902e6ed0b264ee?s=80">
+                  <c:if test="${c[3] != null && c[3].startsWith('https') == true}">
+                      <img src="${c[3]}">
+                  </c:if>
+                  <c:if test="${c[3] == null || c[3].startsWith('https') == false}">
+                    <div class="img-fluid rounded-circle d-flex flex-column text-center">
+                        <i class="fas fa-user-secret"></i>
+                        <span class="an-danh">Ẩn danh</span>
+                    </div>
+                  </c:if>    
               </div>
 
               <!-- Comment Box -->
               <div class="comment-box">
-                <div class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum.</div>
+                <div class="comment-text">${c[1]}</div>
                 <div class="comment-footer">
                   <div class="comment-info">
                     <span class="comment-author">
-                      <a href="mailto:sexar@pagelab.io">Sexar</a>
+                      <a>${c[4]}</a>
                     </span>
-                    <span class="comment-date">Feb 2, 2013 11:32:04 PM</span>
+                    <span class="comment-date">${c[2]}</span>
                   </div>
 
-                  <div class="comment-actions">
-                    <a href="#">Reply</a>
-                  </div>
+                  
                 </div>
               </div>
             </div>
-
+              </c:forEach>
+            
+            
+            <div class="d-flex justify-content-between page mr-sm-5 ml-sm-5">
+                <ul class="pagination">
+                    <c:forEach begin="1" end="${Math.ceil(slBinhLuan/5)}" var="i">  
+                        <li class="page-item">
+                            <a class="page-link" 
+                               href="<c:url value="/bus_detail/${bus.idBus}" />?page=${i}">${i}
+                            </a>
+                        </li>
+                    </c:forEach>
+                </ul>
+                <div> Tổng số bình luận: ${countComment}</div> 
+            </div>
+            
           </div>
         </div>
 

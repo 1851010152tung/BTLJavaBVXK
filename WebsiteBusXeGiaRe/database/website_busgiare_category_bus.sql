@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: website_busgiare
+-- Host: localhost    Database: website_busgiare
 -- ------------------------------------------------------
--- Server version	8.0.22
+-- Server version	8.0.28
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,7 +27,7 @@ CREATE TABLE `category_bus` (
   `name` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_bus_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `category_bus` (
 
 LOCK TABLES `category_bus` WRITE;
 /*!40000 ALTER TABLE `category_bus` DISABLE KEYS */;
-INSERT INTO `category_bus` VALUES (1,'Ghế ngồi',NULL),(2,'Giường nằm',NULL),(3,'Giường nằm đôi',NULL),(4,'Ghế VIP Limousine',NULL),(5,'Phòng đơn VIP Limousine',NULL),(6,'Phòng đôi VIP Limousine',NULL);
+INSERT INTO `category_bus` VALUES (1,'Ghế ngồi',NULL),(2,'Giường nằm',NULL),(3,'Giường nằm đôi',NULL),(4,'Ghế VIP Limousine',NULL),(5,'Phòng đơn Limousine',NULL),(6,'Phòng đôi Limousine',NULL);
 /*!40000 ALTER TABLE `category_bus` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-15  7:03:42
+-- Dump completed on 2022-02-13 16:10:22

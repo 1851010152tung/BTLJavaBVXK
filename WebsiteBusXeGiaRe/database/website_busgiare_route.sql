@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: website_busgiare
+-- Host: localhost    Database: website_busgiare
 -- ------------------------------------------------------
--- Server version	8.0.22
+-- Server version	8.0.28
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `route`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `route` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `departure` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
-  `destination` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `departure` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `destination` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `id_bus` int DEFAULT NULL,
   `distance` double DEFAULT NULL,
   `journey_time` varchar(45) DEFAULT NULL,
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-15  7:03:42
+-- Dump completed on 2022-02-13 16:10:22

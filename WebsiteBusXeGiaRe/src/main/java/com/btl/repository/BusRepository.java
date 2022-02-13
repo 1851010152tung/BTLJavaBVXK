@@ -6,6 +6,7 @@
 package com.btl.repository;
 
 import com.btl.pojos.Bus;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,6 +26,9 @@ public interface BusRepository {
     long totalItem();
     
     List<Object> getListByCondition(String kw, int page);
+    List<Object> getState(String kw, int page);
+    List<Object> ProductStats(String kw, Date fromDate,Date toDate);
+    List<Object> ProductStatsMonth(String kw, Date fromDate,Date toDate);
     
     
     

@@ -10,6 +10,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,6 +28,7 @@
         <link href="<c:url value="/css/admin_sidebar_menu.css"></c:url>" rel="stylesheet">
         <link href="<c:url value="/css/bootstrap/custom.min.css"></c:url>" rel="stylesheet">
         <link href="<c:url value="/css/admin_header.css"></c:url>" rel="stylesheet">
+        <link href="<c:url value="/css/chart.css"></c:url>" rel="stylesheet">
 
 
         
@@ -69,6 +71,9 @@
             <script src="https://colorlib.com/polygon/vendors/jquery/dist/jquery.min.js"></script>
             <script src="https://colorlib.com/polygon/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
             <script src="https://colorlib.com/polygon/build/js/custom.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script  type="text/javascript" src="<c:url value="/js/state.js"/>" ></script>
+
 
     </body>
 </html>

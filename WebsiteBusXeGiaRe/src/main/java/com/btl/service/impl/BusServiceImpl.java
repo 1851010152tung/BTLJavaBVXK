@@ -12,6 +12,7 @@ import com.btl.service.BusService;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,5 +102,22 @@ public class BusServiceImpl implements BusService {
     public List<Object> getListByCondition(String kw, int page) {
         return this.busRepository.getListByCondition(kw, page);
     }
+
+    @Override
+    public List<Object> getState(String kw, int page) {
+         return this.busRepository.getState(kw, page);
+    }
+
+    @Override
+    public List<Object> ProductStats(String kw, Date fromDate,Date toDate) {
+        return this.busRepository.ProductStats(kw, fromDate,toDate);
+    }
+
+    @Override
+    public List<Object> ProductStatsMonth(String kw, Date fromDate, Date toDate) {
+        return this.busRepository.ProductStatsMonth(kw,fromDate, toDate);
+
+    }
+ 
 
 }

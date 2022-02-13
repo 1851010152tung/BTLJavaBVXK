@@ -2,6 +2,7 @@ com\btl\controllers\ApiCommentController.class
 com\btl\pojos\User.class
 com\btl\service\impl\BusServiceImpl.class
 com\btl\repository\impl\CommentRepositoryImpl.class
+com\btl\controllers\AdminController.class
 com\btl\pojos\BookingDetail.class
 com\btl\service\RouteService.class
 com\btl\repository\ScheduleRepository.class

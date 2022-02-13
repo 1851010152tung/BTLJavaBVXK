@@ -68,17 +68,16 @@
                         <li><a href="<c:url value ="/admin/data_routes"></c:url>">Tuyến xe</a></li>
                         <li><a href="<c:url value ="/admin/data_schedules"></c:url>">Lịch trình</a></li>
                         <li><a href="form.html">Doanh thu</a></li>
-                        <li><a href="form.html">Thông tin đặt vé</a></li>
+                        <li><a href="<c:url value="/admin/data_booking"/>">Thông tin đặt vé</a></li>
 
                     </ul>
                   </li>
                   <li><a><i class="fa fa-bar-chart-o"></i> Thống kê <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart JS</a></li>
-                      <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
-                      <li><a href="echarts.html">ECharts</a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
+                      <li><a href="<c:url value ="/admin/category-state"></c:url>">Thống kê mật độ chuyến xe theo tuyến xe</a></li>
+             
+                     <li><a href="<c:url value ="/admin/product-stats"></c:url>">Thống kê doanh thu theo khoảng thời gian</a></li>
+                      <li><a href="<c:url value ="/admin/product-stats-month"></c:url>">Thống kê doanh thu theo tháng</a></li>
                     </ul>
                   </li>
                   

@@ -76,6 +76,19 @@ and open the template in the editor.
         <put-attribute name="admin_footer" value="/WEB-INF/layout/admin_footer.jsp"/>
 
     </definition>
+      <definition name="category-state" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Thong ke theo danh muc" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/category-state.jsp"/>
+    </definition>
+
+    <definition name="product-stats" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Thong ke doanh thu theo chuyen xe" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/product-stats.jsp"/>
+    </definition>
+    <definition name="product-stats-month" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Thong ke doanh thu theo thang" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/product-stats-month.jsp"/>
+    </definition>
     
             <!--THÊM DỮ LIỆU-->
             
@@ -139,4 +152,10 @@ and open the template in the editor.
          <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/form_update_schedule.jsp"/>
     </definition>        
                 
+                <!--Thông tin đặt vé-->
+
+    <definition name="data_booking" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Bảng dữ liệu thông tin đặt vé" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/data_booking.jsp"/>
+    </definition>                
 </tiles-definitions>

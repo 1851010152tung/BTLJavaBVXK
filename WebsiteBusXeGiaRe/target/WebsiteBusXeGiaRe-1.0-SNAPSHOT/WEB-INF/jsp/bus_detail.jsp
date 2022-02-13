@@ -23,9 +23,8 @@
           <div class="column-xs-12">
             <nav>
               <ol class="breadcrumb-list">
-                <li class="breadcrumb-item"><a href="#">Lịch trình</a></li>
-                <li class="breadcrumb-item"><a href="#">Tuyến xe</a></li>
-                <li class="breadcrumb-item active">Chi tiết nhà xe</li>
+                  <li class="breadcrumb-item"><a href="<c:url value="/list_buses"/>">Nhà xe</a></li>
+                <li class="breadcrumb-item active">Chi tiết nhà xe ${bus.busName}</li>
               </ol>
             </nav>
           </div>
@@ -35,18 +34,23 @@
             <div class="product-gallery">
               <div class="product-image">
                     <c:if test="${bus.image != null && bus.image.startsWith('https') == true}">
-                        <img class="active" src="${bus.image}" alt="${bus.busName}" style="width: 710px; object-fit: cover"/>
+                        <img class="active" src="${bus.image}" alt="${bus.busName}" style="width: 600px; object-fit: cover"/>
                     </c:if>
                     <c:if test="${bus.image == null || bus.image.startsWith('https') == false}">
                         <img class="img-fluid " src="<c:url value="/images/default.jpg"/>" alt="${bus.busName}"/>
-                    </c:if>              </div>
+                    </c:if>              
+              </div>
 
             </div>
           </div>
             
           <div class="column-xs-12 column-md-5">
-            <h1>${bus.busName} - ${bus.numberPlate}</h1>
-            <h2>${bus.categoryBus.name}</h2>
+            <h1>Nhà xe ${bus.busName}</h1>
+            <h2><b>Biển số xe:</b>  ${bus.numberPlate}<br>
+                <b>Loại xe:</b>  ${bus.categoryBus.name}<br>
+                <b>Thương hiệu:</b>  ${bus.manufacturer}<br>
+                <b>Số chỗ:</b>  ${bus.seatNumber}<br>
+            </h2>
             <div class="description">
               <p>${bus.description}</p>
             </div>
@@ -54,27 +58,28 @@
         </div>
           
 
-       <div class="comments-app" ng-app="commentsApp" ng-controller="CommentsController as cmntCtrl">
+       <div class="comments-app">
           <!-- From -->
           <div class="comment-form">
             <!-- Comment Avatar -->
             <div class="comment-avatar">
-              <img src="http://lorempixel.com/200/200/people">
+                <c:forEach var="c" items="${comments}">
+              <img style="height:100%;width:100%" x="0" y="0" src="${c.user.avatar}">
+                </c:forEach>
             </div>
 
-            <form class="form" name="form" ng-submit="form.$valid && cmntCtrl.addComment()" novalidate>
+            <form class="form" name="form">
               <div class="form-row">
                   <textarea id="commentId"
                           class="input"
-                          ng-model="cmntCtrl.comment.text"
                           placeholder="Thêm bình luận..."
-                          required></textarea>
+                          ></textarea>
               </div>
 
               
 
-              <div class="form-row">
-                  <input type="submit" onclick="addComment(${bus.idBus})" value="Bình luận">
+              <div class="form-right">
+                  <input type="button" onclick="addComment(${bus.idBus})" value="Bình luận" class="btn-comment">
               </div>
             </form>
           </div>
@@ -82,56 +87,68 @@
           <!-- Comments List -->
           <div class="comments" id="commentArea">
             
-              <c:forEach var="c" items="${comments}" > 
+            <div class="cmt-des">
+                <div>
+                    <i class="fa fa-user-circle-o" aria-hidden="true">
+                    </i>
+                        &nbsp;&nbsp;${counter}&nbsp;Bình luận
+                
+                </div>
+            </div>
+              
+              
+          <c:forEach var="c" items="${comments}" > 
             <!-- Comment - Dummy -->
-                  <div class="comment">
+              <div class="comment">
               <!-- Comment Avatar -->
               <div class="comment-avatar">
-                  <c:if test="${c[3] != null && c[3].startsWith('https') == true}">
-                      <img src="${c[3]}">
-                  </c:if>
-                  <c:if test="${c[3] == null || c[3].startsWith('https') == false}">
-                    <div class="img-fluid rounded-circle d-flex flex-column text-center">
-                        <i class="fas fa-user-secret"></i>
-                        <span class="an-danh">Ẩn danh</span>
-                    </div>
-                  </c:if>    
+                  <img class="img-container" style="height:100%;width:100%" x="0" y="0" height="100%"  width="100%" src="${c.user.avatar}">
               </div>
 
               <!-- Comment Box -->
               <div class="comment-box">
-                <div class="comment-text">${c[1]}</div>
+                <div class="comment-text">${c.content}</div>
                 <div class="comment-footer">
                   <div class="comment-info">
                     <span class="comment-author">
-                      <a>${c[4]}</a>
+                      <a>${c.user.username}</a>
                     </span>
-                    <span class="comment-date">${c[2]}</span>
+                    <span class="comment-date">${c.createDate}</span>
                   </div>
 
                   
                 </div>
               </div>
             </div>
-              </c:forEach>
+           </c:forEach>
             
             
-            <div class="d-flex justify-content-between page mr-sm-5 ml-sm-5">
-                <ul class="pagination">
-                    <c:forEach begin="1" end="${Math.ceil(slBinhLuan/5)}" var="i">  
-                        <li class="page-item">
-                            <a class="page-link" 
-                               href="<c:url value="/bus_detail/${bus.idBus}" />?page=${i}">${i}
-                            </a>
-                        </li>
-                    </c:forEach>
-                </ul>
-                <div> Tổng số bình luận: ${countComment}</div> 
-            </div>
+            
+            <nav class="pagi">
+            <ul class="pagination pagination-lg justify-content-center">
+                <c:forEach begin="1" end="${Math.ceil(counter/2)}" var="i">
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="<c:url value="/bus_detail/${bus.idBus}/"/>?page=${i}">${i}</a>
+                    </li>
+                </c:forEach>
+            </ul>
+        </nav>
             
           </div>
         </div>
 
     </div>
+            
+     <script>
+    window.onload = function () {
+        let dates = document.querySelectorAll(".comment-date");
+        for (let i = 0; i < dates.length; i++) {
+            let d = dates[i];
+            d.innerText = moment(d.innerText).fromNow();
+        }
+    }
+</script>       
+            
   </body>
 </html>  

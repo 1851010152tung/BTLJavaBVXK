@@ -11,6 +11,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,17 +27,20 @@ import javax.persistence.Temporal;
 @Table(name = "comment")
 public class Comment implements Serializable{
     @Id
-    @Column(name = "id_comment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "id_comment")
     private int idComment;
+    
     private String content;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+//    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Column (name = "create_date")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date createDate;
     
     @ManyToOne(      
             optional = true,
             fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_user")  
     @JsonIgnore
     private User user;
     

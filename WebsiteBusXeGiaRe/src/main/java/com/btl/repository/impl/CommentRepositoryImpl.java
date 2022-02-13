@@ -36,8 +36,8 @@ public class CommentRepositoryImpl implements CommentRepository{
     @Override
     public long totalItem(int idBus) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        Query query = session.createQuery("Select Count(*) From Comment Where bus.id_bus=:idBus");
-        query.setParameter("idBus", idBus);
+        Query query = session.createQuery("Select Count(*) From Comment Where bus.idBus=:id_bus");
+        query.setParameter("id_bus", idBus);
         
         return  Long.parseLong(query.getSingleResult().toString());        
     }
@@ -81,6 +81,39 @@ public class CommentRepositoryImpl implements CommentRepository{
         q.setFirstResult((page - 1 ) * maxPage);
         
         return q.getResultList();
+    }
+    
+    @Override
+    public List<Comment> getCommentsByidBus(int id, int page) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Comment> query =  builder.createQuery(Comment.class);
+        Root root = query.from(Comment.class);
+        
+        query = query.where(builder.equal(root.get("bus"), id));
+        query = query.orderBy(builder.desc(root.get("idComment")));
+        
+        org.hibernate.query.Query q = session.createQuery(query);
+        
+        int max = 5;
+        q.setMaxResults(max);
+        q.setFirstResult((page-1)*max);
+        return q.getResultList();
+}
+
+    @Override
+    public Comment addComment(Comment c) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        
+        try{
+            session.save(c);
+            
+            return c;
+        } catch(HibernateException ex){
+            System.err.println(ex.getMessage());
+        }
+        
+        return null;
     }
     
 }

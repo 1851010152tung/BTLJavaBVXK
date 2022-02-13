@@ -5,9 +5,11 @@
  */
 package com.btl.repository.impl;
 
+import com.btl.pojos.BookingDetail;
 import com.btl.pojos.Bus;
 import com.btl.pojos.CategoryBus;
 import com.btl.pojos.Route;
+import com.btl.pojos.Schedule;
 import com.btl.repository.RouteRepository;
 import java.util.List;
 import javax.persistence.Query;
@@ -166,6 +168,36 @@ public class RouteRepositoryImpl implements RouteRepository{
         q.setFirstResult((page -1 )* maxPage);
         return q.getResultList();
         
+    }
+
+    @Override
+    public List<Object[]> getHotRoutes(int num) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+                
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        
+        Root rootR = query.from(Route.class);
+        Root rootD = query.from(BookingDetail.class);
+        Root rootS = query.from(Schedule.class);
+        
+        Predicate pr = builder.equal(rootR.get("id"),rootS.get("route"));
+        Predicate pd = builder.equal(rootS.get("id"), rootD.get("schedule"));
+        
+        query.multiselect(rootR.get("id"), rootR.get("departure"), rootR.get("destination"),
+                rootR.get("imageDeparture"),rootR.get("imageDestination"),
+                builder.count(rootR.get("id")),
+                rootR.get("ticketPrice"),rootR.get("journeyTime"), rootR.get("distance") );
+        
+        query = query.where(builder.and(pr,pd));
+
+        query = query.groupBy(rootR.get("id"));
+        query = query.orderBy(builder.desc(builder.count(rootR.get("id"))));
+        
+        Query q = session.createQuery(query);
+        q.setMaxResults(num);
+        return q.getResultList();
+                
     }
     
 }

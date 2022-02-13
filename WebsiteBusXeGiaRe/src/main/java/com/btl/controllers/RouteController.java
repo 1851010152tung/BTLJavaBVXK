@@ -49,7 +49,8 @@ public class RouteController {
         //Trường hợp dữ liệu ổn
         if(this.routeService.addOrUpdate(route) == true)
         {
-            return "redirect:/";
+//           model.addAttribute("message", "Thêm tuyến xe thành công");
+            return "redirect:/admin/routes";
         }
         else 
         {
@@ -83,7 +84,8 @@ public class RouteController {
         //Trường hợp dữ liệu ổn
         if(this.routeService.addOrUpdate(route) == true)
         {
-            return "redirect:/";
+//               model.addAttribute("message", "Cập nhật tuyến xe thành công");
+            return "redirect:/admin/data_routes/update";
         }
         else 
         {

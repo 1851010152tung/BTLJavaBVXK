@@ -291,9 +291,72 @@
         </c:forEach>
     </div>
     
+    
 </section>
 
+<section class="hot-routes" id="hot-routes">
           
+      <h1 class="heading-route">
+        <span>T</span>
+        <span>U</span>
+        <span>Y</span>
+        <span>Ế</span>
+        <span>N</span>
+        <span>X</span>
+        <span>E</span>
+
+    </h1>
+    
+    <div class="main-routes">
+  <ul class="cards">
+    <c:forEach var="h" items="${hotRoutes}">
+        <li class="cards_item">
+          <div class="card-route">
+              <div class="card_image">
+                <c:if test="${h[4] != null && h[4].startsWith('https') == true}">
+                    <img class="img-hot-routes" src="${h[4]}" alt="${h[2]}"/>
+                </c:if>              
+              </div>
+            <div class="card_content">
+              <h2 class="card_title">${h[1]} <img class="fromtowhite" alt="fromto" width="28" height="7" src="<c:url value="/img/fromtowhite.png"/>" data-v-7026b95e=""> ${h[2]}</h2>
+              <div class="card_text">
+                  <div class="details-container" data-v-8fbac40c="">
+                      
+                      
+                      <div class="distance-journeyTime">
+                              <div class="details" style="justify-content: center" data-v-8fbac40c="">
+                                  <em class="fa fa-clock-o icon" data-v-8fbac40c=""></em> 
+                                  <span>${h[7]}</span>
+                              </div>
+                              <div class="details" data-v-8fbac40c="">
+                                  <em class="fa fa-map-marker icon" data-v-8fbac40c=""></em>
+                                  <span>${h[8]} km</span>
+                              </div>
+                    </div>
+                      <div class="details" data-v-8fbac40c="">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 38 39" fill="white" fill-rule="evenodd" class="icon" data-v-8fbac40c="">
+                          <path fill-rule="nonzero" d="M23.833 11.25v-4.5c0-1.249-.975-2.25-2.166-2.25H4.333c-1.191 0-2.155 1.001-2.155 2.25v4.5c1.191 0 2.155 1.012 2.155 2.25s-.964 2.25-2.166 2.25v4.5c0 1.238.975 2.25 2.166 2.25h17.334c1.191 0 2.166-1.012 2.166-2.25v-4.5c-1.191 0-2.166-1.012-2.166-2.25s.975-2.25 2.166-2.25zm-9.75 8.438h-2.166v-2.25h2.166v2.25zm0-5.063h-2.166v-2.25h2.166v2.25zm0-5.063h-2.166v-2.25h2.166v2.25z" transform="rotate(-45 23.243 9.257)">
+                              
+                          </path>
+                          </svg> 
+                          <span class="item-price" data-v-8fbac40c="">${h[6]} VNĐ</span>
+                      </div> 
+                  </div>
+              </div>
+            </div>
+          </div>
+        </li>
+    </c:forEach>
+    
+  </ul>
+</div>
+
+    
+</section>
+
+
+
+
     </body>
 </html>
 

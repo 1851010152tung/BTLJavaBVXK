@@ -15,27 +15,29 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author Truc Lam
  */
+@RestController
 public class ApiCommentController {
     
     @Autowired
     private CommentService commentService;
     
-    @PostMapping(path = "/api/add-comment/{id}", produces = {
+    @PostMapping(path = "/api/add-comment", produces = {
         MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Comment> addComment(@RequestBody Map<String,String> params,
-            @PathVariable(value = "id") int id)
+    public ResponseEntity<Comment> addComment(@RequestBody Map<String,String> params)
     {
         try {
             String content = params.getOrDefault("content", "");
             int busId = Integer.parseInt(params.get("idBus"));
-            Comment c = this.commentService.addComment(content, busId, id);
+            Comment c = this.commentService.addComment(content, busId);
             
             return new ResponseEntity<>(c,HttpStatus.CREATED);
+            
         }catch(Exception ex){
              ex.printStackTrace();
         }

@@ -5,24 +5,11 @@
  */
 
 
-const activeImage = document.querySelector(".product-image .active");
-const productImages = document.querySelectorAll(".image-list img");
-const navItem = document.querySelector("a.toggle-nav");
 
-function changeImage(e) {
-  activeImage.src = e.target.src;
-}
+function addComment(idBus){
+        event.preventDefault();
 
-function toggleNavigation() {
-  this.nextElementSibling.classList.toggle("active");
-}
-
-productImages.forEach((image) => image.addEventListener("click", changeImage));
-navItem.addEventListener("click", toggleNavigation);
-
-
-function addComment(){
-    fetch("/WebsiteBusXeGiaRe/api/add-comment",{
+    fetch("/WebsiteBusXeGiaRe/api/add-comment", {
         method: 'post',
         body: JSON.stringify({
             "content": document.getElementById("commentId").value,
@@ -33,7 +20,7 @@ function addComment(){
             
         }
     }).then(function(res){
-        console.info(res)
+        console.info(res);
         
         return res.json();
     }).then(function(data) {
@@ -42,8 +29,10 @@ function addComment(){
         let area = document.getElementById("commentArea");
         area.innerHTML = `
              <div class="comment">
+              <!-- Comment Avatar -->
               <div class="comment-avatar">
-                <img src="http://gravatar.com/avatar/412c0b0ec99008245d902e6ed0b264ee?s=80">
+                 <img src="${data.user.avatar}">
+              
               </div>
 
               <!-- Comment Box -->
@@ -54,7 +43,7 @@ function addComment(){
                     <span class="comment-author">
                       <a>${data.user.username}</a>
                     </span>
-                    <span class="comment-date">${data.createdDate}</span>
+                    <span class="comment-date">${moment(data.createDate).fromNow()}</span>
                   </div>
 
                   
@@ -62,6 +51,6 @@ function addComment(){
               </div>
             </div>
                     ` + area.innerHTML;
-                    location.reload();
-    })
+            location.reload();
+    });
 }

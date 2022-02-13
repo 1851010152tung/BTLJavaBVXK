@@ -16,4 +16,7 @@ public interface CommentService {
     long totalItem(int idBus);
     Comment addComment(String contentString, int idBus, int id);
     List<Object[]> getListComment(int idBus, int page);
+    
+    List<Comment> getCommentsByidBus(int id, int page);
+    Comment addComment(String content, int idBus);
 }

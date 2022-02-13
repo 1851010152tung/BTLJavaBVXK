@@ -16,4 +16,6 @@ public interface CommentRepository {
     long totalItem(int id);
     Comment addComment(Comment comment, int idComment);
     List<Object[]> getListComment(int idBus, int page);
+    List<Comment> getCommentsByidBus(int id, int page);
+    Comment addComment(Comment c);
 }

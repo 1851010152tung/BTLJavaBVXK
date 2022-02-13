@@ -45,9 +45,12 @@ public class UserController {
         {
             if(this.userDetailsService.addUser(user)==true)
                 return "redirect:/login"; //Nếu đăng ký thành công chuyển sang đăng nhập
-            else
+            else{
                 errMsg = "Đã có lỗi xảy ra";
-            
+                user.setPassword("");
+                user.setConfirmPassword("");
+                model.addAttribute("errMsg", errMsg);
+            }
         }else
             errMsg = "Mật khẩu không khớp!";
         

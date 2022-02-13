@@ -76,28 +76,14 @@
                     <ul class="nav child_menu">
                       <li><a href="<c:url value ="/admin/category-state"></c:url>">Thống kê mật độ chuyến xe theo tuyến xe</a></li>
              
-                     <li><a href="<c:url value ="/admin/product-stats"></c:url>">Thống kê doanh thu theo khoảng thời gian</a></li>
+                     <li><a href="<c:url value ="/admin/product-stats"></c:url>">Thống kê doanh thu theo ngày</a></li>
                       <li><a href="<c:url value ="/admin/product-stats-month"></c:url>">Thống kê doanh thu theo tháng</a></li>
                     </ul>
                   </li>
                   
                 </ul>
               </div>
-<!--              <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  </li>
-                                    
-                </ul>
-              </div>-->
+
 
             </div>
             <!-- /sidebar menu -->

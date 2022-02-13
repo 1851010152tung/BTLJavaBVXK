@@ -774,8 +774,24 @@ main.page-content
     border-radius: 6px;
 }
 
+.btn-book:hover{
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    background: #f9db5e;
+    padding: .8rem 3rem;
+    border: .2rem solid #f9db5e;
+    color: #4F4F4F;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 6px;
+}
+
 .packages{
     padding: 2rem 9%;
+        margin-bottom: 100px;
+
 }
 
 
@@ -808,4 +824,180 @@ main.page-content
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 6px;
+}
+
+
+    /*********************************************************************************************
+                                            
+                                            TUYẾN XE ĐẶT NHIỀU 
+    
+    **********************************************************************************************/
+    
+    
+/* Font */
+
+/* Design */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.hot-routes{
+    background-color: var(--blue);
+}
+
+
+.heading-route {
+    text-align: center;
+    padding: 2.5rem 0;
+}
+    
+.heading-route span {
+    font-size: 2rem;
+    background: #0e73df;
+    color: #fff;
+    border-radius: .5rem;
+    padding: .2rem 1rem;
+    font-weight: 700;
+    font-family: "Montserrat" sans-serif;
+
+}
+
+
+.main-routes{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 110px;
+}
+
+
+.img-hot-routes {
+  height: auto;
+  width: 100%;
+/*  width: 300px;*/
+  vertical-align: middle;
+  margin-top: -50px;
+}
+
+/*.btn {
+  color: #ffffff;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+}*/
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #fff
+
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+  width: 250px;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 28%;
+  }
+}
+
+.card_image {
+    /* max-width: 300px; */
+    height: 250px;
+}
+
+.card-route {
+  background-color: white;
+  border-radius: 0.8rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card_content {
+  padding: 1rem;
+    background: linear-gradient(to top left, #f9b943, #ffca6e);
+}
+
+.card_title {
+    color: #ffffff;
+    font-size: 1.005rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0px;
+}
+.card_text {
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;    
+  font-weight: 400;
+}
+
+.details-container {
+    margin-top: 10px;
+}
+
+.distance-journeyTime {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 5px;
+}
+
+.details{
+    margin-right: 15px;
+    margin-top: 4px;
+}
+
+em.fa {
+    margin-right: 5px;
+    font-size: 18px
+}
+
+span.item-price {
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+svg.icon {
+    margin-left: -5px;
+}
+
+.details span {
+    font-size: 15px;
+}
+
+img.fromtowhite{
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
 }

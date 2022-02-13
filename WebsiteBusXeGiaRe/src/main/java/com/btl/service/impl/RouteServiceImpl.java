@@ -108,6 +108,12 @@ public class RouteServiceImpl implements RouteService{
         return this.routeRepository.getRoutes(kw, page);
     }
     
+    @Override
+    public List<Object[]> getListHotRoutes(int num) {
+        return this.routeRepository.getHotRoutes(num);
+    }
+    
+    
     
     
 }

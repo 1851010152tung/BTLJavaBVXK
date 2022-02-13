@@ -32,9 +32,9 @@ and open the template in the editor.
          <put-attribute name="content" value="/WEB-INF/jsp/home_routine.jsp"/>
     </definition>
     
-    <definition name="list_schedule" extends ="baseLayout">
+    <definition name="list_schedules" extends ="baseLayout">
         <put-attribute name ="title" value ="Đặt vé" />
-         <put-attribute name="content" value="/WEB-INF/jsp/list_schedule.jsp"/>
+         <put-attribute name="content" value="/WEB-INF/jsp/list_schedules.jsp"/>
     </definition>
     
     <definition name="cart" extends ="baseLayout">
@@ -77,16 +77,16 @@ and open the template in the editor.
 
     </definition>
       <definition name="category-state" extends ="adminBaseLayout">
-        <put-attribute name ="title" value ="Thong ke theo danh muc" />
+        <put-attribute name ="title" value ="Thống kê theo danh mục" />
          <put-attribute name="admin_content" value="/WEB-INF/jsp/category-state.jsp"/>
     </definition>
 
     <definition name="product-stats" extends ="adminBaseLayout">
-        <put-attribute name ="title" value ="Thong ke doanh thu theo chuyen xe" />
+        <put-attribute name ="title" value ="Thống kê doanh thu theo ngày" />
          <put-attribute name="admin_content" value="/WEB-INF/jsp/product-stats.jsp"/>
     </definition>
     <definition name="product-stats-month" extends ="adminBaseLayout">
-        <put-attribute name ="title" value ="Thong ke doanh thu theo thang" />
+        <put-attribute name ="title" value ="Thống kê doanh thu theo tháng" />
          <put-attribute name="admin_content" value="/WEB-INF/jsp/product-stats-month.jsp"/>
     </definition>
     
@@ -153,9 +153,36 @@ and open the template in the editor.
     </definition>        
                 
                 <!--Thông tin đặt vé-->
-
     <definition name="data_booking" extends ="adminBaseLayout">
         <put-attribute name ="title" value ="Bảng dữ liệu thông tin đặt vé" />
          <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/data_booking.jsp"/>
+    </definition>            
+                
+
+    <!--          ADMIN PAGE             -->
+
+
+
+    
+            
+    <!--         EMPLOYEE PAGE           -->
+
+    <definition name="employeeBaseLayout"
+                template = "/WEB-INF/layout/employee_base.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="admin_header" value="/WEB-INF/layout/admin_header.jsp"/>
+        <put-attribute name="admin_sidebar" value="/WEB-INF/layout/employee_sidebar.jsp"/>
+        <put-attribute name="admin_content" value="Base"/>
+        <put-attribute name="admin_footer" value="/WEB-INF/layout/admin_footer.jsp"/>
+
     </definition>                
+
+    <definition name="data_schedules_driver" extends ="employeeBaseLayout">
+        <put-attribute name ="title" value ="Lịch chạy xe" />
+         <put-attribute name="employee_content" value="/WEB-INF/jsp/employee/data_schedules_driver.jsp"/>
+    </definition>
+
+
+    <!--         EMPLOYEE PAGE           -->
+     
 </tiles-definitions>

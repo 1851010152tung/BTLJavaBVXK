@@ -23,4 +23,5 @@ public interface RouteService {
  
     List<Route> getRoutes(String kw, int page);
 
+    List<Object[]> getListHotRoutes(int num);
 }

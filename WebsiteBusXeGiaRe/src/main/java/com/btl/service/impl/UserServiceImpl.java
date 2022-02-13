@@ -42,18 +42,58 @@ public class UserServiceImpl implements UserService {
     //Trước khi gửi vào Repository cần băm mật khẩu
     private BCryptPasswordEncoder passwordEncoder;
     
-        @Autowired
+    @Autowired
     private Cloudinary cloudinary;
     
     
     @Override
     public boolean addUser(User user) {
-        String pass = user.getPassword();
-        user.setPassword(this.passwordEncoder.encode(pass));
-        user.setUserRole(User.USER);
-        
+        try {
+            if(user.getId() > 0)
+            {
+                if(user.getFile().getBytes().length == 0)
+                {
+                    User u = this.userRepository.findById(user.getId());
+                    user.setAvatar(u.getAvatar());
+                }else
+                {
+                    Map m = this.cloudinary.uploader().upload(user.getFile().getBytes(), 
+                            ObjectUtils.asMap("resource_type","auto"));
+                    user.setAvatar((String) m.get("secure_url"));
+                    
+                }
+                
+            }else {
+                if(user.getFile().getBytes().length == 0)
+                {
+                    String pass = user.getPassword();
+                    user.setPassword(this.passwordEncoder.encode(pass));
+                    //set vai tro
+                    user.setUserRole(User.USER);
+                
+                
+                    if(user.getFile().getBytes().length !=0)
+                    {
+                        Map m = this.cloudinary.uploader().upload(user.getFile().getBytes(),
+                                ObjectUtils.asMap("resource_type","auto"));
+
+                        user.setAvatar((String) m.get("secure_url"));
+                        user.setUserRole(user.getUserRole());
+                    }else
+                    {
+                        return false;
+                    }
+                }else{
+                    user.setAvatar("");
+                }
+                
         
             return this.userRepository.addUser(user);
+            }
+            
+        } catch (Exception e) {
+        }
+        return false;
         
        
 

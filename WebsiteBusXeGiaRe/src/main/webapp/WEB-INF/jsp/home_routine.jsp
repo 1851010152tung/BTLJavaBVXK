@@ -79,7 +79,7 @@
                 <td class="column-title ">${r.journeyTime}</td>
                 <td class="column-title ">${r.ticketPrice}</td>                                        
                 <td class="column-title ">
-                    <a class="user-name-sign-in" href="<c:url value="/home_routine/list_schedule?id=${r.id}"/>">
+                    <a class="user-name-sign-in" href="<c:url value="/home_routine/list_schedules?id=${r.id}"/>">
                     <button data-v-62c8fe4c="" class="time-detail" > Chi tiết
                         <i data-v-62c8fe4c="" class="fa fa-info-circle" style="font-size: 18px;"></i>
                     </button>

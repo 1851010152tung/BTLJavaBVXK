@@ -84,6 +84,7 @@ public class HomeController {
         model.addAttribute("schedules", this.scheduleService.getSchedules());
         //s.close();
         model.addAttribute("currentUser", session.getAttribute("currentUser"));
+        model.addAttribute(("hotRoutes"), this.routeService.getListHotRoutes(4));
 
         return "index";
     }
@@ -110,7 +111,7 @@ public class HomeController {
     }
     
     //LỊCH TRÌNH
-    @RequestMapping("/home_routine/list_schedule") //HTTP GET
+    @RequestMapping("/home_routine/list_schedules") //HTTP GET
     @Transactional
     public String listSchedule(Model model,
             @RequestParam(name ="id", defaultValue ="0") int id) {
@@ -119,20 +120,9 @@ public class HomeController {
         model.addAttribute("size",this.scheduleService.getListSchedulesByIdRoute(id).size());   
 
         //s.close();
-        return "list_schedule";
+        return "list_schedules";
     }
     
-     //CHI TIẾT CHUYẾN XE
-//    @RequestMapping("/bus_detail") //HTTP GET
-//    @Transactional
-//    public String busDetail(Model model) {
-//           model.addAttribute("bus", this.busService.getBuses());
-//          
-//
-//        //s.close();
-//        return "bus_detail";
-//    }
-//    
    
 }
 

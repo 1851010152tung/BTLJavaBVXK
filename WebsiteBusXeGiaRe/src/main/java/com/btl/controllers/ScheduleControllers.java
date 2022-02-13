@@ -72,7 +72,7 @@ public class ScheduleControllers {
         //Trường hợp dữ liệu ổn
         if(this.scheduleService.addOrUpdate(schedule) == true)
         {
-            return "redirect:/";
+            return "redirect:/admin/schedules";
         }
         else 
         {
@@ -103,7 +103,7 @@ public class ScheduleControllers {
         //Trường hợp dữ liệu ổn
         if(this.scheduleService.addOrUpdate(schedule) == true)
         {
-            return "redirect:/";
+            return "redirect:/admin/data_schedules";
         }
         else 
         {

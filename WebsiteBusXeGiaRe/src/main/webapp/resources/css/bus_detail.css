@@ -7,6 +7,16 @@ and open the template in the editor.
 
 /* 12columns.css | Created by Katherine Kato | Released under the MIT license */
 /* GitHub: https://kathykato.github.io/12columns/ */
+
+:root {
+    --orange: #ffa500;
+    --blue: #2852EB;
+    --light-blue-form: #E8F1FF;
+    --black: #4F4F4F;
+    --light-black: #8D8D8D;
+}
+
+
 .container {
   margin: auto;
   padding: 0 1rem;
@@ -549,7 +559,7 @@ and open the template in the editor.
 }
 
 body {
-  font-family: "Pontano Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.125rem;
   line-height: 1.5;
   margin: 0;
@@ -573,9 +583,7 @@ a {
   text-decoration: none;
   transition: all 0.2s ease;
 }
-a:hover {
-  color: #333;
-}
+
 a.active {
   color: #333;
 }
@@ -584,15 +592,17 @@ h1, h2, h3, h4 {
   color: #333;
   font-weight: normal;
   margin: 1.75rem 0 1rem 0;
+ 
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 h2 {
-  font-size: 2.125rem;
-  margin: 0;
+  font-size: 1rem;
+  line-height: 30px;
 }
 
 h3 {
@@ -1063,4 +1073,53 @@ img.active {
   float: left;
   text-align: right;
   width: 15%;
+}
+
+
+.form-right {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.btn-comment{
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--blue);
+    color: #fff;
+    padding: 0.4rem 1.7rem;
+    border: 0.2rem solid var(--blue);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 4px;
+    
+}
+
+.btn-comment:hover{
+    background: blue;
+    color: #fff;
+    padding: 0.4rem 1.7rem;
+    border: 0.2rem solid blue;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 4px;
+    
+}
+
+.cmt-des{
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.pagi{
+    margin-top: 2rem;
+}
+
+.pagination-lg .page-link {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
 }

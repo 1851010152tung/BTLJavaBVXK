@@ -56,7 +56,7 @@ public class EmployeeController {
         //Trường hợp dữ liệu ổn
         if(this.employeeService.addOrUpdate(employee) == true)
         {
-            return "redirect:/";
+            return "redirect:/admin/employees";
         }
         else 
         {
@@ -92,7 +92,7 @@ public class EmployeeController {
         //Trường hợp dữ liệu ổn
         if(this.employeeService.addOrUpdate(employee) == true)
         {
-            return "redirect:/";
+            return "redirect:/admin/data_employees";
         }
         else 
         {
@@ -119,6 +119,7 @@ public class EmployeeController {
      
     
     //DELETE DATA EMPLOYEE
+    @GetMapping("/admin/data_employees/delete")
     public String delete(Model model,
             @RequestParam(name = "idEmployee", defaultValue = "0")int idEmployee)
     {
@@ -128,5 +129,23 @@ public class EmployeeController {
             model.addAttribute("message", "Xóa thất bại!!");
         return "redirect:/admin/data_employees";
     }
+    
+    
+    //EMPLOYEE - DRIVER
+    @RequestMapping("/employee/data_schedules_driver")
+    public String indexUpdateDriver(Model model, 
+            @RequestParam(required = false) Map<String, String> params)
+    {
+        String kw = params.getOrDefault("kw", null);
+        int page = Integer.parseInt(params.getOrDefault("page", "1")); // nếu có thì lấy biến page còn không thì trả về 1
+        
+        
+        model.addAttribute("employees", this.employeeService.getEmployees(kw,page));
+        model.addAttribute("size", this.employeeService.getEmployees(kw, page).size());
+        model.addAttribute("counter", this.employeeService.totalItem());        
+        return "data_schedules_driver";
+}
+    
+    
     
 }

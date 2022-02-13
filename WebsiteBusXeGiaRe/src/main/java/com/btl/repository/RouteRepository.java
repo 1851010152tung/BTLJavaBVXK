@@ -24,4 +24,6 @@ public interface RouteRepository {
     List<Object> getListByCondition(String kw, int page);
     
     List<Route> getRoutes(String kw, int page);
+    
+    List<Object[]> getHotRoutes(int num);
 }

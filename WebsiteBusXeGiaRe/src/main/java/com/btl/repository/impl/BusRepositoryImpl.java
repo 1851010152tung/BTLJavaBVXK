@@ -9,6 +9,7 @@ import com.btl.pojos.Booking;
 import com.btl.pojos.BookingDetail;
 import com.btl.pojos.Bus;
 import com.btl.pojos.CategoryBus;
+import com.btl.pojos.Comment;
 import com.btl.pojos.Employee;
 import com.btl.pojos.Route;
 import com.btl.pojos.Schedule;
@@ -339,6 +340,35 @@ public class BusRepositoryImpl implements BusRepository {
         
         return q.getResultList();
 
+    }
+    
+    
+    @Override
+    public List<Object[]> getMostCommentBus(int num) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+                
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        
+        Root rootB = query.from(Bus.class);
+        Root rootC = query.from(Comment.class);
+        Root rootCB = query.from(CategoryBus.class);
+        
+        Predicate p = builder.equal(rootB.get("idBus"),rootC.get("bus"));
+        Predicate pc = builder.equal(rootCB.get("id"), rootB.get("categoryBus"));
+        
+        query.multiselect(rootB.get("busName"),rootB.get("numberPlate"),rootB.get("manufacturer"),rootCB.get("name"),
+                rootB.get("seatNumber"),rootB.get("image"),
+                builder.count(rootB.get("idBus")));
+        query = query.where(builder.and(p,pc));
+
+        query = query.groupBy(rootB.get("idBus"));
+        query = query.orderBy(builder.desc(builder.count(rootB.get("idBus"))),
+                builder.desc(rootB.get("idBus")));
+        
+        Query q = session.createQuery(query);
+        q.setMaxResults(num);
+        return q.getResultList();   
     }
   
     

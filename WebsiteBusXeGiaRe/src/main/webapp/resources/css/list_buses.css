@@ -12,28 +12,6 @@ section {
     padding: 90px 0;
 }
 
-
-/*.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}*/
-
-/*@media (min-width: 768px)
-{
-    .container, .container-md, .container-sm {
-    max-width: 720px;
-}
-}
-@media (min-width: 576px)
-{
-    .container, .container-sm {
-    max-width: 540px;
-}
-}*/
-
 .bus{
     margin-top: 50px;
     display: flex;
@@ -164,8 +142,18 @@ form.search-bus {
 .box-container .box .content-text-booking h3 {
     font-size: 18px;
     font-weight: 700;
-    color: #333;
+/*    color: #333;*/
     line-height: 25px
+}
+
+.box-container .box .content-text-booking h3:hover{
+    text-decoration: none;
+    color: #000
+        
+}
+
+.box-container .box .content-text-booking a:hover{
+    text-decoration: none;
 }
 
 .box-container .box .content-text-booking h3 i {
@@ -230,4 +218,10 @@ form.search-bus {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 6px;
+}
+
+.title-bus:hover{
+    color: #0000;
+    text-decoration: none;
+    
 }

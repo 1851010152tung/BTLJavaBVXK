@@ -6,12 +6,15 @@
 package com.btl.controllers;
 
 import com.btl.pojos.Bus;
+import com.btl.pojos.User;
 import com.btl.service.BusService;
 import com.btl.service.CommentService;
 import com.btl.service.EmployeeService;
+import com.btl.service.UserService;
 import java.util.Map;
 import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -41,6 +44,9 @@ public class BusController {
     @Autowired
     private CommentService commentService;
     
+    @Autowired
+    private UserService userService;
+    
     @GetMapping("/admin/buses")
     public String list(Model model)
     {
@@ -63,7 +69,7 @@ public class BusController {
         //Trường hợp dữ liệu ổn
         if(this.busService.addOrUpdate(bus) == true)
         {
-            return "redirect:/";
+            return "redirect:/dmin/buses";
         }
         else 
         {
@@ -99,7 +105,7 @@ public class BusController {
         //Trường hợp dữ liệu ổn
         if(this.busService.addOrUpdate(bus) == true)
         {
-            return "redirect:/";
+            return "redirect:/dmin/data_buses";
         }
         else 
         {
@@ -165,11 +171,16 @@ public class BusController {
     {
         
         int page = Integer.parseInt(params.getOrDefault("page", "1"));
-//        Bus b = this.busService.findById(id);
+        Bus b = this.busService.findById(id);
 
-        model.addAttribute("bus", this.busService.findById(id));
-        model.addAttribute("comments", this.commentService.getListComment(id, page));
-        model.addAttribute("countComment", this.commentService.totalItem(id));
+         User u = this.userService.getUserByUsername(
+                SecurityContextHolder.getContext().getAuthentication().getName());
+
+        
+        model.addAttribute("bus", b);
+        model.addAttribute("comments", this.commentService.getCommentsByidBus(id, page));
+        model.addAttribute("counter", this.commentService.getCommentsByidBus(id, page).size());
+//        model.addAttribute("countComment", this.commentService.totalItem(id));
 
         return "bus_detail";
     }

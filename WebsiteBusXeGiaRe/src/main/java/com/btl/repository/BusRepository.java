@@ -30,6 +30,7 @@ public interface BusRepository {
     List<Object> ProductStats(String kw, Date fromDate,Date toDate);
     List<Object> ProductStatsMonth(String kw, Date fromDate,Date toDate);
     
+    List<Object[]> getMostCommentBus(int num);
     
     
 }

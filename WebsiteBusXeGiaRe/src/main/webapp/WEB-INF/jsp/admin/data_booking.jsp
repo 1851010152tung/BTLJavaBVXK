@@ -67,11 +67,13 @@
                                           <input type="checkbox" id="check-all" class="flat">
                                         </th>-->
                                         <th class="column-title" id="col-num">Id </th>
-                                        <th class="column-title">Tuyến xe </th>
-                                        <th class="column-title">Số lượng vé </th>                                        
-                                        <th class="column-title">Giá vé </th>
-                                        <th class="column-title">Ngày khởi hành </th>
-                                        <th class="column-title">Ngày đặt vé </th>                                        
+                                        <th class="column-title">Khách hàng </th>
+                                        <th class="column-title">Email </th>                                        
+                                        <th class="column-title">Số điện thoại </th>
+                                        <th class="column-title">Tên đăng nhập </th>
+                                        <th class="column-title">Ngày đặt vé </th>   
+                                        <th class="column-title">Tổng tiền </th>                                        
+
                                                                               
                                         <th class="column-title no-link last  a-right a-right"><span class="nobr ">Action</span>
                                         </th>
@@ -82,26 +84,28 @@
                                     </thead>
 
                                     <tbody>
-                                        <c:forEach var="b" items="${buses}">
+                                        <c:forEach var="b" items="${booking}">
                                       <tr class="even pointer">
 <!--                                        <td class="a-center ">
                                           <input type="checkbox" class="flat" name="table_records">
                                         </td>-->
                                         <td class=" ">${b[0]}</td>
-                                        <td class=" ">${b[3]} - ${b[4]}</td>
-                                        <td class=" ">${b[1]}</td>
-                                        <td class=" ">${b[2]}</td>
+                                        <td class=" ">${b[3]} ${b[4]}</td>
                                         <td class=" ">${b[5]}</td>
                                         <td class=" ">${b[6]}</td>
-                                                                            
+                                        <td class=" ">${b[7]}</td>
+                                        <td class=" ">${b[1]}</td>
+                                        <td class=" ">${b[2]}</td>
+                                                                           
                                         
 
-                                        <td class=" last a-right a-right ">
-                                            <div class="btn-edit">
-<!--                                                <a class="btn btn-default" href=" <!c:url value="data_employees/update?idEmployee=$!{e.idEmployee}" />"><span class="glyphicon glyphicon-pencil"></span></a>-->
-<!--                                                <a class="btn btn-default" href="<!c:url value="data_employees/delete?idEmployee=$!{e.idEmployee}" />"><span class="glyphicon glyphicon-trash"></span></a>                                                -->
-                                            </div>
-                                        </td>
+                                         <td class="column-title ">
+                    <a class="user-name-sign-in" href="<c:url value="/admin/data_booking_detail/${b[0]}"/>">
+                    <button data-v-62c8fe4c="" class="time-detail" > Chi tiết
+                        <i data-v-62c8fe4c="" class="fa fa-info-circle" style="font-size: 18px;"></i>
+                    </button>
+                    </a>
+                </td>
                                       </tr>
                                         </c:forEach>
 

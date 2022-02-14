@@ -15,7 +15,7 @@
     
     <div class="page-title">
                         <div class="title_left">
-                                <h3>BẢNG DỮ LIỆU THÔNG TIN ĐẶT VÉ</h3>
+                                <h3>CHI TIẾT THÔNG TIN VÉ ĐÃ ĐẶT</h3>
                         </div>
 
                         <div class="title_right">
@@ -39,7 +39,7 @@
                     <div class="col-md-12 col-sm-12  " id="table-buses">
                             <div class="x_panel">
                               <div class="x_title">
-                                <h2>Cập nhật<small>thông tin đặt vé</small></h2>
+                                <h2>Khách hàng<small>${BookingDetail[13]} ${BookingDetail[14]}</small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                   </li>
@@ -66,46 +66,43 @@
 <!--                                        <th>
                                           <input type="checkbox" id="check-all" class="flat">
                                         </th>-->
-                                        <th class="column-title" id="col-num">Id </th>
-                                        <th class="column-title">Khách hàng </th>
-                                        <th class="column-title">Email </th>                                        
-                                        <th class="column-title">Số điện thoại </th>
-                                        <th class="column-title">Tên đăng nhập </th>
-                                        <th class="column-title">Ngày đặt vé </th>   
-                                        <th class="column-title">Tổng tiền </th>                                        
-
+                                        <th class="column-title" id="col-num">Id</th>
+                                        <th class="column-title">Tuyến xe</th>
+                                        <th class="column-title">Nhà xe - Loại xe</th>                                        
+                                        <th class="column-title">Biển số xe </th>
+                                        <th class="column-title">Ngày khởi hành </th>
+                                        <th class="column-title">Giờ khởi hành </th>   
+                                        <th class="column-title">Số lượng </th>                                        
+                                        <th class="column-title">Đơn giá </th>                                        
                                                                               
-                                        <th class="column-title no-link last  a-right a-right"><span class="nobr ">Action</span>
+<!--                                        <th class="column-title no-link last  a-right a-right"><span class="nobr ">Action</span>
                                         </th>
                                         <th class="bulk-actions" colspan="7">
                                           <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                        </th>
+                                        </th>-->
                                       </tr>
                                     </thead>
 
                                     <tbody>
-                                        <c:forEach var="b" items="${booking}">
+                                        <c:forEach var="b" items="${BookingDetail}">
                                       <tr class="even pointer">
 <!--                                        <td class="a-center ">
                                           <input type="checkbox" class="flat" name="table_records">
                                         </td>-->
                                         <td class=" ">${b[0]}</td>
-                                        <td class=" ">${b[3]} ${b[4]}</td>
-                                        <td class=" ">${b[5]}</td>
+                                        <td class=" ">${b[3]} - ${b[4]}</td>
+                                        <td class=" ">${b[5]} - ${b[7]}</td>
                                         <td class=" ">${b[6]}</td>
-                                        <td class=" ">${b[7]}</td>
+                                        <td class=" ">${b[8]}</td>
+                                        <td class=" ">${b[9]}</td>
                                         <td class=" ">${b[1]}</td>
                                         <td class=" ">${b[2]}</td>
                                                                            
                                         
 
-                                         <td class="column-title ">
-                    <a class="user-name-sign-in" href="<c:url value="/admin/data_booking_detail/${b[0]}"/>">
-                    <button data-v-62c8fe4c="" class="time-detail" > Chi tiết
-                        <i data-v-62c8fe4c="" class="fa fa-info-circle" style="font-size: 18px;"></i>
-                    </button>
-                    </a>
-                </td>
+<!--                                         <td class="column-title ">
+                   
+                                            </td>-->
                                       </tr>
                                         </c:forEach>
 
@@ -113,18 +110,7 @@
                                   </table>
                                 </div>
 
-                                <div class="pagination-table">
-                                      <!--$!{counter}-->
-                                      <ul class="pagination">
-                                          <c:forEach  begin="1" end="${Math.ceil(counter/6)}" var="i">
-                                              
-                                          <li class="page-item"><a class="page-link" href="<c:url value="/admin/data_booking"/>?page=${i}">${i}</a></li>
-                                              
-                                          </c:forEach>
-                                       
-                                        </ul>
-                                          
-                                  </div>      
+                                
 
                               </div>
                             </div>

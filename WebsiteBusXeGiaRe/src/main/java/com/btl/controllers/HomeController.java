@@ -84,7 +84,7 @@ public class HomeController {
         model.addAttribute("schedules", this.scheduleService.getSchedules());
         //s.close();
         model.addAttribute("currentUser", session.getAttribute("currentUser"));
-        model.addAttribute(("hotRoutes"), this.routeService.getListHotRoutes(4));
+        model.addAttribute(("hotRoutes"), this.routeService.getListHotRoutes(6));
 
         return "index";
     }

@@ -6,6 +6,7 @@
 package com.btl.repository;
 
 import com.btl.pojos.Cart;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,5 +14,11 @@ import java.util.Map;
  * @author Asus
  */
 public interface BookingRepository {
+    
     boolean addBill(Map<Integer, Cart> cart, int id);
+    List<Object[]> getListBooking(String kw, int page);
+    List<Object[]> getListBookingDetail(int id);
+    
+    long totalItem();
+
 }

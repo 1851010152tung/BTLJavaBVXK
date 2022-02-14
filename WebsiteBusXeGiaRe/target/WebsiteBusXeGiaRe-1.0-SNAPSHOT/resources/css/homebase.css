@@ -778,10 +778,10 @@ main.page-content
     display: inline-block;
     margin-top: 1rem;
     text-decoration: none;
-    background: #f9db5e;
+    background: var(--black);
     padding: .8rem 3rem;
-    border: .2rem solid #f9db5e;
-    color: #4F4F4F;
+    border: .2rem solid var(--black);
+    color: #fff;
     cursor: pointer;
     font-size: 16px;
     font-weight: 700;
@@ -872,12 +872,10 @@ main.page-content
 }
 
 
-.img-hot-routes {
-  height: auto;
-  width: 100%;
-/*  width: 300px;*/
-  vertical-align: middle;
-  margin-top: -50px;
+#img-hot-routes {
+      height: 14rem;
+    width: 100%;
+    object-fit: cover;
 }
 
 /*.btn {
@@ -905,13 +903,19 @@ main.page-content
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding-left: 80px;
+  padding-right: 80px;
+  justify-content: space-between;
 }
 
 .cards_item {
-  display: flex;
-  padding: 1rem;
-  width: 250px;
+    flex: 1 1 30rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 1rem 2rem rgb(0 0 0 / 10%);
+    max-width: 300px;
+/*    margin-left: 50px;*/
+    margin-top: 60px;
 }
 
 @media (min-width: 40rem) {
@@ -926,10 +930,10 @@ main.page-content
   }
 }
 
-.card_image {
-    /* max-width: 300px; */
+/*.card_image {
+     max-width: 300px; 
     height: 250px;
-}
+}*/
 
 .card-route {
   background-color: white;
@@ -947,7 +951,7 @@ main.page-content
 
 .card_title {
     color: #ffffff;
-    font-size: 1.005rem;
+    font-size: 0.88rem;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;

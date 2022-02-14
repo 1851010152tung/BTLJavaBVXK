@@ -6,6 +6,7 @@
 package com.btl.service;
 
 import com.btl.pojos.Cart;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,6 +15,10 @@ import java.util.Map;
  */
 public interface BookingService {
      boolean addBill(Map<Integer, Cart> cart, int id);
+    List<Object[]> getListBooking(String kw, int page);
+    List<Object[]> getListBookingDetail(int id);
+    long totalItem();
 
+     
     
 }

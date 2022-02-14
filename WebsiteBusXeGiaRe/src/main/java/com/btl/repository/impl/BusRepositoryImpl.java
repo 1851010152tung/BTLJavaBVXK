@@ -274,7 +274,8 @@ public class BusRepositoryImpl implements BusRepository {
     
       if(kw != null && !kw.isEmpty())
       {
-          predicates.add(builder.like(rootR.get("departure"), String.format("%%%s%%", kw)));
+                predicates.add(builder.or(builder.like(rootR.get("departure"), String.format("%%%s%%", kw)),
+                   builder.like(rootR.get("destination"), String.format("%%%s%%", kw))));
 
       }
       if(fromDate != null)
@@ -326,8 +327,8 @@ public class BusRepositoryImpl implements BusRepository {
     
       if(kw != null && !kw.isEmpty())
       {
-          predicates.add(builder.like(rootR.get("departure"), String.format("%%%s%%", kw)));
-
+                predicates.add(builder.or(builder.like(rootR.get("departure"), String.format("%%%s%%", kw)),
+                   builder.like(rootR.get("destination"), String.format("%%%s%%", kw))));
       }
       if(fromDate != null)
           predicates.add(builder.greaterThanOrEqualTo(rootK.get("bookingDate"),fromDate));

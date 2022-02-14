@@ -18,17 +18,7 @@
 
             <div class="clearfix"></div>
 
-            <!-- menu profile quick info -->
-<!--            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="images/default.jpg" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Xin chào,</span>
-                <h2>Username</h2>
-              </div>
-            </div>-->
-            <!-- /menu profile quick info -->
+
 
             <br />
 
@@ -55,11 +45,11 @@
 
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> Thư viện <span class="fa fa-chevron-down"></span></a>
+<!--                  <li><a><i class="fa fa-desktop"></i> Thư viện <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="general_elements.html">General Elements</a></li>
                     </ul>
-                  </li>
+                  </li>-->
                   <li><a><i class="fa fa-table"></i> Bảng dữ liệu <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="<c:url value ="/admin/data_employees"></c:url>">Nhân viên</a></li>
@@ -67,17 +57,16 @@
                         <li><a href="<c:url value ="/admin/data_buses"></c:url>">Chuyến xe</a></li>
                         <li><a href="<c:url value ="/admin/data_routes"></c:url>">Tuyến xe</a></li>
                         <li><a href="<c:url value ="/admin/data_schedules"></c:url>">Lịch trình</a></li>
-                        <li><a href="form.html">Doanh thu</a></li>
                         <li><a href="<c:url value="/admin/data_booking"/>">Thông tin đặt vé</a></li>
 
                     </ul>
                   </li>
                   <li><a><i class="fa fa-bar-chart-o"></i> Thống kê <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<c:url value ="/admin/category-state"></c:url>">Thống kê mật độ chuyến xe theo tuyến xe</a></li>
+                      <li><a href="<c:url value ="/admin/category-state"></c:url>">Mật độ chuyến xe theo tuyến xe</a></li>
              
-                     <li><a href="<c:url value ="/admin/product-stats"></c:url>">Thống kê doanh thu theo ngày</a></li>
-                      <li><a href="<c:url value ="/admin/product-stats-month"></c:url>">Thống kê doanh thu theo tháng</a></li>
+                     <li><a href="<c:url value ="/admin/product-stats"></c:url>">Doanh thu theo ngày</a></li>
+                      <li><a href="<c:url value ="/admin/product-stats-month"></c:url>">Doanh thu theo tháng</a></li>
                     </ul>
                   </li>
                   
@@ -93,18 +82,5 @@
         </div>
         
 
-        <!-- top navigation -->
-
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        
-         
-
-        <!-- /page content -->
-
-        <!-- footer content -->
-        
-        <!-- /footer content -->
       </div>
     </div>

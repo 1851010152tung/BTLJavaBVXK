@@ -8,6 +8,7 @@ package com.btl.service.impl;
 import com.btl.pojos.Cart;
 import com.btl.repository.BookingRepository;
 import com.btl.service.BookingService;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,21 @@ public class BookingServiceImpl implements BookingService{
         if(cart !=null)
             return this.bookingRepository.addBill(cart, id);
         return false;
+    }
+
+    @Override
+    public List<Object[]> getListBooking(String kw, int page) {
+        return this.bookingRepository.getListBooking(kw, page);
+    }
+
+    @Override
+    public List<Object[]> getListBookingDetail(int id) {
+        return this.bookingRepository.getListBookingDetail(id);
+    }
+
+    @Override
+    public long totalItem() {
+        return this.bookingRepository.totalItem();
     }
     
 }

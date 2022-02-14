@@ -189,3 +189,11 @@ th#col-num{
 .table td, .table th{
     padding: 0.8rem;
 }
+
+.time-detail[data-v-62c8fe4c] {
+    color: var(--blue);
+/*    background-color: #f2f2f2;*/
+    background:none;
+    border: none;
+    font-weight: bold
+}

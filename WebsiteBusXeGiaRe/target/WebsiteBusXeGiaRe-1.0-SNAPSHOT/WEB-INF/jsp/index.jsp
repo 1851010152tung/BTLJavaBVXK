@@ -314,7 +314,7 @@
           <div class="card-route">
               <div class="card_image">
                 <c:if test="${h[4] != null && h[4].startsWith('https') == true}">
-                    <img class="img-hot-routes" src="${h[4]}" alt="${h[2]}"/>
+                    <img class="img-fluid" id="img-hot-routes" src="${h[4]}" alt="${h[2]}"/>
                 </c:if>              
               </div>
             <div class="card_content">

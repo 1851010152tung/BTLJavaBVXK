@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
--- Host: localhost    Database: website_busgiare
+-- Host: 127.0.0.1    Database: website_busgiare
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -33,7 +33,7 @@ CREATE TABLE `booking_detail` (
   KEY `fk_bookingdetail_booking_idx` (`id_booking`),
   CONSTRAINT `fk_bookingdetail_booking` FOREIGN KEY (`id_booking`) REFERENCES `booking` (`id`),
   CONSTRAINT `fk_bookingdetail_schedule` FOREIGN KEY (`id_schedule`) REFERENCES `schedule` (`id_schedule`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `booking_detail` (
 
 LOCK TABLES `booking_detail` WRITE;
 /*!40000 ALTER TABLE `booking_detail` DISABLE KEYS */;
-INSERT INTO `booking_detail` VALUES (1,1,1,3,100000),(2,1,1,6,100000),(3,1,1,8,100000),(4,2,1,11,100000),(5,1,2,9,750000),(6,1,3,9,750000),(7,2,4,12,150000),(8,1,5,3,100000),(9,3,6,12,150000),(10,1,7,13,220000);
+INSERT INTO `booking_detail` VALUES (1,1,1,3,100000),(2,1,1,6,100000),(3,1,1,8,100000),(4,2,1,11,100000),(5,1,2,9,750000),(6,1,3,9,750000),(7,2,4,12,150000),(8,1,5,3,100000),(9,3,6,12,150000),(10,1,7,13,220000),(11,1,8,14,140000),(12,2,9,3,100000),(13,2,10,14,140000);
 /*!40000 ALTER TABLE `booking_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-13 16:10:22
+-- Dump completed on 2022-02-18 19:58:54

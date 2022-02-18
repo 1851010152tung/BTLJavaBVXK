@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
--- Host: localhost    Database: website_busgiare
+-- Host: 127.0.0.1    Database: website_busgiare
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comment` (
-  `id_comment` int NOT NULL,
+  `id_comment` int NOT NULL AUTO_INCREMENT,
   `content` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `create_date` date DEFAULT NULL,
   `id_user` int DEFAULT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `comment` (
   KEY `fk_comment_bus_idx` (`id_bus`),
   CONSTRAINT `fk_comment_bus` FOREIGN KEY (`id_bus`) REFERENCES `bus` (`id_bus`),
   CONSTRAINT `fk_comment_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (1,'tốt','2022-02-13',3,5),(2,'xe chạy êm','2022-02-13',2,5),(3,'xe xịn','2022-02-13',2,5),(4,'tốt','2022-02-13',3,5),(5,'Chạy ổn, chất lượng tốt','2022-02-14',3,7),(6,'hello','2022-02-15',3,6),(7,'hi','2022-02-15',3,6),(8,'no way','2022-02-15',3,6),(9,'haha','2022-02-15',NULL,5),(10,'Tuyệt','2022-02-15',3,6),(11,'tuyệt','2022-02-15',3,10),(12,'xe êm','2022-02-15',3,12),(13,'chất lượng tốt','2022-02-15',3,5);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-13 16:10:21
+-- Dump completed on 2022-02-18 19:58:54

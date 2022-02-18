@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
--- Host: localhost    Database: website_busgiare
+-- Host: 127.0.0.1    Database: website_busgiare
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,7 @@ CREATE TABLE `route` (
   PRIMARY KEY (`id`),
   KEY `fk_route_bus_idx` (`id_bus`),
   CONSTRAINT `fk_route_bus` FOREIGN KEY (`id_bus`) REFERENCES `bus` (`id_bus`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `route` (
 
 LOCK TABLES `route` WRITE;
 /*!40000 ALTER TABLE `route` DISABLE KEYS */;
-INSERT INTO `route` VALUES (3,'Đà Nẵng','TP. Hồ Chí Minh',10,849,'23 giờ',750000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1639724459/l38mxddwz3itlvyb3hkb.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623397/uoczpbwkhj1dqhgz9z8k.jpg','Bến xe Đức Long Đà Nẵng','Bến xe Miền Đông'),(6,'Hội An','Đà Nẵng',10,45,'1 giờ 15 phút',100000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1639907528/ssle7lsh94wsqzxerpgv.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1639724459/l38mxddwz3itlvyb3hkb.jpg','Nội thành TP Hội An','Nội thành TP Đà Nẵng'),(8,'Cần Thơ','TP. Hồ Chí Minh',10,166,'3 giờ 30 phút',150000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623394/tjustcfpfjjvnfapbmws.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623397/uoczpbwkhj1dqhgz9z8k.jpg','BX TT Cần Thơ','Bến xe Miền Tây'),(9,'Cần Thơ','Đà Lạt',6,459,'11 giờ',220000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623527/ggdmw0yn7oukihyanoq9.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623529/ilnisk4ih0emr3gzdnow.jpg','VP Bến xe Trung Tâm Cần Thơ ','VP Bảo Lộc'),(10,'Cần Thơ','Cà Mau',10,143,'4 giờ',140000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623696/ui7zjdnqd3zjij4vvyii.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623699/d7g3iyfwwfnq9m3gzs66.jpg','BX TT Cần Thơ','VP Sóc Trăng'),(11,'Đà Lạt','Nha Trang',10,137,'4 giờ',140000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623781/o0xnnwpepccfirdpgz5n.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623784/hhhk1zmj2hgt6mlio17c.jpg','VP Đà Lạt','VP Nha Trang'),(12,'Buôn Mê Thuột','TP. Hồ Chí Minh',6,435,'9 giờ',220000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623921/pdctdtksuwhk7vmdzpet.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623924/yegz62eczg3p15hsvemr.jpg','TP. Buôn Mê Thuột','VP Tân Bình - TP.HCM'),(13,'Đà Lạt','Đà Nẵng',6,756,'17 giờ',300000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640624115/bazpww4xsyqykb1ajtdx.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640624117/aftsjgsichhcgrrjedbu.jpg','Đà Lạt','Đà Nẵng');
+INSERT INTO `route` VALUES (3,'Đà Nẵng','TP. Hồ Chí Minh',10,849,'23 giờ',750000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1639724459/l38mxddwz3itlvyb3hkb.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623397/uoczpbwkhj1dqhgz9z8k.jpg','Bến xe Đức Long Đà Nẵng','Bến xe Miền Đông'),(6,'Hội An','Đà Nẵng',10,45,'1 giờ 15 phút',100000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1639907528/ssle7lsh94wsqzxerpgv.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1639724459/l38mxddwz3itlvyb3hkb.jpg','Nội thành TP Hội An','Nội thành TP Đà Nẵng'),(8,'Cần Thơ','TP. Hồ Chí Minh',10,166,'3 giờ 30 phút',150000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623394/tjustcfpfjjvnfapbmws.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623397/uoczpbwkhj1dqhgz9z8k.jpg','BX TT Cần Thơ','Bến xe Miền Tây'),(9,'Cần Thơ','Đà Lạt',6,459,'11 giờ',220000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623527/ggdmw0yn7oukihyanoq9.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623529/ilnisk4ih0emr3gzdnow.jpg','VP Bến xe Trung Tâm Cần Thơ ','VP Bảo Lộc'),(10,'Cần Thơ','Cà Mau',10,143,'4 giờ',140000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623696/ui7zjdnqd3zjij4vvyii.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623699/d7g3iyfwwfnq9m3gzs66.jpg','BX TT Cần Thơ','VP Sóc Trăng'),(11,'Đà Lạt','Nha Trang',10,138,'4 giờ',140000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623781/o0xnnwpepccfirdpgz5n.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623397/uoczpbwkhj1dqhgz9z8k.jpg','VP Đà Lạt','VP Nha Trang'),(12,'Buôn Mê Thuột','TP. Hồ Chí Minh',6,436,'9 giờ',220000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623921/pdctdtksuwhk7vmdzpet.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640623397/uoczpbwkhj1dqhgz9z8k.jpg','TP. Buôn Mê Thuột','VP Tân Bình - TP.HCM'),(13,'Đà Lạt','Đà Nẵng',6,756,'17 giờ',300000,'https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640624115/bazpww4xsyqykb1ajtdx.jpg','https://res.cloudinary.com/dwj7pu4xy/image/upload/v1640624117/aftsjgsichhcgrrjedbu.jpg','Đà Lạt','Đà Nẵng');
 /*!40000 ALTER TABLE `route` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-13 16:10:22
+-- Dump completed on 2022-02-18 19:58:54

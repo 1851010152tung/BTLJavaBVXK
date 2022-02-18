@@ -5,6 +5,7 @@
  */
 package com.btl.repository;
 
+import com.btl.pojos.Customer;
 import java.util.List;
 
 /**
@@ -12,8 +13,8 @@ import java.util.List;
  * @author Truc Lam
  */
 public interface CustomerRepository {
-    List<Object[]> listBooking(String ticketName, int page);
-    Long quantityBooking();
-    List<Object[]> listBookingDetail(int id);
+    
+    boolean addOrUpdate(Customer customer); 
+    Customer findById(int id);
     
 }

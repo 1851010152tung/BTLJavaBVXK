@@ -10,6 +10,7 @@ package com.btl.pojos;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -56,7 +57,7 @@ public class User implements Serializable{
    @Transient
    private String confirmPassword;
    
-   @OneToOne(mappedBy = "user" )
+   @OneToOne(mappedBy = "user",  cascade = {CascadeType.REMOVE}, orphanRemoval = false)
    private Employee employee;
 
     private String avatar;
@@ -66,8 +67,8 @@ public class User implements Serializable{
     
     
     //HoaDon
-    @OneToMany(mappedBy = "user")//gắn với thuộc tính trong class bên kết nối
-    @JsonIgnore// k lay khi truyenlen Json
+    @OneToMany(mappedBy = "user",  cascade = {CascadeType.REMOVE}, orphanRemoval = false)//gắn với thuộc tính trong class bên kết nối
+    //@JsonIgnore// k lay khi truyenlen Json
     private List<Booking> bookings;
 
     /**
@@ -250,6 +251,20 @@ public class User implements Serializable{
      */
     public void setFile(MultipartFile file) {
         this.file = file;
+    }
+
+    /**
+     * @return the bookings
+     */
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    /**
+     * @param bookings the bookings to set
+     */
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 
  

@@ -14,10 +14,14 @@ import java.util.List;
 public interface UserRepository {
     boolean addUser(User user);
     //phuong thuc tim username
+    List<User>getUsers(String username, int page);
     List<User>getUsers(String username);
+
     boolean updateUser(User user);
     User getUserByUsername(String username);
     User findById(int id);
+    
+    boolean delete(int id);
     
     
 }

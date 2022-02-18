@@ -1,5 +1,6 @@
 com\btl\controllers\ApiCommentController.class
 com\btl\pojos\User.class
+com\btl\controllers\ApiAdminController.class
 com\btl\service\impl\BusServiceImpl.class
 com\btl\repository\impl\CommentRepositoryImpl.class
 com\btl\controllers\AdminController.class
@@ -16,9 +17,11 @@ com\btl\pojos\Schedule.class
 com\btl\service\impl\CommentServiceImpl.class
 com\btl\controllers\HomeController.class
 com\btl\pojos\Employee.class
+com\btl\service\impl\StatisticServiceImpl.class
 com\btl\utils\Utils.class
 com\btl\configs\handlers\LogoutHandler.class
 com\btl\pojos\Booking.class
+com\btl\pojos\Customer.class
 com\btl\service\CustomerService.class
 com\btl\repository\impl\BookingRepositoryImpl.class
 com\btl\controllers\UserController.class
@@ -27,9 +30,11 @@ com\btl\service\CategoryBusService.class
 com\btl\pojos\Cart.class
 com\btl\pojos\Comment.class
 com\btl\repository\CategoryBusRepository.class
+com\btl\repository\StatisticRepository.class
 com\btl\pojos\CategoryBus.class
 com\btl\repository\BookingRepository.class
 com\btl\configs\HibernateConfig.class
+com\btl\controllers\ApiUserController.class
 com\btl\service\BusService.class
 com\btl\repository\EmployeeRepository.class
 com\btl\controllers\ApiScheduleController.class
@@ -54,6 +59,7 @@ com\btl\configs\DispatcherServletInitializer.class
 com\btl\service\impl\EmployeeServiceImpl.class
 com\btl\service\CommentService.class
 com\btl\repository\CustomerRepository.class
+com\btl\service\StatisticService.class
 com\btl\controllers\EmployeeController.class
 com\btl\service\impl\ScheduleServiceImpl.class
 com\btl\repository\impl\RouteRepositoryImpl.class
@@ -63,6 +69,7 @@ com\btl\repository\UserRepository.class
 com\btl\pojos\Bus.class
 com\btl\service\impl\CustomerServiceImpl.class
 com\btl\repository\impl\ScheduleRepositoryImpl.class
+com\btl\repository\impl\StatisticRepositoryImpl.class
 com\btl\configs\TilesConfig.class
 com\btl\controllers\CartController.class
 com\btl\formatter\CategoryBusFormatter.class

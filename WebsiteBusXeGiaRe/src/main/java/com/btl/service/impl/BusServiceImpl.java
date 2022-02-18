@@ -103,21 +103,6 @@ public class BusServiceImpl implements BusService {
         return this.busRepository.getListByCondition(kw, page);
     }
 
-    @Override
-    public List<Object> getState(String kw, int page) {
-         return this.busRepository.getState(kw, page);
-    }
-
-    @Override
-    public List<Object> ProductStats(String kw, Date fromDate,Date toDate) {
-        return this.busRepository.ProductStats(kw, fromDate,toDate);
-    }
-
-    @Override
-    public List<Object> ProductStatsMonth(String kw, Date fromDate, Date toDate) {
-        return this.busRepository.ProductStatsMonth(kw,fromDate, toDate);
-
-    }
  
 
 }

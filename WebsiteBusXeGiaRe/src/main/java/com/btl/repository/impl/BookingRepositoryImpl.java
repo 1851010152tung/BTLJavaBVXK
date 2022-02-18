@@ -15,6 +15,7 @@ import com.btl.pojos.Route;
 import com.btl.pojos.Schedule;
 import com.btl.pojos.User;
 import com.btl.repository.BookingRepository;
+import com.btl.repository.CustomerRepository;
 import com.btl.repository.ScheduleRepository;
 import com.btl.repository.UserRepository;
 import com.btl.service.ScheduleService;
@@ -53,6 +54,9 @@ public class BookingRepositoryImpl implements BookingRepository{
     @Autowired
     private ScheduleRepository scheduleRepository;
     
+    @Autowired
+    private CustomerRepository customerRepository;
+    
     @Override
     //Cập nhật nhiều giao tác và có mối quan hệ cha con 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -63,6 +67,8 @@ public class BookingRepositoryImpl implements BookingRepository{
         
         Booking booking =  new Booking();
         booking.setUser(this.userRepository.findById(id));
+//        booking.setCustomer(this.customerRepository.findById(id));
+        
         booking.setBookingDate(new Date());
         
         Map<String, String> totalMoney = Utils.totalMoney(cart);

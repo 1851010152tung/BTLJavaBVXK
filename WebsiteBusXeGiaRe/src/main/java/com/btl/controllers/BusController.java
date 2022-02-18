@@ -69,7 +69,7 @@ public class BusController {
         //Trường hợp dữ liệu ổn
         if(this.busService.addOrUpdate(bus) == true)
         {
-            return "redirect:/dmin/buses";
+            return "redirect:/admin/buses";
         }
         else 
         {
@@ -105,7 +105,7 @@ public class BusController {
         //Trường hợp dữ liệu ổn
         if(this.busService.addOrUpdate(bus) == true)
         {
-            return "redirect:/dmin/data_buses";
+            return "redirect:/admin/data_buses";
         }
         else 
         {

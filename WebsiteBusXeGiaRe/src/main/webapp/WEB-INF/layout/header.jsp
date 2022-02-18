@@ -15,7 +15,7 @@
             <li class="nav-item"><a href="<c:url value="/home_routine" />">LỊCH TRÌNH</a></li>
             <li class="nav-item"><a href="<c:url value="/list_buses" />">NHÀ XE</a></li>
             
-            <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
                 <li class="nav-item"><a href="<c:url value="/admin/employees" />">QUẢN LÝ</a></li>
             </sec:authorize>
             

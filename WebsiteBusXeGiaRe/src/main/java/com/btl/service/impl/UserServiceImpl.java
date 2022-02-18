@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 package com.btl.service.impl;
 
 import com.btl.pojos.User;
@@ -31,71 +29,61 @@ import org.springframework.stereotype.Service;
  *
  * @author Truc Lam
  */
- 
-
 @Service("userDetailsService")
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserRepository userRepository;
-    
+
     @Autowired
     //Trước khi gửi vào Repository cần băm mật khẩu
     private BCryptPasswordEncoder passwordEncoder;
-    
+
     @Autowired
     private Cloudinary cloudinary;
-    
-    
+
     @Override
     public boolean addUser(User user) {
         try {
-            if(user.getId() > 0)
-            {
-                if(user.getFile().getBytes().length == 0)
-                {
+            if (user.getId() > 0) {
+                if (user.getFile().getBytes().length == 0) {
                     User u = this.userRepository.findById(user.getId());
                     user.setAvatar(u.getAvatar());
-                }else
-                {
-                    Map m = this.cloudinary.uploader().upload(user.getFile().getBytes(), 
-                            ObjectUtils.asMap("resource_type","auto"));
+                } else {
+                    Map m = this.cloudinary.uploader().upload(user.getFile().getBytes(),
+                            ObjectUtils.asMap("resource_type", "auto"));
                     user.setAvatar((String) m.get("secure_url"));
-                    
-                }
-                
-            }else {
-                if(user.getFile().getBytes().length == 0)
-                {
-                    String pass = user.getPassword();
-                    user.setPassword(this.passwordEncoder.encode(pass));
-                    //set vai tro
-                    user.setUserRole(User.USER);
-                
-                
-                    if(user.getFile().getBytes().length !=0)
-                    {
-                        Map m = this.cloudinary.uploader().upload(user.getFile().getBytes(),
-                                ObjectUtils.asMap("resource_type","auto"));
 
-                        user.setAvatar((String) m.get("secure_url"));
-                        user.setUserRole(user.getUserRole());
-                    }else
-                    {
-                        return false;
-                    }
-                }else{
-                    user.setAvatar("");
                 }
-                
-        
-            return this.userRepository.addUser(user);
+
+            } else {
+                String pass = user.getPassword();
+                user.setPassword(this.passwordEncoder.encode(pass));
+                //set vai tro
+                user.setUserRole(User.USER);
+
+                if (user.getFile().getBytes().length != 0) {
+                    Map m = this.cloudinary.uploader().upload(user.getFile().getBytes(),
+                            ObjectUtils.asMap("resource_type", "auto"));
+
+                    user.setAvatar((String) m.get("secure_url"));
+                    user.setUserRole(user.getUserRole());
+                } else {
+                    return false;
+                }
+
+                return this.userRepository.addUser(user);
             }
-            
+
         } catch (Exception e) {
         }
         return false;
-        
-       
+
+    }
+
+    @Override
+    public List<User> getUsers(String username, int page) {
+        return this.userRepository.getUsers(username, page);
 
     }
 
@@ -109,18 +97,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         List<User> users = this.getUsers(username);
-        if(users.isEmpty())
+        if (users.isEmpty()) {
             throw new UsernameNotFoundException("Tên người dùng không tồn tại!!");
-        
+        }
+
         User user = users.get(0);
         Set<GrantedAuthority> auth = new HashSet<>();
         auth.add(new SimpleGrantedAuthority(user.getUserRole()));
-        
-        return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(), auth);
+
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), auth);
 //Khi trùng tên thì phải chỉ định full đường dẫn
 //Mọi thao tác chứng thực, phân quyền sẽ giao lại cho userdetails
-        
-        
 
     }
 
@@ -138,5 +125,10 @@ public class UserServiceImpl implements UserService {
     public User findById(int i) {
         return this.userRepository.findById(i);
     }
-    
+
+    @Override
+    public boolean delete(int i) {
+        return this.userRepository.delete(i);
+    }
+
 }

@@ -30,7 +30,8 @@
           </c:if>
                 
           
-          <form:form class="form" id="a-form" method="post" action="${action}" modelAttribute = "user">
+          <form:form class="form" id="a-form" method="post" action="${action}" modelAttribute = "user"
+                     enctype="multipart/form-data">
               <h2 class="form_title title">Tạo tài khoản</h2>
               <span class="form__span">Sử dụng email để đăng ký</span>
               <div class="form__input_name">

@@ -52,8 +52,8 @@
                   </li>-->
                   <li><a><i class="fa fa-table"></i> Bảng dữ liệu <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                        <li><a href="<c:url value="/admin/data_users"/>">Người dùng</a></li>
                         <li><a href="<c:url value ="/admin/data_employees"></c:url>">Nhân viên</a></li>
-                        <li><a href="form.html">Khách hàng</a></li>
                         <li><a href="<c:url value ="/admin/data_buses"></c:url>">Chuyến xe</a></li>
                         <li><a href="<c:url value ="/admin/data_routes"></c:url>">Tuyến xe</a></li>
                         <li><a href="<c:url value ="/admin/data_schedules"></c:url>">Lịch trình</a></li>
@@ -63,10 +63,11 @@
                   </li>
                   <li><a><i class="fa fa-bar-chart-o"></i> Thống kê <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<c:url value ="/admin/category-state"></c:url>">Mật độ chuyến xe theo tuyến xe</a></li>
+                      <li><a href="<c:url value ="/admin/category-statistic"></c:url>">Mật độ chuyến xe theo tuyến xe</a></li>
              
                      <li><a href="<c:url value ="/admin/product-stats"></c:url>">Doanh thu theo ngày</a></li>
                       <li><a href="<c:url value ="/admin/product-stats-month"></c:url>">Doanh thu theo tháng</a></li>
+                      <li><a href="<c:url value ="/admin/product-stats-period"></c:url>">Doanh thu theo quý</a></li>
                     </ul>
                   </li>
                   

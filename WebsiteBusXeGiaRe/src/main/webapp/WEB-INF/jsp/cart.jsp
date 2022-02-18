@@ -78,6 +78,8 @@
                               <li class="totalRow final"><span class="label">Thành tiền </span><p id="total"><span id="amountCart">${totalMoney.total}</span> VND</p></li>
                               <c:if test="${currentUser.id !=null}">
                                 <li class="totalRow"><a href="#" class="btn continue" onclick="payment(${currentUser.id})">Thanh toán</a></li>
+<!--                                    <li class="totalRow"><a href="<c:url value="/passenger"/>" class="btn continue" >Tiếp tục</a></li>                                -->
+                                
                               </c:if>
                             </ul>
                           </div>

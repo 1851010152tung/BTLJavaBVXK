@@ -5,6 +5,7 @@
  */
 package com.btl.service.impl;
 
+import com.btl.pojos.Customer;
 import com.btl.repository.CustomerRepository;
 import com.btl.service.CustomerService;
 import java.util.List;
@@ -17,23 +18,19 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CustomerServiceImpl implements CustomerService{
-
+    
     @Autowired
     private CustomerRepository customerRepository;
-    
+
     @Override
-    public List<Object[]> listBooking(String ticketName, int page) {
-        return this.customerRepository.listBooking(ticketName, page);
+    public boolean addOrUpdate(Customer customer) {
+        return this.customerRepository.addOrUpdate(customer);
     }
 
     @Override
-    public Long quantityBooking() {
-        return this.customerRepository.quantityBooking();
+    public Customer findById(int i) {
+        return this.customerRepository.findById(i);
+    
     }
 
-    @Override
-    public List<Object[]> listBookingDetail(int id) {
-        return this.customerRepository.listBookingDetail(id);
-    }
-    
 }

@@ -41,6 +41,16 @@ and open the template in the editor.
         <put-attribute name ="title" value ="Giỏ hàng" />
          <put-attribute name="content" value="/WEB-INF/jsp/cart.jsp"/>
     </definition>
+    
+<!--    <definition name="passenger" extends ="baseLayout">
+        <put-attribute name ="title" value ="Xác nhận thông tin khách hàng" />
+         <put-attribute name="content" value="/WEB-INF/jsp/form_customer.jsp"/>
+    </definition>
+    
+    <definition name="payment" extends ="baseLayout">
+        <put-attribute name ="title" value ="Xác nhận thông tin khách hàng" />
+         <put-attribute name="content" value="/WEB-INF/jsp/ticket_detail.jsp"/>
+    </definition>-->
 
     <definition name="list_buses" extends ="baseLayout">
         <put-attribute name ="title" value ="Danh sách chuyến xe" />
@@ -76,18 +86,22 @@ and open the template in the editor.
         <put-attribute name="admin_footer" value="/WEB-INF/layout/admin_footer.jsp"/>
 
     </definition>
-      <definition name="category-state" extends ="adminBaseLayout">
+      <definition name="category-statistic" extends ="adminBaseLayout">
         <put-attribute name ="title" value ="Thống kê theo danh mục" />
-         <put-attribute name="admin_content" value="/WEB-INF/jsp/category-state.jsp"/>
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/category-statistic.jsp"/>
     </definition>
 
     <definition name="product-stats" extends ="adminBaseLayout">
         <put-attribute name ="title" value ="Thống kê doanh thu theo ngày" />
-         <put-attribute name="admin_content" value="/WEB-INF/jsp/product-stats.jsp"/>
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/product-stats.jsp"/>
     </definition>
     <definition name="product-stats-month" extends ="adminBaseLayout">
         <put-attribute name ="title" value ="Thống kê doanh thu theo tháng" />
-         <put-attribute name="admin_content" value="/WEB-INF/jsp/product-stats-month.jsp"/>
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/product-stats-month.jsp"/>
+    </definition>
+    <definition name="product-stats-period" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Thống kê doanh thu theo quý" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/product-stats-period.jsp"/>
     </definition>
     
             <!--THÊM DỮ LIỆU-->
@@ -159,9 +173,20 @@ and open the template in the editor.
     </definition>            
 
     <definition name="data_booking_detail" extends ="adminBaseLayout">
-        <put-attribute name ="title" value ="Bảng dữ liệu thông tin đặt vé" />
+        <put-attribute name ="title" value ="Chi tiết vé" />
          <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/data_booking_detail.jsp"/>
-    </definition>  
+    </definition>
+    
+                <!--Người dùng -->
+    <definition name="data_user" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Bảng dữ liệu người dùng" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/data_user.jsp"/>
+    </definition>
+    
+    <definition name="update_user" extends ="adminBaseLayout">
+        <put-attribute name ="title" value ="Cập nhật người dùng" />
+         <put-attribute name="admin_content" value="/WEB-INF/jsp/admin/form_update_user.jsp"/>
+    </definition>        
 
     <!--          ADMIN PAGE             -->
 

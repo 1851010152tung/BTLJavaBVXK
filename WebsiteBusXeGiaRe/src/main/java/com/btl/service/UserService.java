@@ -15,11 +15,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface UserService extends UserDetailsService {
     boolean addUser(User user);
     //phuong thuc tim username
+    List<User>getUsers(String username, int page);
     List<User>getUsers(String username);
+
     boolean updateUserRole(User user);
     User getUserByUsername(String username);
     
     User findById(int id);
     
+    boolean delete(int id);
     
 }

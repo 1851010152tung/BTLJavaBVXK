@@ -43,6 +43,10 @@ public class Booking implements Serializable {
     @JoinColumn(name = "id_user")
     private User user;
     
+    @ManyToOne
+    @JoinColumn(name = "id_customer")
+    private Customer customer;
+    
     
     
     //ChiTietHoaDon
@@ -118,6 +122,20 @@ public class Booking implements Serializable {
      */
     public void setBookingDetails(List<BookingDetail> bookingDetails) {
         this.bookingDetails = bookingDetails;
+    }
+
+    /**
+     * @return the customer
+     */
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    /**
+     * @param customer the customer to set
+     */
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
     
     

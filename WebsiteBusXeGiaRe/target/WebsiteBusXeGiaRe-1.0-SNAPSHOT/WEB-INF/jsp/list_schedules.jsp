@@ -61,7 +61,7 @@
                                <p class="ticket-content-info pickup" ">${s.route.pickUpPoint}</p>
                            </div>
                            <div>
-                               <p class="ticket-content-title">Thời gian đi</p>
+                               <p class="ticket-content-title">Ngày khởi hành</p>
                                <p class="ticket-content-info pickup-time">${s.departureDate}</p>
                            </div>
                        </div>
@@ -70,9 +70,9 @@
                                <p class="ticket-content-title">Nơi trả</p>
                                <p class="ticket-content-info dropoff" >${s.route.dropOffPoint}</p>
                            </div>
-                           <div><p class="ticket-content-title">Thời gian đến</p>
+                           <div><p class="ticket-content-title">Thời gian đi</p>
                                <div>   
-                                <p class="ticket-content-info pickup-time">${s.departureTime} - ${s.destinationTime}</p> 
+                                <p class="ticket-content-info pickup-time">${s.departureTime}</p> 
 <!--                               <p class="ticket-content-info dropoff-time"></p>-->
                                </div>
                            </div>

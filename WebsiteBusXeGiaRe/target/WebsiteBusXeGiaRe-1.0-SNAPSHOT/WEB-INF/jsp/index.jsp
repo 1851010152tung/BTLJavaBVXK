@@ -6,6 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+
 
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
@@ -59,7 +62,7 @@
                             </div>
 
 
-                            <form id="form-submit" action="" method="get">
+                            <form:form id="form-submit" action="" method="get">
 
                                 <div class="row">
                                     <!--ĐIỂM ĐẾN/ĐIỂM ĐI-->

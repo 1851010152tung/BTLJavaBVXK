@@ -133,12 +133,12 @@
                                                                         
                                                                    
 
-                                                        <div class="item form-group">
+<!--                                                        <div class="item form-group">
                                                             <label for="file" class="col-form-label col-md-3 col-sm-3 label-align">Hình ảnh </label>
                                                             <div class="col-md-6 col-sm-6 ">
-                                                                <form:input id="file" Class="form-control" type="file" path="file"/>
+                                                                <!form:input id="file" Class="form-control" type="file" path="file"/>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
 
                                                             <div class="button-form">
                                                             <div class="col-md-6 col-sm-6 offset-md-3" id="button-form-submit">

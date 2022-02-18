@@ -91,7 +91,7 @@ public class Bus implements Serializable{
     
     //Binh luan
     @OneToMany(mappedBy = "bus")//gắn với thuộc tính trong class bên kết nối
-    @JsonIgnore// k lay khi truyenlen Json
+    //@JsonIgnore// k lay khi truyenlen Json
     private List<Comment> comments;
     
 

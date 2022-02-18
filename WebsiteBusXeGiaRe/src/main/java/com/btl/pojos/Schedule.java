@@ -60,7 +60,7 @@ public class Schedule implements Serializable{
     
        //Cau hinh khoa ngoai
     @ManyToOne(fetch = FetchType.EAGER) 
-    @JsonIgnore
+    //@JsonIgnore
     @JoinColumn(name = "id_bus")
     private Bus bus;
     
@@ -69,7 +69,7 @@ public class Schedule implements Serializable{
     
     //ChiTietHoaDon
     @OneToMany(mappedBy = "schedule")//gắn với thuộc tính trong class bên kết nối
-    @JsonIgnore// k lay khi truyenlen Json
+    //@JsonIgnore// k lay khi truyenlen Json
     private List<BookingDetail> bookingDetails;
     
     

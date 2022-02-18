@@ -41,7 +41,6 @@ public class Comment implements Serializable{
             optional = true,
             fetch = FetchType.EAGER)
     @JoinColumn(name = "id_user")  
-    @JsonIgnore
     private User user;
     
     @ManyToOne(      

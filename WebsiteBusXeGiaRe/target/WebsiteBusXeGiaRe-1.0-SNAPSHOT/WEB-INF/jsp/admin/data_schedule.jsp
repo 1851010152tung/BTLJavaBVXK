@@ -66,7 +66,7 @@
                                         <th class="column-title">Ngày khởi hành </th>
                                         <th class="column-title">Ngày về </th>
                                         <th class="column-title">Thời gian đi</th>
-                                        <th class="column-title">Thời gian đến</th>
+<!--                                        <th class="column-title">Thời gian đến</th>-->
                                         <th class="column-title">Chuyến xe </th>                                       
                                    
                                         
@@ -89,7 +89,7 @@
                                         <td class=" ">${s.departureDate}</td>
                                         <td class=" ">${s.destinationDate}</td>
                                         <td class=" ">${s.departureTime}</td>
-                                        <td class=" ">${s.destinationTime}</td>                                                                                
+<!--                                        <td class=" ">$!{s.destinationTime}</td>                                                                                -->
                                         <td class=" ">${s.bus.busName} - ${s.bus.categoryBus.name}</td>
                                        
                                         

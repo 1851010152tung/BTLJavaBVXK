@@ -21,8 +21,5 @@ public interface BusService {
     Bus findById(int idBus);
     Long totalItem();
     List<Object> getListByCondition(String kw, int page);
-    List<Object> getState(String kw, int page);
-    List<Object> ProductStats(String kw, Date fromDate,Date toDate);
-    List<Object> ProductStatsMonth(String kw, Date fromDate,Date toDate);
-    
+   
 }

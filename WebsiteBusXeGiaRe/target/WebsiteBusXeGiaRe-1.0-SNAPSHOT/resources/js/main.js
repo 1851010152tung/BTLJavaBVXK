@@ -24,3 +24,22 @@ window.onload = function () {
 
    
 }
+
+function deleteUser(id) {
+    event.preventDefault();
+    if (confirm("Bạn có chắc chắn xóa người dùng này không?") == true) {
+        fetch(`/WebsiteBusGiaRe/api/user/${id}`, {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            if (res.status == 200) {//thanh cong
+                let d = document.getElementById(`n${id}`);
+                d.style.display = "none";
+                location.reload();
+            } else
+                alert("Đã có lỗi xảy ra!!!");
+        })
+    }
+}

@@ -37,7 +37,7 @@
                     <div class="col-md-12 col-sm-12  " id="table-buses">
                             <div class="x_panel">
                               <div class="x_title">
-                                <h2>Cập nhật<small>nhân viên</small></h2>
+                                <h2>Cập nhật<small>lịch trình tài xế</small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                   </li>

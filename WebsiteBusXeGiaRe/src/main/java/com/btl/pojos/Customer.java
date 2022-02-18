@@ -25,7 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Entity
 @Table(name = "customer")
-
 public class Customer implements Serializable{
    
    @Id
@@ -35,11 +34,16 @@ public class Customer implements Serializable{
    private String firstName;
    @Column(name = "last_name")
    private String lastName;
-   private String email;
    private String phone;
+   private String email;
    @Column(name = "identity_card")
    private String identityCard;
    private String note;
+   private String gender;
+
+   @OneToMany(mappedBy = "customer")//gắn với thuộc tính trong class bên kết nối
+   //@JsonIgnore// k lay khi truyenlen Json
+    private List<Booking> bookings;
 
     /**
      * @return the id
@@ -137,6 +141,34 @@ public class Customer implements Serializable{
      */
     public void setNote(String note) {
         this.note = note;
+    }
+
+    /**
+     * @return the gender
+     */
+    public String getGender() {
+        return gender;
+    }
+
+    /**
+     * @param gender the gender to set
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    /**
+     * @return the bookings
+     */
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    /**
+     * @param bookings the bookings to set
+     */
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }
    

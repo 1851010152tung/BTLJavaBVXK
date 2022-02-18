@@ -4,9 +4,11 @@
  */
 package com.btl.controllers;
 
+import com.btl.repository.StatisticRepository;
 import com.btl.service.BusService;
 import com.btl.service.CategoryBusService;
 import com.btl.service.EmployeeService;
+import com.btl.service.StatisticService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,17 +35,13 @@ public class AdminController {
     @Autowired
     private EmployeeService employeeService;
     
+    @Autowired
+    private StatisticService statisticService;
     
-//    @GetMapping("/admin/category-state")
-//    public String cateState(Model model){
-//        model.addAttribute("bus",this.busService.getBuses());
-//        model.addAttribute("categorybus",this.categoryBusSevice.getCategoryBuses());
-////        model.addAttribute("cateState",this.stateService.cateState());
-//        return "category-state";
-//    }
+    
     
     //EDIT BUS
-    @RequestMapping("/admin/category-state")
+    @RequestMapping("/admin/category-statistic")
     public String indexUpdate(Model model, 
             @RequestParam(required = false) Map<String, String> params)
     {
@@ -51,10 +49,10 @@ public class AdminController {
         int page = Integer.parseInt(params.getOrDefault("page", "1")); // nếu có thì lấy biến page còn không thì trả về 1
         
         
-        model.addAttribute("buses", this.busService.getState(kw, page));
-        model.addAttribute("size", this.busService.getState(kw, page).size());
+        model.addAttribute("buses", this.statisticService.getStatistic(kw, page));
+        model.addAttribute("size", this.statisticService.getStatistic(kw, page).size());
 
-        return "category-state";
+        return "category-statistic";
     }
     
     @GetMapping("/admin/product-stats")
@@ -73,7 +71,7 @@ public class AdminController {
             e.printStackTrace();
         }
 
-        model.addAttribute("productStats",this.busService.ProductStats(kw, fromDate,toDate));
+        model.addAttribute("productStats",this.statisticService.ProductStats(kw, fromDate,toDate));
         return "product-stats";
     }
     @GetMapping("/admin/product-stats-month")
@@ -91,9 +89,27 @@ public class AdminController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        model.addAttribute("productStatsMonth",this.busService.ProductStatsMonth(kw, fromDate,toDate));
+        model.addAttribute("productStatsMonth",this.statisticService.ProductStatsMonth(kw, fromDate,toDate));
+//        model.addAttribute("productStatsMonthDetail",this.statisticService.GetListStatsMonthDetail(kw, fromDate,toDate));
 
         return "product-stats-month";
     }
-    
+    @GetMapping("/admin/product-stats-period")
+   public String productStatsPeriod(Model model, @RequestParam(required = false) Map<String, String> params){
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        String kw = params.getOrDefault("kw", null);
+        Date fromDate = null, toDate =null;
+        try {
+            String from = params.getOrDefault("fromDate", null);
+            if(from != null)
+                fromDate = f.parse(from);
+            String to = params.getOrDefault("toDate", null);
+            if(to != null)
+                toDate = f.parse(to);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("productStatsPeriod",this.statisticService.ProductStatsPeriod(fromDate,toDate));
+        return "product-stats-period";
+    }
 }

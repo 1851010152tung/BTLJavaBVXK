@@ -42,7 +42,7 @@ public class EmployeeController {
         
         List<String> positionList = Arrays.asList("Nhân viên bán vé","Tài xế");
         model.addAttribute("positionList", positionList);
-        model.addAttribute("user", this.userService.getUserByUsername("taixe2"));
+//        model.addAttribute("user", this.userService.getUserByUsername("taixe2"));
         
         return "employee";
     }
@@ -50,7 +50,8 @@ public class EmployeeController {
     //Tính năng upload
     //Khai báo upload controller và thêm nhân viên
     @PostMapping("/admin/employees")
-    public String addEmployee(Model model, @ModelAttribute(value = "employee") Employee employee)
+    public String addEmployee(Model model, 
+            @ModelAttribute(value = "employee") Employee employee)
     { 
         
         //Trường hợp dữ liệu ổn

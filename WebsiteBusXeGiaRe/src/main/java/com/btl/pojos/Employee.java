@@ -79,7 +79,7 @@ public class Employee implements Serializable{
     @OneToMany(mappedBy = "employee",cascade = {CascadeType.REMOVE},orphanRemoval = true )
     private List<Bus> buses ;
     
-    @OneToOne(fetch =FetchType.LAZY)
+    @OneToOne(fetch =FetchType.EAGER)
     @JoinColumn(name = "id_user")
     private User user;
     

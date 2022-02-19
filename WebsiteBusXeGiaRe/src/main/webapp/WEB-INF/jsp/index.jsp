@@ -285,7 +285,8 @@
                     <span data-v-7026b95e="">${s.bus.seatNumber} chỗ</span> 
                 </div>
                 <p>${s.route.distance} km</p>
-                <div class="price">${s.route.ticketPrice} VNĐ</div>
+                <div class="price"
+                     >${s.route.ticketPrice}</div>
                 <a href="<c:url value="/home_schedule"/>" class="btn-book">Tìm hiểu</a>
             </div>
         </div>

@@ -102,13 +102,13 @@
               
            </div>
            <div class="ticket-item-price">
-               <div class="price"><!----><!---->${s.route.ticketPrice} ₫ </div>
+               <div class="price">${s.route.ticketPrice}</div>
                <div class="vote"><i aria-hidden="true" class="fa fa-star active"></i>
                    <i aria-hidden="true" class="fa fa-star active"></i>
                    <i aria-hidden="true" class="fa fa-star active"></i>
                    <i aria-hidden="true" class="fa fa-star active"></i>
-                   <i aria-hidden="true" class="fa fa-star active"></i><!----><!---->
-                   <p><span>Xem chi tiết</span></p></div><!---->
+                   <i aria-hidden="true" class="fa fa-star active"></i>
+                   <p><span>Xem chi tiết</span></p></div>
                    <a href="javascript:;" onclick="addToCart(${s.id}, '${s.route.departure}','${s.route.destination}','${s.bus.busName}','${s.bus.categoryBus.name}' 
                        ,${s.route.ticketPrice}, ${s.bus.seatNumber}, ${s.departureDate}, '${s.departureTime}')">
                      <button type="button" class="btn-book">Đặt vé</button>  

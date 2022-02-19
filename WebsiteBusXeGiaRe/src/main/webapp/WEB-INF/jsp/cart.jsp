@@ -55,9 +55,7 @@
 
 
                                 </div>
-            <!--                          <div class="prodTotal cartSection">
-                                          <p id="total">$<span id="amountCart">$!{totalMoney.total}</span>VND</p>
-                                    </div>-->
+            
                                     <div class="cartSection removeWrap">
                                        <a  class="remove" onclick="removeItemFromCart(${c.scheduleId})">x</a>
                                     </div>
@@ -75,10 +73,9 @@
                                 <li class="totalRow"><span class="label">Khuyến mãi</span><span class="value" id="discount">0</span></li>
 
 
-                                <li class="totalRow final"><span class="label price">Thành tiền </span><p id="total"><span id="amountCart" class="price">${totalMoney.total}</span></p></li>
+                                <li class="totalRow final"><span class="label">Thành tiền </span><p id="total"><span id="amountCart" class="price">${totalMoney.total}</span></p></li>
                               <c:if test="${currentUser.id !=null}">
                                 <li class="totalRow"><a href="#" class="btn continue" onclick="payment(${currentUser.id})">Thanh toán</a></li>
-<!--                                    <li class="totalRow"><a href="<!c:url value="/passenger"/>" class="btn continue" >Tiếp tục</a></li>                                -->
                                 
                               </c:if>
                             </ul>

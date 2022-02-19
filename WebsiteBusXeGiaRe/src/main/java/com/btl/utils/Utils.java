@@ -17,9 +17,9 @@ import java.util.Map;
 public class Utils {
     public static int countCart(Map<Integer,Cart> cart){
         int count = 0;
-        if(cart != null)
+        if(cart != null) // nếu cart khác null
         {
-            for(Cart c: cart.values())
+            for(Cart c: cart.values()) //Trả ra danh sách các giá trị của giỏ
                 count += c.getQuantity();
         }
         return count;

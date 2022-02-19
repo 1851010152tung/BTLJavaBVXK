@@ -32,6 +32,11 @@ and open the template in the editor.
          <put-attribute name="content" value="/WEB-INF/jsp/home_routine.jsp"/>
     </definition>
     
+    <definition name="home_schedule" extends ="baseLayout">
+        <put-attribute name ="title" value ="Đặt vé" />
+         <put-attribute name="content" value="/WEB-INF/jsp/home_schedule.jsp"/>
+    </definition>
+    
     <definition name="list_schedules" extends ="baseLayout">
         <put-attribute name ="title" value ="Đặt vé" />
          <put-attribute name="content" value="/WEB-INF/jsp/list_schedules.jsp"/>

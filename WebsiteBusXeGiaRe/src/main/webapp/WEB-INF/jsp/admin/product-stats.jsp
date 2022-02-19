@@ -45,16 +45,16 @@
                                 <h1 class="text-center text-danger"></h1>
                                 <form action="">
                                     <div class="form-group">
-                                        <label  class="timestats">Từ khóa</label><!-- comment -->
+                                        <label  class="timestats">Từ khóa</label>
                                         <input type="text" name="kw" class="form-control"/>
 
                                     </div>
                                     <div class="form-group">
-                                        <label class="timestats">Từ thời điểm</label><!-- comment -->
+                                        <label class="timestats">Từ thời điểm</label>
                                         <input type="date" name="fromDate" class="form-control"/>
                                     </div>
                                     <div class="form-group">
-                                        <label class="timestats">Đến thời điểm</label><!-- comment -->
+                                        <label class="timestats">Đến thời điểm</label>
                                         <input type="date" name="toDate" class="form-control"/>
 
                                     </div>

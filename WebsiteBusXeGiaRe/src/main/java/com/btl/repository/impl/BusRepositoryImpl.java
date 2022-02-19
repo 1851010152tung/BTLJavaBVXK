@@ -198,6 +198,112 @@ public class BusRepositoryImpl implements BusRepository {
         return q.getResultList();   
     }
 
+    @Override
+    public List<Object> getListByCondition(String kw, Date fromDate, Date toDate, int page) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        Root rootB = query.from(Bus.class);
+        Root rootR = query.from(Route.class);
+        Root rootE = query.from(Employee.class);
+        Root rootS = query.from(Schedule.class);
+        Root rootC = query.from(CategoryBus.class);
+
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(builder.equal(rootB.get("idBus"), rootS.get("bus")));
+        predicates.add(builder.equal(rootC.get("id"), rootB.get("categoryBus")));
+        predicates.add(builder.equal(rootR.get("id"),rootS.get("route")));
+        predicates.add(builder.equal(rootE.get("idEmployee"), rootB.get("employee")));
+        
+       
+        
+    
+        query.multiselect(
+                rootR.get("id"),rootR.get("departure"),rootR.get("destination"), rootR.get("distance"), rootR.get("ticketPrice"),
+                rootB.get("busName"), rootB.get("seatNumber"),
+                rootC.get("name"),
+                rootS.get("departureDate"), rootS.get("departureTime"));
+        
+         
+        
+    
+      if(kw != null && !kw.isEmpty())
+      {
+                predicates.add(builder.or(builder.like(rootR.get("departure"), String.format("%%%s%%", kw)),
+                   builder.like(rootR.get("destination"), String.format("%%%s%%", kw))));
+
+      }
+      if(fromDate != null)
+          predicates.add(builder.greaterThanOrEqualTo(rootS.get("departureDate"),fromDate));
+      if(toDate != null)
+          predicates.add(builder.lessThanOrEqualTo(rootS.get("departureDate"),toDate));
+      query.where(predicates.toArray(new Predicate[] {}));
+      
+        query = query.orderBy(builder.asc(rootB.get("idBus")));
+       // query.groupBy(rootB.get("idBus"));
+        Query q = session.createQuery(query);
+        
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Object> getListByCondition(String kw, String kw2, Date fromDate, Date toDate, int i) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        Root rootB = query.from(Bus.class);
+        Root rootR = query.from(Route.class);
+        Root rootE = query.from(Employee.class);
+        Root rootS = query.from(Schedule.class);
+        Root rootC = query.from(CategoryBus.class);
+
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(builder.equal(rootB.get("idBus"), rootS.get("bus")));
+        predicates.add(builder.equal(rootC.get("id"), rootB.get("categoryBus")));
+        predicates.add(builder.equal(rootR.get("id"),rootS.get("route")));
+        predicates.add(builder.equal(rootE.get("idEmployee"), rootB.get("employee")));
+        
+       
+        
+    
+        query.multiselect(
+                rootR.get("id"),rootR.get("departure"),rootR.get("destination"), rootR.get("distance"), rootR.get("ticketPrice"),
+                rootB.get("busName"), rootB.get("seatNumber"),
+                rootC.get("name"),
+                rootS.get("departureDate"), rootS.get("departureTime"));
+        
+         
+        
+    
+      if(kw != null && !kw.isEmpty())
+      {
+                predicates.add(builder.like(rootR.get("departure"), String.format("%%%s%%", kw)));
+
+
+      }
+      
+            if(kw2 != null && !kw2.isEmpty())
+      {
+                predicates.add(builder.like(rootR.get("destination"), String.format("%%%s%%", kw2)));
+
+
+      }
+      if(fromDate != null)
+          predicates.add(builder.greaterThanOrEqualTo(rootS.get("departureDate"),fromDate));
+      if(toDate != null)
+          predicates.add(builder.lessThanOrEqualTo(rootS.get("departureDate"),toDate));
+      query.where(predicates.toArray(new Predicate[] {}));
+      
+        query = query.orderBy(builder.asc(rootR.get("id")));
+       // query.groupBy(rootB.get("idBus"));
+        Query q = session.createQuery(query);
+        
+        return q.getResultList();
+    }
+    
+    
+    
+
 
     
 

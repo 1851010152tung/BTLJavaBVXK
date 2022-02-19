@@ -46,11 +46,19 @@
                        <h2>${s.bus.busName}</h2>
                    </a>
                    <div class="ticket-header-seat">
-                       <p>${s.bus.categoryBus.name} ${s.bus.seatNumber} chỗ</p>
-                       <p class="seat-pos">
+                       <p>${s.bus.categoryBus.name}</p>
+                       <c:if test="${s.bus.seatNumber > 0}">
+                       <p class="seat-pos"> Còn
                            <span>${s.bus.seatNumber}</span> 
                            ghế trống
                        </p>
+                       </c:if>
+                       <c:if test="${s.bus.seatNumber <= 0}">
+                       <p class="seat-pos">
+                           <span>Hết chỗ</span> 
+                           
+                       </p>
+                       </c:if>
                    </div>
                </div>
                <div class="ticket-content">

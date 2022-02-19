@@ -62,7 +62,7 @@
                             </div>
 
 
-                            <form:form id="form-submit" action="" method="get">
+                            <form id="form-submit" action="">
 
                                 <div class="row">
                                     <!--ĐIỂM ĐẾN/ĐIỂM ĐI-->
@@ -70,19 +70,14 @@
                                         <div class="col-md-6">
                                             <fieldset class="fieldset-location">
                                                 <label for="from">Điểm đi</label>
-                                                <select required name='from' onchange='this.form'>
+                                               <select required name='from' onchange='this.form'>
                                                     <option value="">Chọn địa điểm...</option>
-                                                    <option value="Cambodia">Cambodia</option>
-                                                    <option value="Hong Kong">Hong Kong</option>
-                                                    <option value="India">India</option>
-                                                    <option value="Japan">Japan</option>
-                                                    <option value="Korea">Korea</option>
-                                                    <option value="Laos">Laos</option>
-                                                    <option value="Myanmar">Myanmar</option>
-                                                    <option value="Singapore">Singapore</option>
-                                                    <option value="Thailand">Thailand</option>
-                                                    <option value="Vietnam">Vietnam</option>
+
                                                 </select>
+
+<!--                                                <input type="text" class="form-control"placeholder="Điểm đi"/>-->
+
+                                                
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6">
@@ -90,17 +85,9 @@
                                                 <label for="to">Điểm đến</label>
                                                 <select required name='to' onchange='this.form'>
                                                     <option value="">Chọn địa điểm...</option>
-                                                    <option value="Cambodia">Cambodia</option>
-                                                    <option value="Hong Kong">Hong Kong</option>
-                                                    <option value="India">India</option>
-                                                    <option value="Japan">Japan</option>
-                                                    <option value="Korea">Korea</option>
-                                                    <option value="Laos">Laos</option>
-                                                    <option value="Myanmar">Myanmar</option>
-                                                    <option value="Singapore">Singapore</option>
-                                                    <option value="Thailand">Thailand</option>
-                                                    <option value="Vietnam">Vietnam</option>
+                                                    
                                                 </select>
+
                                             </fieldset>
                                         </div>
                                     </div>
@@ -112,13 +99,13 @@
 
                                             <fieldset class="fieldset-date">
                                                 <label for="departure">Ngày đi</label>
-                                                <input name="deparure" type="text" class="form-control date" id="deparure" placeholder="Chọn ngày..." required="" onchange='this.form'>
+                                                <input type="date" class="form-control date" id="deparure" placeholder="Chọn ngày..." required="">
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6" id="datetime">
                                             <fieldset class="fielset-date">
                                                 <label for="return">Ngày về</label>
-                                                <input name="return" type="text" class="form-control date" id="return" placeholder="Chọn ngày..." required="" onchange='this.form.'>
+                                                <input type="date" class="form-control date" id="return" placeholder="Chọn ngày..." required="" >
                                             </fieldset>
                                         </div>
 
@@ -130,7 +117,9 @@
 
                                         <div class="col-md-6">
                                             <fieldset>
-                                                <button type="submit" id="form-submit" class="btn">TÌM CHUYẾN</button>
+                                                <a href="<c:url value="/home_schedule"/>">
+                                                <button  id="form-submit" class="btn">TÌM CHUYẾN</button>
+                                                </a>
                                             </fieldset>
                                         </div>
                                     </div>
@@ -164,28 +153,37 @@
           <div class="content">
             <h2 class="title">Hội An</h2>
 <!--            <p class="copy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p>-->
-            <button class="btn">Xem chuyến</button>
+        <a href="<c:url value="/home_schedule"/>">    
+        <button class="btn">Xem chuyến</button>
+        </a>
           </div>
         </div>
         <div class="card">
           <div class="content">
             <h2 class="title">Ninh Bình</h2>
 <!--            <p class="copy">Plan your next beach trip with these fabulous destinations</p>-->
+            <a href="<c:url value="/home_schedule"/>">    
             <button class="btn">Xem chuyến</button>
+            </a>
           </div>
         </div>
         <div class="card">
           <div class="content">
             <h2 class="title">Đà Nẵng</h2>
 <!--            <p class="copy">It's the desert you've always dreamed of</p>-->
+        <a href="<c:url value="/home_schedule"/>">    
             <button class="btn">Xem chuyến</button>
+        </a>
           </div>
         </div>
         <div class="card">
           <div class="content">
             <h2 class="title">TP.HCM</h2>
 <!--            <p class="copy">Seriously, straight up, just blast off into outer space today</p>-->
+        <a href="<c:url value="/home_schedule"/>">
+
             <button class="btn">Xem chuyến</button>
+        </a>
           </div>
         </div>
       </main>
@@ -288,7 +286,7 @@
                 </div>
                 <p>${s.route.distance} km</p>
                 <div class="price">${s.route.ticketPrice} VNĐ</div>
-                <a href="<c:url value="/home_routine"/>" class="btn-book">Tìm hiểu</a>
+                <a href="<c:url value="/home_schedule"/>" class="btn-book">Tìm hiểu</a>
             </div>
         </div>
         </c:forEach>
@@ -342,7 +340,7 @@
                               
                           </path>
                           </svg> 
-                          <span class="item-price" data-v-8fbac40c="">${h[6]} VNĐ</span>
+                          <span class="price item-price" data-v-8fbac40c="">${h[6]}</span>
                       </div> 
                   </div>
               </div>

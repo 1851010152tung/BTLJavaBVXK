@@ -23,7 +23,7 @@
               <h1 class="projTitle">Đặt Vé Xe Khách</h1>
               <div class="heading cf">
                 <h1>Giỏ hàng của bạn</h1>
-                <a href="#" class="continue">Tiếp tục đặt vé</a>
+                <a href="<c:url value="/home_schedule"/>" class="continue">Tiếp tục đặt vé</a>
                 </div>
 
 
@@ -50,7 +50,7 @@
                                   <h3>Vé xe từ ${c.departure} đến ${c.destination} - Nhà xe ${c.busName}</h3>
                                   <p class="itemNumber">Ngày khởi hành: ${c.departureDate} - Thời gian: ${c.departureTime}</p> <br>
                                   <p> <input type="number"  class="qty" min="0" max="${c.seatNumber}" value="${c.quantity}"
-                                             onblur="updateCart(this,${c.scheduleId},${c.seatNumber})"/> / ${c.seatNumber} x ${c.price} VNĐ</p>
+                                             onblur="updateCart(this,${c.scheduleId},${c.seatNumber})"/> / ${c.seatNumber} x <span class="price">${c.price}</span></p>
 
 
 
@@ -75,10 +75,10 @@
                                 <li class="totalRow"><span class="label">Khuyến mãi</span><span class="value" id="discount">0</span></li>
 
 
-                              <li class="totalRow final"><span class="label">Thành tiền </span><p id="total"><span id="amountCart">${totalMoney.total}</span> VND</p></li>
+                                <li class="totalRow final"><span class="label price">Thành tiền </span><p id="total"><span id="amountCart" class="price">${totalMoney.total}</span></p></li>
                               <c:if test="${currentUser.id !=null}">
                                 <li class="totalRow"><a href="#" class="btn continue" onclick="payment(${currentUser.id})">Thanh toán</a></li>
-<!--                                    <li class="totalRow"><a href="<c:url value="/passenger"/>" class="btn continue" >Tiếp tục</a></li>                                -->
+<!--                                    <li class="totalRow"><a href="<!c:url value="/passenger"/>" class="btn continue" >Tiếp tục</a></li>                                -->
                                 
                               </c:if>
                             </ul>

@@ -45,9 +45,9 @@
                         <thead id="header-table">
                         <tr class="headings">
                           <th class="column-title">Tuyến xe</th>
-          <!--                <th class="column-title">Loại xe</th>-->
                           <th class="column-title">Quãng đường</th>
-                          <th class="column-title">Thời gian hành trình</th>
+<!--                          <th class="column-title">Thời gian hành trình</th>-->
+                          <th class="column-title">Ngày khởi hành</th>
                           <th class="column-title">Giá vé</th>                                        
                           <th class="column-title">Giờ chạy</th>                                       
                           <th class="end"></th>                                      
@@ -77,7 +77,7 @@
 <!--                <td class="column-title ">$!{r.bus.categoryBus.name}</td>-->
                 <td class="column-title ">${r.distance} km</td>
                 <td class="column-title ">${r.journeyTime}</td>
-                <td class="column-title ">${r.ticketPrice}</td>                                        
+                <td class="column-title price">${r.ticketPrice}</td>                                        
                 <td class="column-title ">
                     <a class="user-name-sign-in" href="<c:url value="/home_routine/list_schedules?id=${r.id}"/>">
                     <button data-v-62c8fe4c="" class="time-detail" > Chi tiết

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import java.io.Serializable;
 import java.sql.Date;
+//import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,7 +44,7 @@ public class Schedule implements Serializable{
     
     @Column(name = "destination_date")
     //@Temporal (javax.persistence.TemporalType.TIMESTAMP)
-    @JsonIgnore
+    //@JsonIgnore
     private Date destinationDate;
     
     @Column(name = "departure_time")

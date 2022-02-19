@@ -6,11 +6,11 @@
 
 
 window.onload = function () {
-    let price = document.getElementsByClassName("pricee");
+    let price = document.getElementsByClassName("price");
 
 
     //dau phay trong tien
-    var formatter = new Intl.NumberFormat('vi-VN', {
+    var formatter = new Intl.NumberFormat('vi', {
         style: 'currency',
         currency: 'VND',
     });
@@ -20,7 +20,7 @@ window.onload = function () {
         price[i].innerText = formatter.format(price[i].innerText);
     }
 
-        AOS.init();
+
 
    
 }

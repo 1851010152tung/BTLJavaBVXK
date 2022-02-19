@@ -11,6 +11,8 @@ import com.btl.service.BusService;
 import com.btl.service.CommentService;
 import com.btl.service.EmployeeService;
 import com.btl.service.UserService;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -187,7 +189,31 @@ public class BusController {
     
     
 
-    
+     @GetMapping("/home_schedule")
+    public String getListHomeSchedule(Model model, @RequestParam(required = false) Map<String, String> params) {
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        String kw = params.getOrDefault("kw", null);
+        String kw2 = params.getOrDefault("kw2", null);
+
+        int page = Integer.parseInt(params.getOrDefault("page", "1")); // nếu có thì lấy biến page còn không thì trả về 1
+
+        Date fromDate = null, toDate =null;
+        try {
+            String from = params.getOrDefault("fromDate", null);
+            if(from != null)
+                fromDate = f.parse(from);
+            String to = params.getOrDefault("toDate", null);
+            if(to != null)
+                toDate = f.parse(to);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        model.addAttribute("schedules",this.busService.getListByCondition(kw,kw2, fromDate,toDate, page));
+        model.addAttribute("counter",this.busService.getListByCondition(kw, kw2, fromDate,toDate, page).size());
+
+        return "home_schedule";
+    }
     
     
 }

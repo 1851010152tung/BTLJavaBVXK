@@ -13,7 +13,9 @@ import com.btl.service.EmployeeService;
 import com.btl.service.RouteService;
 import com.btl.service.ScheduleService;
 import com.btl.utils.Utils;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.Query;
@@ -123,6 +125,43 @@ public class HomeController {
         return "list_schedules";
     }
     
+    
+    
+//    @RequestMapping("/")
+//    @Transactional
+//    public String getListHomeSchedule(Model model, @RequestParam(required = false) Map<String, String> params, 
+//            HttpSession session) {
+//        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+//        String kw = params.getOrDefault("kw", null);
+//        String kw2 = params.getOrDefault("kw2", null);
+//
+//        int page = Integer.parseInt(params.getOrDefault("page", "1")); // nếu có thì lấy biến page còn không thì trả về 1
+//
+//        Date fromDate = null, toDate =null;
+//        try {
+//            String from = params.getOrDefault("fromDate", null);
+//            if(from != null)
+//                fromDate = f.parse(from);
+//            String to = params.getOrDefault("toDate", null);
+//            if(to != null)
+//                toDate = f.parse(to);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        model.addAttribute("schedules",this.busService.getListByCondition(kw,kw2, fromDate,toDate, page));
+//        model.addAttribute("counter",this.busService.getListByCondition(kw, kw2, fromDate,toDate, page).size());
+//        
+////        model.addAttribute("bus", this.busService.getBuses());
+////        model.addAttribute("employee", this.employeeService.getEmployees() );
+////        model.addAttribute("routes", this.routeService.getRoutes());
+////        model.addAttribute("schedules", this.scheduleService.getSchedules());
+////        //s.close();
+////        model.addAttribute("currentUser", session.getAttribute("currentUser"));
+////        model.addAttribute(("hotRoutes"), this.routeService.getListHotRoutes(6));
+//
+//        return "home_schedule";
+//    }
    
 }
 

@@ -27,6 +27,10 @@ public interface BusRepository {
     
     List<Object> getListByCondition(String kw, int page);
     
+    List<Object> getListByCondition(String kw, Date fromDate, Date toDate, int page);
+    
+    List<Object> getListByCondition(String kw, String kw2, Date fromDate, Date toDate, int page);
+
     List<Object[]> getMostCommentBus(int num);
     
     

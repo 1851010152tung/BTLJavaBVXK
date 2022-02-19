@@ -123,3 +123,60 @@ button.btn.btn-default {
 {
     margin-top: 30px;
 }
+
+
+div#tab1 {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.submit-form input {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 150px;
+  height: 36px;
+  background-color: var(--light-blue-form);
+  border: 1px solid #dbdada;
+  border-radius: 50px;
+  font-size: 12px;
+  color:var(--black);
+  outline: none;
+  padding: 10px 10px;
+  display: inline-block;
+  box-shadow: none;
+  border-radius: 0px;
+}
+
+.submit-form button {
+    width: 140px; 
+    height: 45px;
+    margin-left: 20px;
+    background-color: #2852EB;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.submit-form button:hover {
+    width: 140px; 
+    height: 45px;
+    margin-left: 20px;
+    background-color: grey;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.submit-form button:active {
+    width: 140px; 
+    height: 45px;
+    margin-left: 20px;
+    background-color: grey;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 5px;
+}

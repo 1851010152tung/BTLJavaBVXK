@@ -60,7 +60,7 @@
                                                                 <form:select  id="bus" class="form-control"  path="route.id">
 
                                                                     <c:forEach items="${routes}" var="r">
-                                                                        <form:option value="${r.id}">${r.departure} - ${r.destination}</form:option>
+                                                                        <option value="${r.id}">${r.departure} - ${r.destination}</option>
                                                                     </c:forEach>
 
                                                                 </form:select>                                                                        

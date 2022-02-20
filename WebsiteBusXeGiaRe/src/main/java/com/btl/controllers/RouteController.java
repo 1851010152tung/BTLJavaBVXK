@@ -85,7 +85,7 @@ public class RouteController {
         if(this.routeService.addOrUpdate(route) == true)
         {
 //               model.addAttribute("message", "Cập nhật tuyến xe thành công");
-            return "redirect:/admin/data_routes/update";
+            return "redirect:/admin/data_routes";
         }
         else 
         {

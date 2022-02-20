@@ -108,6 +108,7 @@ public class ScheduleControllers {
         else 
         {
             model.addAttribute("errMsg", "Có lỗi xảy ra");
+
         //Khi upload thất bại vẫn ở lại trang bus.
         }
                     return "update_schedule";
@@ -119,7 +120,11 @@ public class ScheduleControllers {
     public String listEdit(Model model,
             @RequestParam(name ="id", defaultValue ="0") int id)    {
         if(id > 0)
+        {
             model.addAttribute("schedule", this.scheduleService.findById(id));
+            model.addAttribute("routes", this.routeService.getRoutes());
+
+        }
         else
             model.addAttribute("schedule", new Schedule());
         return "update_schedule";
